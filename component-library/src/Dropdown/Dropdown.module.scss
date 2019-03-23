@@ -1,0 +1,65 @@
+@import '../../styles/main';
+
+.no-show {
+  .card {
+    display: none;
+  }
+
+  
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+
+  &:focus, &:focus-within {
+    outline: none;
+  }
+}
+
+
+.show {
+  .card {
+    border-radius: 5px;
+    display: inline-block;
+    left: 50%;
+    overflow: hidden;
+    z-index: 2;
+    padding: 0;
+    position: absolute;
+    transform: translateX(-50%);
+
+    &.bottom {
+      bottom: auto;
+      top: calc(100% + 5px);
+    }
+
+    &.top{
+      bottom: calc(100% + 5px);
+      top: auto;
+    }
+
+    &-group{
+      margin: 0;
+      max-height: 180px;
+      overflow-y: auto;
+      justify-content: flex-start;
+    }
+
+    .button {
+      padding-top: 10px;
+    }
+  }
+
+  .button {
+    background: #f6f6f6;
+  }
+
+  .carousel{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  
+}

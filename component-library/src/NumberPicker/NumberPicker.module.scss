@@ -1,0 +1,61 @@
+@import '../../styles/main.scss';
+
+/* The parent div of the NumberPicker component */
+.number_picker {
+  display: inline-block;
+  position: relative;
+  
+}
+
+/* Class applied to the top-most div of the Input component */
+.input {
+  /* Applied when the number selector should be open */
+  &.open {
+
+    /* Label of the input */
+    & > label {
+      color: $primary;
+    }
+
+    /*
+      Div containing the input element and icon.
+      When the picker is in it's opened state, the outline should show.
+    */
+    & > div {
+      border: 1px solid $primary;
+      outline: none;
+
+      /* Targets the icon inside of the Input component */
+      & > div {
+        color: $primary;
+      }
+    }
+  }
+}
+
+
+/* Applied to the card container of the picker */
+.card{
+  padding-top: 15px;
+  position: absolute;
+  opacity: 1;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: visible;
+  animation-name: opacity-animation;
+  animation-duration: 0.5s;
+  z-index: 2;
+
+  &.closed{
+    opacity: 0;
+    visibility: hidden;
+    opacity: 0;
+    animation: none;
+  }
+}
+
+@keyframes opacity-animation {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}

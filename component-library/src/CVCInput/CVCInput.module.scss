@@ -1,0 +1,28 @@
+.card-icon-background {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.card-icon {
+  @extend .card-icon-background;
+  position: relative;
+  display: inline-block;
+  width: 3em;
+  line-height: 1em;
+  &:before {
+    content: '\00a0';
+  }
+  &.card-icon-squared {
+    width: 1em;
+  }
+}
+
+@mixin card-icon($card) {
+  .card-icon-#{$card} {
+    background-image: url(cards/#{$card}.svg);
+  }
+}
+
+
+@include card-icon(info);

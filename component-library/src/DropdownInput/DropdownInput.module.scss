@@ -1,0 +1,44 @@
+@import '../../styles/main';
+
+
+.dropdown {
+  & > *:first-child {
+    color: #929292;
+    background: inherit;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    border-radius: 0;
+    align-items: center;
+  }
+
+  & > *:nth-child(2) {
+    top: calc(100% + 35px) !important;
+  }
+
+  &.left {
+    & > *:first-child {
+      padding-right: 10px;
+      margin-right: 15px;
+      border-right: 1px dashed #929292;
+    }
+  }
+
+  &.right {
+    & > *:first-child {
+      padding-right: 10px;
+      padding-left: 10px;
+      margin-left: 15px;
+      border-left: 1px dashed #929292;
+    }
+  }
+}
+
+.input {
+  & > div:nth-of-type(1) {
+    align-items: stretch;
+    padding: 11px 0px 11px 10px;
+  }
+}

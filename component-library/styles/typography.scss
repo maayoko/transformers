@@ -1,0 +1,116 @@
+@import "./font-family";
+@import './mediaQuery.scss';
+
+@mixin typography-header1() {
+  @include set-font($source-sans-semi-bold);
+  font-size: 60px;
+  letter-spacing: -1.5px;
+  @include for-tablet-portrait-up() {
+    font-size: 36px;
+  }
+  @include for-phone-only() {
+    font-size: 34px;
+  }
+}
+
+@mixin typography-header2() {
+  @include set-font($source-sans-light);
+  font-size: 60px;
+  letter-spacing: -0.5px;
+}
+
+@mixin typography-header3() {
+  @include set-font($roboto-regular);
+  font-size: 40px;
+  letter-spacing: 0;
+}
+
+@mixin typography-header4() {
+  @include set-font($roboto-regular);
+  font-size: 34px;
+  letter-spacing: 0.25px;
+}
+
+@mixin typography-header5() {
+ @include set-font($roboto-regular);
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+@mixin typography-header6() {
+@include set-font($roboto-medium);
+  font-size: 25px;
+  letter-spacing: 0.25px;
+}
+
+@mixin typography-body1() {
+  @include set-font($roboto-regular);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+@mixin typography-body2() {
+ @include set-font($roboto-regular);
+  font-size: 14px;
+  letter-spacing: 0.25px;
+}
+
+@mixin typography-subtitle1() {
+  @include set-font($roboto-regular);
+  font-size: 16px;
+  letter-spacing: 0.15px;
+}
+
+@mixin typography-subtitle2() {
+  @include set-font($roboto-medium);
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+@mixin typography-button() {
+  @include set-font($source-sans-semi-bold);
+  font-size: 14px;
+}
+
+@mixin typography-caption() {
+ @include set-font($roboto-regular);
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+@mixin typography-overline() {
+  @include set-font($roboto-medium);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+
+@mixin typography-input() {
+  @include set-font($source-sans-semi-bold);
+  font-size: 14px;
+  letter-spacing: normal;
+}
+
+@mixin typography-number-picker() {
+  @include set-font($source-sans-semi-bold);
+   font-size: 24px;
+   letter-spacing: 0.25px;
+ }
+
+@mixin typography-subtitle-text() {
+  @include set-font($source-sans-light);
+  font-size: 14px;
+  letter-spacing: -0.5px;
+}
+
+@mixin typography-price-large() {
+  @include set-font($source-sans-semi-bold);
+  font-size: 36px;
+  line-height: 38px;
+}
+
+@mixin typography-pricing() {
+  @include set-font($source-sans-regular);
+  font-size: 14px;
+  line-height: 24px;
+}

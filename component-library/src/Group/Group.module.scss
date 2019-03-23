@@ -1,0 +1,35 @@
+
+.group {
+  align-items: baseline;
+  display: inline-flex;
+  justify-content: normal;
+  & > * {
+    margin: 0.5em;
+    flex-grow: 1;
+  }
+
+  &.nogap  > *{
+    margin: 0;
+    flex-grow: initial;
+  }
+
+  &.stretch {
+    align-items: stretch;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.center {
+    align-items: center; 
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &:focus, &:focus-within {
+    outline: none;
+  }
+}

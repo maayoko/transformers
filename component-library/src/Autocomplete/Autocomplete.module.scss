@@ -1,0 +1,62 @@
+@import '../../styles/main.scss';
+
+.autocomplete {
+  @include typography-subtitle-text();
+  position: relative;
+  display: inline-block;
+}
+
+.menu {
+  left: 50%;
+  background: $white;
+  position: absolute;
+  top: calc(100% + 10px);
+  border-radius: 15px;
+  transform: translate(-50%);
+  text-align: left;
+  width: calc(100%);
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.noElements{
+  cursor: default;
+  padding: 15px;
+}
+
+.item {
+  cursor: pointer;
+  padding: 10px;
+  padding-left: 15px;
+  &:focus, &:focus-within, &.highlited {
+    outline: none;
+    background: #EFEFEF;
+    color:  $primary;
+  }
+
+  &:first-child {
+    padding-top:15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  &:last-child {
+    padding-bottom: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  &:hover {
+    background: #EFEFEF;
+    color:  $primary;
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.loader {
+  margin:auto;
+  padding: 10px;
+}

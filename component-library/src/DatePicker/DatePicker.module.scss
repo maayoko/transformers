@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.date {
+  width: 100%;
+}
+
+.popper {
+  background: $white;
+  border-radius: 15px;
+  box-shadow: -1px -1px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px 45px;
+  position: relative;
+  visibility: visible;
+  animation-name: opacity-animation;
+  animation-duration: 0.5s;
+}
+
+
+@keyframes opacity-animation {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}

@@ -1,0 +1,158 @@
+@import '../../node_modules/react-datepicker/dist/react-datepicker.css';
+
+@import '../../styles/variables.scss';
+
+/* Overwritting default styles of the date picker component*/
+
+$datepicker-name-color:#A5B2B7;
+$datepicker-date-color: #45454D;
+
+/* Allow datepicker to be full width of container */
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+
+/* Remove small triangle above picker */
+.react-datepicker__triangle {
+  display: none;
+}
+
+/* Remove colors and borders of header */
+.react-datepicker__header {
+  background: transparent;
+  border:none;
+  padding-top: 3px;
+}
+
+/* Remove colors and borders of container */
+.react-datepicker{
+  background: transparent;
+  border: none;
+}
+
+/* Overwrite month title styles */
+.react-datepicker__current-month, .react-datepicker-time__header {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: 20px;
+  color: $base-font-color;
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* Both left and right navigation*/
+.react-datepicker__navigation {
+  top: 8px;
+  border:0.45rem solid transparent;
+  height: 10px;
+  width: 10px;
+  outline: none;
+}
+
+
+.react-datepicker__navigation--next {
+  border-left-color: $base4;
+}
+
+/*Place triangle to left */
+.react-datepicker__navigation--previous{
+  left: auto;
+  right: 40px;
+  border-right-color: $base4;
+}
+
+/* Format each row */
+.react-datepicker__day-names, .react-datepicker__week {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Remove margin from all dates */
+.react-datepicker__month{
+  margin: 0;
+}
+
+/* Set color of week day's name */
+.react-datepicker__day-name {
+  color: $datepicker-name-color;
+}
+
+/* Make all dates and months equal */
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+  font-size: 11px;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+/* Basic color of each individual day inside of month */
+.react-datepicker__day{
+  color: $datepicker-date-color;
+}
+
+/* Hover style of each individual day inside of month */
+.react-datepicker__day:hover {
+  background: $base7;
+  border-radius: 50%;
+  color:$primary;
+}
+
+/* Style of date when selected with keyboard. Should be 
+  the same as the hover for each individual day inside of month.
+*/
+.react-datepicker__day--keyboard-selected{
+  background: $base7;
+  border-radius: 50%;
+  color: $primary;
+}
+
+/* Stlyes for the current date */
+.react-datepicker__day--today {
+  background: transparent;
+  color: inherit;
+  position: relative;
+}
+
+/* Current date hover styles*/
+.react-datepicker__day--today:hover {
+  background: $base6;
+  color:$primary;
+}
+
+/* Stlyes for the current date - styles for the dot over the date. */
+.react-datepicker__day--today:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background:$primary;
+  top: -7px;
+  left: calc(50% - 2.5px);
+}
+
+/* Styles of the currently selected date*/
+.react-datepicker__day--selected{
+  background:$primary;
+  color: $white;
+  border-radius: 50%;
+}
+
+/* Styles of all dates that are disabled (for whatever reason) */
+.react-datepicker__day--disabled{
+  color: $datepicker-name-color;
+}
+/* Hover styles of all dates that are disabled (for whatever reason) */
+.react-datepicker__day--disabled:hover {
+  color: $datepicker-name-color;
+  background: transparent;
+}
+
+/* Styles of all dates that are outside current month*/
+.react-datepicker__day--outside-month, .react-datepicker__day--outside-month:hover {
+  color: transparent;
+  background: transparent;
+}

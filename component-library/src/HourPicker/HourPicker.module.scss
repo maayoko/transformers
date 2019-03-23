@@ -1,0 +1,65 @@
+@import '../../styles/main.scss';
+
+.hour_picker {
+  display: inline-block;
+  position: relative;
+  
+}
+
+/* Applied to the container of both number selectors in HourPicker */
+.group {
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Class applied to the top-most div of the Input component */
+.input {
+  /* Applied when the number selector should be open */
+  &.open {
+
+    /* Label of the input */
+    & > label {
+      color: $primary;
+    }
+
+    /*
+      Div containing the input element and icon.
+      When the picker is in it's opened state, the outline should show.
+    */
+    & > div {
+      border: 1px solid $primary;
+      outline: none;
+
+      /* Targets the icon inside of the Input component */
+      & > div {
+        color: $primary;
+      }
+    }
+  }
+}
+
+/* Applied to the card container of the picker */
+.card{
+  position: absolute;
+  opacity: 1;
+  left: 50%;
+  padding: 10px 20px;
+  transform: translateX(-50%);
+  top: calc(100% + 10px);
+  visibility: visible;
+  animation-name: opacity-animation;
+  animation-duration: 0.5s;
+  z-index: 2;
+
+  &.closed{
+    visibility: hidden;
+    opacity: 0;
+    animation: none;    
+  }
+}
+
+@keyframes opacity-animation {
+  0%   {opacity: 0;}
+  100% {opacity: 1;}
+}

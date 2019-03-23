@@ -1,0 +1,12 @@
+@import '../../styles/main.scss';
+@import '../../styles/flags.scss';
+@import '../../styles/icons.scss';
+$icon-text-color: #5D6C77;
+
+.icon{
+  &:before {
+    background: inherit;
+    color: inherit;
+    font-size: inherit;
+  }
+}

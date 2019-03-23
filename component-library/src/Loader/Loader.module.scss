@@ -1,0 +1,28 @@
+@import '../../styles/main';
+
+.loader {
+  height: 30px;
+  width: 30px;
+}
+
+.circular {
+  animation: rotate 1s linear infinite;
+  .path {
+    stroke: $base6;
+    stroke-dasharray: 120, 200;
+    stroke-dashoffset: -35px;
+  }
+  .path2 {
+    stroke: $primary;
+    stroke-dasharray: 35, 200;
+    stroke-dashoffset: -1px;
+    stroke-linecap: round;
+  }
+}
+
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

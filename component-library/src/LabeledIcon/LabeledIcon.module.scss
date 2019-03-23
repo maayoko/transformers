@@ -1,0 +1,28 @@
+@import '../../styles/main.scss';
+
+.labeled-icon {
+  align-items: center;
+  color: inherit;
+  cursor: inherit;
+  display: inline-flex;
+  justify-content: space-evenly;
+  &__label {
+    @include set-font($source-sans-regular);
+    cursor: inherit;
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+  &__icon {
+    margin-left: 0.15em;
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
+  .labeled-icon__label {
+    margin-left: 0.15em;
+  }
+  .labeled-icon__icon {
+    margin-right: 0.5em;
+  }
+}

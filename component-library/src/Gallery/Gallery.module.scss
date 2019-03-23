@@ -1,0 +1,154 @@
+@import '../../styles/main.scss';
+
+$arrow_width: 25;
+
+:export {
+  arrowWidth: $arrow_width;
+  mobileMaxWidth: $phone-upper-boundary - 1;
+  tabletPortraitMinWidth: $phone-upper-boundary;
+  tabletLandscapeMinWidth: $tablet-portrait-upper-boundary;
+  desktopMinWidth: $tablet-landscape-upper-boundary;
+}
+
+/* Container of sliding elements */
+.slider {
+  float: left;
+  left: 0;
+  position: relative;
+  transition: none;
+
+  /* 
+    Each individual slide inside of .slider
+    (Wrapper around each child of Gallery component)
+  */
+  &_content {
+    transition: opacity 0.7s ease;
+    outline: none;
+
+    &:focus, &:focus-within {
+      outline: none;
+    }
+
+    /*
+      Applied to wrapper of child when that child of Gallery is selected.
+     */
+    &.active {
+      opacity: 1;
+    }
+
+    /*
+      Applied to wrapper of child when that child of Gallery isn't selected.
+     */
+    &.inactive, &.active {
+      cursor: pointer;
+    }
+
+    /*
+      Apply opacity to each individual child so it can later on be controled more easily
+    */
+    &.inactive div > *{
+      opacity: 0.5;
+    }
+
+    &.inactive:hover div > * {
+      opacity: 0.85;
+    }
+
+    &.inactive {
+      /*
+        Special class that can be applied to a button that needs to be hidden when inactive, but shown on hover.
+       */
+      .button {
+        visibility: hidden;
+      }
+      &:hover .button {
+        visibility: visible !important;
+      }
+    }
+
+    &.inactive{
+      .button:hover {
+        transition: all 0.5s ease;
+        opacity: 1 !important;
+        background: $primary;
+        box-shadow: 0px 0px 15px #6CE3FE;
+        color: $white;
+        & * {
+          opacity: 1 !important;
+        }
+      }
+    } 
+  }
+}
+
+/*
+  Upmost div of Gallery component
+*/
+.container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    & > * {
+      pointer-events: none;
+    }
+
+  }
+}
+
+/* 
+  Wrapper around arrows and slider element.
+  Defines the visible area which is dynamically calculated inside of the component.
+*/
+.wrapper {
+  padding: 0px #{$arrow_width}px;
+  position: relative;
+  overflow: hidden;  
+  width: calc(100% - #{$arrow_width}px);
+}
+
+
+/*
+  Styles for arrows
+*/
+.arrow_right, .arrow_left {
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  width: #{$arrow_width}px;
+  font-size: 25px;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+  }
+  
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+}
+.arrow_right {
+  right: 0;
+
+  &:before {
+    content:"\203A"
+  }
+}
+
+.arrow_left {
+  left: 0;
+  &:before {
+    content: "\2039";
+  }
+}
+
+.demo_button {
+  box-sizing: border-box;
+  width: 150px;
+  margin: 0.5em;
+}
