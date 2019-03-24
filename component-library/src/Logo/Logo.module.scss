@@ -1,0 +1,17 @@
+@import "../../styles/main";
+
+.big {
+    @include typography-logo-intro;
+}
+
+.small {
+    @include typography-logo-header;
+}
+
+.primary {
+    color: $primary;
+}
+
+.black {
+    color: $black;
+}

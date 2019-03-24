@@ -9,6 +9,11 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'Transformers';
+    src: url("/fonts/transformers_solid.ttf") format('truetype');
+}
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'transferhero' !important;

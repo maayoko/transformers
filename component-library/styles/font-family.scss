@@ -1,6 +1,13 @@
+@import "./icons.scss";
+
+$transformers-font-family: "Transformers", Arial, sans-serif;
 $roboto-font-family: 'Roboto', sans-serif;
 $source-sans-font-family:'Source Sans Pro', sans-serif;
 
+$transformers-normal: (
+    font-family: $transformers-font-family,
+    font-weight: 400
+);
 
 $roboto-medium: (
  font-family: $roboto-font-family,

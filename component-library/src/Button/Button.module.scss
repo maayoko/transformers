@@ -1,150 +1,35 @@
 @import '../../styles/main.scss';
 
-$button-text-color: #5D6C77;
-$button-text-variant-background: #f6F6F6;
-
-.button {
-  @include typography-button();
-  border-radius: 35px;
-  cursor: pointer;
-  display: inline-block;
-  padding: 20px 35px;
-}
-
-.disabled {
-  background: #D0D0D0;
-  color: $white;
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-.contained {
-  &.default {
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-    background: $white;
-    color: $button-text-color;
-
-    &:hover {
-      background: darken($white, 2%);
-      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-      background: $white;
-      color: $button-text-color;
-    }
-  }
-
-  &.primary {
-    background: $primary;
-    box-shadow: 0px 0px 15px #6CE3FE;
-    color: $white;
-
-    &:hover {
-      background: darken($primary, 10%);
-      box-shadow: 0px 0px 15px lighten(#6CE3FE, 10%);
-    }
-
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      background: $primary;
-      box-shadow: 0px 0px 15px #6CE3FE;
-      color: $white;
-    }
-  }
+.base {
+    border: none;
+    outline-width: 0;
+    clip-path: polygon(10% 10%, 100% 0, 100% 100%, 0 100%);
 }
 
 .text {
-  border-radius: 5px;
-  padding: 5px 15px;
-  &.default {
-    background: $white;
-    color: $button-text-color;
-    &:hover {
-      background: $button-text-variant-background;
-      color: $primary;
-    }
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      background: $white;
-      color: $button-text-color;
-    }
-    
-  }
+    font-size: 20px;
+    font-family: Arial;
+    fill: $primary;
+    stroke-width: 0;
+    user-select: none;
 
-  &.primary {
-    color: $primary;
-    background: transparent;
     &:hover {
-      background: $button-text-variant-background;
+        fill: $white;
     }
-
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      background: transparent;
-    }
-  }
 }
 
-.outlined {
-  border-radius: 15px;
-  padding: 5px 15px;
-  &.default {
-    background: $white;
-    color: $button-text-color;
-    border: 1px solid #E9E9E9;
+.primary {
+    fill: transparent;
+    stroke: $primary;
+    stroke-width: 2px;
+    transition: all .3s;
+    cursor: pointer;
+
     &:hover {
-      color: $primary;
-      border: 1px solid $primary;
+        fill: $primary;
+
+        & > .text {
+            fill: $white;
+        }
     }
-
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      background: $white;
-      color: $button-text-color;
-      border: 1px solid #E9E9E9;
-    }
-  }
-
-  &.primary {
-    color: $primary;
-    border: 1px solid $primary;
-    background: $white;
-    &:hover {
-      background: $white;
-      color: $button-text-color;
-      border: 1px solid #E9E9E9;
-    }
-
-    /* If disabled, don't change anything on hover */
-    &.disabled:hover{
-      color: $primary;
-      border: 1px solid $primary;
-      background: $white;
-    }
-  }
-}
-
-
-.fullWidth {
-  display: block;
-  width: 100%;
-}
-
-.flex {
-  align-items: baseline;
-  display: flex;
-  justify-content: space-evenly;
-  & .icon:before {
-    margin-left: 1em;
-  }
-
-  &.left {
-    float: left;
-  }
-  &.right {
-    float: right;
-  }
 }

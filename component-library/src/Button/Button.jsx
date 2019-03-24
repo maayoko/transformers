@@ -4,63 +4,46 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = ({
-  color,
   variant,
-  className,
-  isDisabled,
-  children,
-  position,
   onClick,
-  fullWidth,
   style,
+  children,
 }) => {
-  let clickHandler = onClick;
-  let classNames = `${styles.button} ${styles[color]} ${styles[variant]} `;
-  if (className) {
-    classNames += ` ${className}`;
-  }
-  if (isDisabled) {
-    classNames += ` ${styles.disabled}`;
-    clickHandler = undefined;
-  }
-  if (fullWidth) {
-    classNames += ` ${styles.fullWidth}`;
-  }
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div style={style} className={classNames} onClick={clickHandler}>
-      <div className={`${styles.flex} ${styles[position]}`}>{children}</div>
+    // <div className={`${styles.outside}`}>
+    //     <button 
+    //         style={style} 
+    //         onClick={onClick} 
+    //         type={type} 
+    //         className={`${styles.inside}`}>
+    //         <span>{children}</span>
+    //     </button>
+    // </div>
+    <div onClick={onClick}>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="66" width="188">
+            <g fill="none" className={styles.primary}>
+                <path d="M2 63 H186 V3 L15 15 Z" />
+                <text x="54" y="46" fill="black" className={`${styles.text}`}>{children}</text>
+            </g>
+        </svg>
     </div>
   );
 };
 
 Button.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.node, PropTypes.string),
-  ]).isRequired,
-  color: PropTypes.oneOf(['default', 'primary']),
-  isDisabled: PropTypes.bool,
-  variant: PropTypes.oneOf(['text', 'outlined', 'contained']),
-  position: PropTypes.oneOf(['default', 'right', 'left']),
-  fullWidth: PropTypes.bool,
-  onClick: PropTypes.func,
-  style: PropTypes.shape({}),
+    variant: PropTypes.oneOf([ "primary" ]),
+    onClick: PropTypes.func,
+    type: PropTypes.oneOf([ "button", "submit" ]),
+    style: PropTypes.shape({})
 };
 
 Button.defaultProps = {
-  className: null,
-  color: 'default',
-  variant: 'contained',
-  position: 'default',
-  fullWidth: false,
-  isDisabled: false,
-  onClick: () => {},
-  style: {},
+    variant: "primary",
+    onClick: () => {},
+    type: "button"
 };
 
 export default Button;
