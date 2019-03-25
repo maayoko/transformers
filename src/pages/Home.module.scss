@@ -1,0 +1,33 @@
+.root {
+    // position: relative;
+    // width: 100%;
+    // height: 100%;
+}
+
+.background_shape_image {
+    background-image: url("../assets/images/bg_shape@1x.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 61rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.background__image {
+    background-image: url("../assets/images/underlay-gold.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100rem;
+    display: inline-block;
+}
+
+.main {
+    flex-basis: 70%;
+    text-align: center;
+}
+
+.sidebar {
+    flex-basis: 30%;
+}

@@ -24,3 +24,6 @@ export { default as CardExpiryInput } from './CardExpiryInput/CardExpiryInput';
 export { default as CVCInput } from './CVCInput/CVCInput';
 export { default as FormatDropdownInput } from './FormatDropdownInput/FormatDropdownInput';
 export { default as PhoneInput } from './PhoneInput/PhoneInput';
+export { default as Typography } from './Typography/Typography';
+export { default as Background } from './Background/Background';
+export { default as Logo } from './Logo/Logo';

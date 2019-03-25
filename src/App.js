@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import bgShapeSrc1x from "./assets/images/bg_shape@1x.png";
-import bgShapeSrc2x from "./assets/images/bg_shape@2x.png";
-import underlay from "./assets/images/underlay-gold.png";
+import Header from "./components/Header/Header";
+import Background from "./components/Background/Background";
+import "./styles/_main.scss";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <img src={bgShapeSrc1x} srcSet={`${bgShapeSrc2x} 2x`} alt="Background shape" />
-        <img src={underlay} alt="Golden underlay" />
-      </div>
+        <Background>
+            <Header />
+            {this.props.children}
+        </Background>
     );
   }
 }
