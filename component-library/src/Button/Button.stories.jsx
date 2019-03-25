@@ -6,4 +6,4 @@ import docs from './README.md';
 
 storiesOf('Button', module)
   .addDecorator(withDocs(docs))
-  .add('primary', () => <Button onClick={() => console.log("clicked")} variant="primary">Hello Button</Button>)
+  .add('primary', () => <Button onClick={() => console.log("clicked")} variant="primary">Check me out</Button>)
