@@ -25,7 +25,7 @@ const Typography = ({
 Typography.propTypes = {
     as: PropTypes.oneOf([ "h1", "h2", "h3", "h4", "h5", "h6", "p", "span" ]),
     uppercase: PropTypes.bool,
-    color: PropTypes.oneOf([ "white", "black", "primary" ]),
+    color: PropTypes.oneOf([ "white", "black", "primary", "grey" ]),
     opacity: PropTypes.oneOf([ "visible", "high", "mid", "low", "hidden" ]),
     size: PropTypes.oneOf([ "header-big", "body-big", "body-mid", "body-small" ])
 }

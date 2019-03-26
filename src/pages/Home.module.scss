@@ -8,26 +8,27 @@
     background-image: url("../assets/images/bg_shape@1x.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 61rem;
+    min-height: 80rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.background__image {
+.background_image {
     background-image: url("../assets/images/underlay-gold.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    height: 59rem;
     width: 100rem;
     display: inline-block;
+    position: relative;
 }
 
 .main {
-    flex-basis: 70%;
+    flex-basis: 80%;
     text-align: center;
 }
 
 .sidebar {
-    flex-basis: 30%;
+    flex-basis: 20%;
 }

@@ -9,6 +9,8 @@ const Button = ({
   style,
   children,
 }) => {
+    console.log(style)
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -22,7 +24,7 @@ const Button = ({
     //         <span>{children}</span>
     //     </button>
     // </div>
-    <div onClick={onClick}>
+    <div style={style} onClick={onClick}>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="66" width="188">
             <g fill="none" className={styles.primary}>
                 <path d="M2 63 H186 V3 L15 15 Z" />
