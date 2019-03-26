@@ -1,0 +1,10 @@
+FROM node:11.9 as builder
+
+WORKDIR /home/node/app
+COPY . /home/node/app
+
+RUN yarn install && yarn build
+
+FROM nginx:latest
+COPY --from=builder /home/node/app/build /usr/share/nginx/html
+CMD [ "nginx", "-g", "daemon off;" ]

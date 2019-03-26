@@ -13,8 +13,14 @@
     stroke-width: 0;
     user-select: none;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         fill: $white;
+
+        & > * {
+            fill: $white;
+        }
     }
 }
 
@@ -25,11 +31,19 @@
     transition: all .3s;
     cursor: pointer;
 
+    & > .text > * {
+        fill: $primary;
+    }
+
     &:hover {
         fill: $primary;
 
         & > .text {
-            fill: $white;
+            fill: $background;
+
+            & > * {
+                fill: $background;
+            }
         }
     }
 }

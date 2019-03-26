@@ -28,7 +28,7 @@ const Button = ({
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="66" width="188">
             <g fill="none" className={styles.primary}>
                 <path d="M2 63 H186 V3 L15 15 Z" />
-                <text x="54" y="46" fill="black" className={`${styles.text}`}>{children}</text>
+                <text x="40" y="46" fill="black" className={`${styles.text}`}>{children}</text>
             </g>
         </svg>
     </div>
