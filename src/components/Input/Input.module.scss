@@ -1,5 +1,25 @@
 @import "../../styles/variables.scss";
+@import "../../styles/typography.scss";
 
 .root {
     border: 1px solid $primary;
+    background-color: transparent;
+    min-width: 49.5rem;
+    height: 4rem;
+    padding: 0 2rem;
+    @include typography-body1;
+    color: $white;
+
+    &::placeholder {
+        @include typography-body1;
+        color: rgba(255, 255, 255, .5);
+    }
+
+    &:hover {
+        border-color: darken($primary, .3);
+    }
+
+    &:focus {
+        outline: none;
+    }
 }
