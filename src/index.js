@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Home from './pages/Home';
+import AddNew from "./pages/AddNew/AddNew";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
@@ -9,6 +10,7 @@ ReactDOM.render(
     <Router>
         <App>
             <Route exact path="/" component={Home} />
+            <Route path="/transformers/add" component={AddNew} />
         </App>
     </Router>
     , document.getElementById('root'));
