@@ -55,3 +55,7 @@
 .body-small {
     @include typography-body3;
 }
+
+.bold {
+    font-weight: 700;
+}

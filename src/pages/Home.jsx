@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AutobotLogo from "../assets/images/svg/logo.svg";
 import HealtLevel from "../assets/images/svg/health_level.svg";
 
+
 class Home extends React.Component {
 
     render() {

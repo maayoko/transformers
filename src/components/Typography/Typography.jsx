@@ -9,12 +9,14 @@ const Typography = ({
     color,
     opacity,
     size,
+    bold,
     children
 }) => {
 
     const classes = classNames(
         { [styles.uppercase]: uppercase }, 
         { [styles[opacity]]: opacity != null },
+        { [styles.bold]: bold },
         styles[size],
         styles[color], 
     );
@@ -27,14 +29,16 @@ Typography.propTypes = {
     uppercase: PropTypes.bool,
     color: PropTypes.oneOf([ "white", "black", "primary", "grey" ]),
     opacity: PropTypes.oneOf([ "visible", "high", "mid", "low", "hidden" ]),
-    size: PropTypes.oneOf([ "header-big", "body-big", "body-mid", "body-small" ])
+    size: PropTypes.oneOf([ "header-big", "body-big", "body-mid", "body-small" ]),
+    bold: PropTypes.bool
 }
 
 Typography.defaultProps = {
     as: "span",
     uppercase: false,
     color: "black",
-    size: "body-mid"
+    size: "body-mid",
+    bold: false
 }
 
 export default Typography;

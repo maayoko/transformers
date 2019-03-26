@@ -8,10 +8,11 @@
     background-image: url("../assets/images/bg_shape@1x.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 80rem;
+    min-height: calc(100vh - 8.5rem);
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background-size: 177rem;
 }
 
 .background_image {
@@ -22,6 +23,7 @@
     width: 100rem;
     display: inline-block;
     position: relative;
+    top: -8rem;
 }
 
 .main {
