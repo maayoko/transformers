@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Typography from "../../components/Typography/Typography";
 import styles from "./AddNew.module.scss";
 import General from "./General";
@@ -9,6 +9,15 @@ import Gear from "./Gear";
 import Button from "../../components/Button/Button";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import BackgroundShape from "../../assets/images/bg_shape_dark@1x.png";
+import SidebarLinks from "../../components/SidebarLinks/SidebarLinks";
+
+const basePath = "/transformers/add";
+const links = [
+	{ to: `${basePath}/general`, label: "General" },
+	{ to: `${basePath}/skin`, label: "Skin" },
+	{ to: `${basePath}/vehicle`, label: "Vehicle" },
+	{ to: `${basePath}/gear`, label: "Gear" }
+];
 
 class AddNew extends React.Component {
 	render() {
@@ -21,32 +30,9 @@ class AddNew extends React.Component {
 					}}>
 					<div
 						style={{
-							display: "flex",
-							flexDirection: "column",
 							flexBasis: "28rem"
 						}}>
-						<Link
-							className={`${styles.link_nav} ${styles.active}`}
-							to="/transformers/add/general">
-							<Typography size="body-mid" uppercase color="primary">
-								General
-							</Typography>
-						</Link>
-						<Link className={`${styles.link_nav}`} to="/transformers/add/skin">
-							<Typography size="body-mid" uppercase color="white">
-								Skin
-							</Typography>
-						</Link>
-						<Link className={`${styles.link_nav}`} to="/transformers/add/vehicle">
-							<Typography size="body-mid" uppercase color="white">
-								Vehicle
-							</Typography>
-						</Link>
-						<Link className={`${styles.link_nav}`} to="/transformers/add/gear">
-							<Typography size="body-mid" uppercase color="white">
-								Gear
-							</Typography>
-						</Link>
+						<SidebarLinks links={links} />
 					</div>
 					<div style={{ flexBasis: "" }}>
 						<Route exact path="/transformers/add/general" component={General} />

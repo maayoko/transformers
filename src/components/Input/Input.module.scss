@@ -2,51 +2,51 @@
 @import "../../styles/typography.scss";
 
 .root {
-    border: 1px solid transparent;    
-    padding: 0 2rem;
-    color: $white;
+	border: 1px solid transparent;
+	padding: 0 2rem;
+	color: $white;
 
-    &::placeholder {
-        color: rgba(255, 255, 255, .5);
-    }
+	&::placeholder {
+		color: rgba(255, 255, 255, 0.5);
+	}
 
-    &:focus {
-        outline: none;
-    }
+	&:focus {
+		outline: none;
+	}
 
-    &.border {
-        border-color: $primary;
+	&.border {
+		border-color: $primary;
 
-        &:hover {
-            border-color: darken($primary, .3);
-        }
-    }
+		&:hover {
+			border-color: darken($primary, 0.3);
+		}
+	}
 
-    &.normal {
-        min-width: 49.5rem;
-        height: 4rem;
-        @include typography-body1;
+	&.normal {
+		min-width: 49.5rem;
+		height: 4rem;
+		@include typography-body1;
 
-        &::placeholder {
-            @include typography-body1;
-        }
-    }
+		&::placeholder {
+			@include typography-body1;
+		}
+	}
 
-    &.large {
-        min-width: 110.5rem;
-        height: 7rem;
-        @include typography-input;
+	&.large {
+		min-width: 110.5rem;
+		height: 7rem;
+		@include typography-input;
 
-        &::placeholder {
-            @include typography-input;
-        }
-    }
+		&::placeholder {
+			@include typography-input;
+		}
+	}
 
-    &.transparent {
-        background-color: transparent;
-    }
+	&.transparent {
+		background-color: transparent;
+	}
 
-    &.dark {
-        background-color: #1c1c22;
-    }
+	&.dark {
+		background-color: #1c1c22;
+	}
 }
