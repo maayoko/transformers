@@ -2,9 +2,18 @@ import React from "react";
 import Button from "../components/Button/Button";
 import styles from "./Home.module.scss";
 import Typography from "../components/Typography/Typography";
+import RobotPreview from "../components/RobotPreview/RobotPreview";
 import { Link } from "react-router-dom";
 import AutobotLogo from "../assets/images/svg/logo.svg";
 import HealtLevel from "../assets/images/svg/health_level.svg";
+
+const basePath = "/assets/transformers-robots";
+
+const transformers = [
+    { imageSrc: `${basePath}/ironhide2.png`, name: "Ironhide", faction: "Decepticon" },
+    { imageSrc: `${basePath}/megatron.png`, name: "Megatron", faction: "Decepticon" },
+    { imageSrc: `${basePath}/bumblebee.png`, name: "Bumblebee", faction: "Autobot" },
+]
 
 
 class Home extends React.Component {
@@ -18,7 +27,7 @@ class Home extends React.Component {
                             <span className={styles.background_image}>
                                 <img style={{ position: "absolute", bottom: "-10rem", left: "20rem", height: "43rem" }} src="assets/transformers-robots/optimus-prime.png" alt="Optimus-prime" />
                                 <Button style={{ position: "absolute", bottom: "-4rem", left: "62rem" }} variant="primary">
-                                    <Link to="/transformers/optimus-prime">Check me out</Link>
+                                    <Link to="/transformers/optimus-prime/details">Check me out</Link>
                                 </Button>
                                 <div style={{ position: "absolute", top: "18rem", left: "62rem", textAlign: "left" }}>
                                     <div style={{ display: "flex", alignItems: "center", width: "10rem" }}>
@@ -50,28 +59,16 @@ class Home extends React.Component {
                     </main>
                     <aside className={styles.sidebar}>
                         <Typography size="body-big" color="white">Transformers at your disposal</Typography>
-                        <div>
-                            <div style={{ display: "flex", marginTop: "7rem" }}>
-                                <img style={{ height: "13rem", width: "10rem" }} src="assets/transformers-robots/ironhide2.png" alt="Ironhide" />
-                                <div style={{ display: "flex", flexDirection: "column", marginLeft: "4rem" }}>
-                                    <Typography uppercase size="body-big" color="white">Ironhide</Typography>
-                                    <Typography size="body-mid" color="grey">Decepticon</Typography>
-                                </div>
-                            </div>
-                            <div style={{ display: "flex", marginTop: "7rem" }}>
-                                <img style={{ height: "13rem", width: "10rem" }} src="assets/transformers-robots/megatron.png" alt="Ironhide" />
-                                <div style={{ display: "flex", flexDirection: "column", marginLeft: "4rem" }}>
-                                    <Typography uppercase size="body-big" color="white">Megatron</Typography>
-                                    <Typography size="body-mid" color="grey">Decepticon</Typography>
-                                </div>
-                            </div>
-                            <div style={{ display: "flex", marginTop: "7rem" }}>
-                                <img style={{ height: "13rem", width: "10rem" }} src="assets/transformers-robots/bumblebee.png" alt="Ironhide" />
-                                <div style={{ display: "flex", flexDirection: "column", marginLeft: "4rem" }}>
-                                    <Typography uppercase size="body-big" color="white">Bumblebee</Typography>
-                                    <Typography size="body-mid" color="grey">Autobot</Typography>
-                                </div>
-                            </div>
+                        <div className={styles.transformers_list}>
+                            {
+                                transformers.map((transformer, idx) => (
+                                    <RobotPreview 
+                                        key={idx}
+                                        imageSrc={transformer.imageSrc}
+                                        name={transformer.name}
+                                        faction={transformer.faction} />
+                                    ))
+                            }
                         </div>
                     </aside>
                 </div>
