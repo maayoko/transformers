@@ -10,7 +10,7 @@ const BackgroundImage = ({
 
     return (
         <span 
-            style={{ backgroundImage: src, ...style }} 
+            style={{ backgroundImage: `url(${src})`, ...style }} 
             className={styles.root}>
             {children}
         </span>
