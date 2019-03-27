@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../components/Button/Button";
 import styles from "./Home.module.scss";
 import Typography from "../components/Typography/Typography";
 import RobotPreview from "../components/RobotPreview/RobotPreview";
 import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
-import { Link } from "react-router-dom";
+import Image from "../components/Image/Image";
 import AutobotLogo from "../assets/images/svg/logo.svg";
 import HealtLevel from "../assets/images/svg/health_level.svg";
 import BackgroundShape from "../assets/images/bg_shape@1x.png";
@@ -33,29 +34,14 @@ const transformers = [
 class Home extends React.Component {
 	render() {
 		return (
-			<BackgroundImage src={BackgroundShape}>
+			<BackgroundImage type="shape" src={BackgroundShape}>
 				<div className={styles.root}>
 					<main className={styles.main}>
-						<BackgroundImage
-							src={UnderlayGold}
-							style={{
-								backgroundSize: "cover",
-								height: "59rem",
-								width: "100rem",
-								display: "inline-block",
-								position: "relative",
-								top: "-8rem",
-								minHeight: "initial"
-							}}>
-							<img
-								style={{
-									position: "absolute",
-									bottom: "-10rem",
-									left: "20rem",
-									height: "43rem"
-								}}
+						<BackgroundImage type="home-gold-bg" src={UnderlayGold}>
+							<Image
+								type="preview-1"
+								title="Optimus-prime"
 								src="assets/transformers-robots/optimus-prime.png"
-								alt="Optimus-prime"
 							/>
 							<Button
 								style={{
@@ -64,9 +50,7 @@ class Home extends React.Component {
 									left: "62rem"
 								}}
 								variant="primary">
-								<Link to="/transformers/optimus-prime/details">
-									Check me out
-								</Link>
+								<Link to="/transformers/optimus-prime/details">Check me out</Link>
 							</Button>
 							<div
 								style={{
@@ -81,13 +65,10 @@ class Home extends React.Component {
 										alignItems: "center",
 										width: "10rem"
 									}}>
-									<img
-										style={{
-											width: "6.5rem",
-											marginRight: "1.7rem"
-										}}
+									<Image
+										type="preview-2"
 										src={AutobotLogo}
-										alt="Autobot Logo"
+										title="Autobot Logo"
 									/>
 									<Typography
 										uppercase
@@ -116,13 +97,10 @@ class Home extends React.Component {
 											opacity="mid">
 											Status
 										</Typography>
-										<img
-											style={{
-												width: "5.2rem",
-												marginTop: "1rem"
-											}}
+										<Image
+											type="preview-3"
 											src={HealtLevel}
-											alt="Health level"
+											title="Health level"
 										/>
 									</div>
 									<div
@@ -138,13 +116,10 @@ class Home extends React.Component {
 											opacity="mid">
 											Vehicle
 										</Typography>
-										<img
-											style={{
-												width: "10rem",
-												marginTop: "1rem"
-											}}
+										<Image
+											type="preview-4"
 											src="assets/transformers-robots/megatron-car.png"
-											alt="Health level"
+											title="Megatron car"
 										/>
 									</div>
 								</div>
@@ -162,22 +137,16 @@ class Home extends React.Component {
 											Gear
 										</Typography>
 										<div style={{ display: "flex" }}>
-											<img
-												style={{
-													height: "7rem",
-													marginTop: "1rem",
-													marginRight: "1.5rem"
-												}}
+											<Image
+												type="preview-5"
+												style={{ marginRight: "1.5rem" }}
 												src="assets/weapons/canon.png"
-												alt="Health level"
+												title="Canon"
 											/>
-											<img
-												style={{
-													height: "7rem",
-													marginTop: "1rem"
-												}}
+											<Image
+												type="preview-5"
 												src="assets/weapons/shield.png"
-												alt="Health level"
+												title="Shield"
 											/>
 										</div>
 									</div>

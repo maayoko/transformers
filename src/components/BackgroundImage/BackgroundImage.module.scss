@@ -1,7 +1,18 @@
 .root {
-    background-repeat: no-repeat;
-    min-height: calc(100vh - 8.5rem);
-    width: 100%;
-    display: block;
-    background-size: 177rem;
+	background-repeat: no-repeat;
+	width: 100%;
+	display: inline-block;
+
+	&.shape {
+		min-height: calc(100vh - 8.5rem);
+		background-size: 177rem;
+	}
+
+	&.home-gold-bg {
+		background-size: cover;
+		height: 59rem;
+		width: 100rem;
+		position: relative;
+		top: -8rem;
+	}
 }

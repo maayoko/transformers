@@ -7,6 +7,7 @@ import Skin from "./Skin";
 import Vehicle from "./Vehicle";
 import Gear from "./Gear";
 import Button from "../../components/Button/Button";
+import Image from "../../components/Image/Image";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import BackgroundShape from "../../assets/images/bg_shape_dark@1x.png";
 import SidebarLinks from "../../components/SidebarLinks/SidebarLinks";
@@ -21,9 +22,11 @@ const links = [
 
 class AddNew extends React.Component {
 	render() {
+		console.log(styles);
 		return (
-			<BackgroundImage src={BackgroundShape}>
+			<BackgroundImage type="shape" src={BackgroundShape}>
 				<div
+					className={styles.root}
 					style={{
 						display: "flex",
 						justifyContent: "space-between"
@@ -47,16 +50,10 @@ class AddNew extends React.Component {
 					</div>
 					<div style={{ paddingRight: "4.8rem" }}>
 						<div style={{ display: "flex" }}>
-							<span
-								style={{
-									backgroundImage: `url(/assets/transformers-robots/transformer-not-selected-gold.png)`,
-									backgroundPosition: "center",
-									backgroundSize: "contain",
-									backgroundRepeat: "no-repeat",
-									display: "block",
-									width: "31rem",
-									height: "34rem"
-								}}
+							<Image
+								src="/assets/transformers-robots/transformer-not-selected-gold.png"
+								title="Not selected transformer"
+								className={styles["preview-1"]}
 							/>
 							<div
 								style={{
@@ -65,16 +62,10 @@ class AddNew extends React.Component {
 									flexDirection: "column"
 								}}>
 								<div style={{ textAlign: "center" }}>
-									<span
-										style={{
-											backgroundImage: `url(/assets/png/logo-not-selected-gold.png)`,
-											backgroundPosition: "center",
-											backgroundSize: "contain",
-											backgroundRepeat: "no-repeat",
-											display: "inline-block",
-											width: "5rem",
-											height: "5rem"
-										}}
+									<Image
+										src="/assets/png/logo-not-selected-gold.png"
+										title="Not selected logo"
+										className={styles["preview-2"]}
 									/>
 								</div>
 								<div
@@ -117,16 +108,10 @@ class AddNew extends React.Component {
 											textAlign: "center",
 											marginTop: "1.2rem"
 										}}>
-										<span
-											style={{
-												backgroundImage: `url(/assets/svg/health_level_gold.svg)`,
-												backgroundPosition: "center",
-												backgroundSize: "contain",
-												backgroundRepeat: "no-repeat",
-												display: "inline-block",
-												width: "5.2rem",
-												height: "6.6rem"
-											}}
+										<Image
+											src="/assets/svg/health_level_gold.svg"
+											title="Health level"
+											type="preview-3"
 										/>
 									</div>
 								</div>
@@ -146,16 +131,10 @@ class AddNew extends React.Component {
 								<Typography color="white" opacity="low" size="body-big">
 									Vehicle
 								</Typography>
-								<span
-									style={{
-										backgroundImage: `url(/assets/transformers-robots/transformer-car-not-selected-gold.png)`,
-										backgroundPosition: "center",
-										backgroundSize: "contain",
-										backgroundRepeat: "no-repeat",
-										display: "inline-block",
-										width: "15.5rem",
-										height: "15.5rem"
-									}}
+								<Image
+									src="/assets/transformers-robots/transformer-car-not-selected-gold.png"
+									title="Not selected car"
+									className={styles["preview-3"]}
 								/>
 							</div>
 							<div
@@ -166,16 +145,10 @@ class AddNew extends React.Component {
 								<Typography color="white" opacity="low" size="body-big">
 									Gear
 								</Typography>
-								<span
-									style={{
-										backgroundImage: `url(/assets/weapons/machine-gun.png)`,
-										backgroundPosition: "center",
-										backgroundSize: "contain",
-										backgroundRepeat: "no-repeat",
-										display: "inline-block",
-										width: "15.5rem",
-										height: "15.5rem"
-									}}
+								<Image
+									src="/assets/weapons/weapon-not-selected-gold.png"
+									title="Not selected weapon"
+									className={styles["preview-3"]}
 								/>
 							</div>
 						</div>

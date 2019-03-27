@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Details.module.scss";
 import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
-import BackgroundShape from "../assets/images/bg_shape_dark@1x.png";
 import Typography from "../components/Typography/Typography";
+import BackgroundShape from "../assets/images/bg_shape_dark@1x.png";
 
 const basePath = "/assets/weapons";
 const gears = [
@@ -34,7 +34,7 @@ class Details extends React.Component {
 
 	render() {
 		return (
-			<BackgroundImage src={BackgroundShape}>
+			<BackgroundImage type="shape" src={BackgroundShape}>
 				<div className={styles.root}>
 					<div className={styles.image}>
 						<span

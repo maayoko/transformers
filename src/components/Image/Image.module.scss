@@ -1,0 +1,35 @@
+.root {
+	object-fit: contain;
+
+	&.preview-1 {
+		position: absolute;
+		bottom: -10rem;
+		left: 20rem;
+		height: 43rem;
+	}
+
+	&.preview-2 {
+		width: 6.5rem;
+		margin-right: 1.7rem;
+	}
+
+	&.preview-3 {
+		width: 5.2rem;
+		margin-top: 1rem;
+	}
+
+	&.preview-4 {
+		width: 10rem;
+		margin-top: 1rem;
+	}
+
+	&.preview-5 {
+		height: 7rem;
+		margin-top: 1rem;
+	}
+
+	&.preview-6 {
+		width: 15.5rem;
+		height: 15.5rem;
+	}
+}
