@@ -2,6 +2,7 @@ import Base from "./Base";
 
 class Transformer extends Base {
 	constructor(name, vehicle, faction, gear = [], status, image) {
+		super();
 		this._name = name;
 		this._vehicle = vehicle;
 		this._faction = faction;

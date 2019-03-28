@@ -7,7 +7,7 @@ const vehicles = (state = [], action) => {
 			return [...state, new Vehicle(action.payload)];
 
 		case ADD_VEHICLES:
-			return [...state, ...action.payload.map(status => new Faction(status))];
+			return [...state, ...action.payload.map(vehicle => new Vehicle(vehicle))];
 
 		default:
 			return state;

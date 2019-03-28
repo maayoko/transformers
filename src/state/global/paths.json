@@ -2,12 +2,84 @@
 	"public": {
 		"basePath": "/assets",
 		"images": {
+			"path": "/images",
 			"skins": {
-				"path": "/skins"
+				"path": "/skins",
+				"list": [
+					"bumblebee.png",
+					"hotrod.png",
+					"ironhide.png",
+					"jazz.png",
+					"kickback.png",
+					"megatron.png",
+					"megatron2.png",
+					"optimus-prime.png",
+					"palpatine.png",
+					"shockwave.png",
+					"soundwave.png",
+					"starscream.png"
+				],
+				"list-neutral": ["skin-not-selected.png"]
 			},
-			"vehicles": "/vehicles",
-			"gears": "/gears",
-			"common": "/common"
+			"vehicles": {
+				"path": "/vehicles",
+				"list": [
+					{ "model": "Camaro", "image": "camaro.png" },
+					{ "model": "AMG GT R", "image": "amg-gt-r.png" },
+					{ "model": "Apache", "image": "apache.png" },
+					{ "model": "F-22", "image": "f-22.png" },
+					{ "model": "Jetboat", "image": "jetboat.png" },
+					{ "model": "Kamov", "image": "kamov.png" },
+					{ "model": "Lamborghini", "image": "lamborghini.png" },
+					{ "model": "MiG", "image": "mig.png" },
+					{ "model": "Sailboat", "image": "sailboat.png" },
+					{ "model": "Standard", "image": "standard.png" },
+					{ "model": "Sukhoi", "image": "sukhoi.png" },
+					{ "model": "Unimog", "image": "unimog.png" },
+					{ "model": "Western Star 5700", "image": "western-star-5700.png" }
+				],
+				"list-neutral": ["vehicle-not-selected.png"]
+			},
+			"gears": {
+				"path": "/gears",
+				"list": [
+					{ "type": "canon", "image": "canon.png" },
+					{ "type": "concept", "image": "concept2.png" },
+					{ "type": "machine gun", "image": "machine-gun.png" },
+					{ "type": "rifle", "image": "rifle.png" },
+					{ "type": "rifle2", "image": "rifle2.png" },
+					{ "type": "shield", "image": "shiled.png" },
+					{ "type": "sword", "image": "sword.png" }
+				],
+				"list-neutral": ["gear-not-selected.png"]
+			},
+			"factions": {
+				"path": "/factions",
+				"list": [
+					{ "name": "autobots", "version": "gold", "image": "autobots-gold.svg" },
+					{ "name": "autobots", "version": "black", "image": "autobots-black.png" },
+					{ "name": "decepticons", "version": "gold", "image": "decepticons-black.png" },
+					{ "name": "decepticons", "version": "black", "image": "decepticons-black.png" }
+				],
+				"list-neutral": ["faction-not-selected.png"]
+			},
+			"common": {
+				"path": "/common",
+				"list": [
+					{
+						"type": "health level",
+						"version": "gold",
+						"level": "ok",
+						"image": "health_level_gold.svg"
+					},
+					{
+						"type": "health level",
+						"version": "black",
+						"level": "ok",
+						"image": "health_level.svg"
+					}
+				]
+			}
 		},
 		"fonts": "/fonts"
 	}

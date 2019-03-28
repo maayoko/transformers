@@ -2,6 +2,7 @@ import Base from "./Base";
 
 class Vehicle extends Base {
 	constructor(group, type, model, image) {
+		super();
 		this._group = group;
 		this._type = type;
 		this._model = model;

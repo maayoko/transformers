@@ -13,4 +13,4 @@ const transformers = (state = [], action) => {
 	}
 };
 
-export default transformers;
+export { transformers };
