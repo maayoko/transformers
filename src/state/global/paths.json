@@ -1,0 +1,14 @@
+{
+	"public": {
+		"basePath": "/assets",
+		"images": {
+			"skins": {
+				"path": "/skins"
+			},
+			"vehicles": "/vehicles",
+			"gears": "/gears",
+			"common": "/common"
+		},
+		"fonts": "/fonts"
+	}
+}
