@@ -1,10 +1,25 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import styles from "./Details.module.scss";
 import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
 import Typography from "../components/Typography/Typography";
 import Image from "../components/Image/Image";
+import Group from "../components/Group/Group";
+
+/**
+ * Assets
+ */
 import BackgroundShape from "../assets/images/bg_shape_dark@1x.png";
 
+/**
+ * Variables
+ */
 const basePath = "/assets/weapons";
 const gears = [
 	{ src: `${basePath}/canon.png`, name: "Canon" },
@@ -14,7 +29,6 @@ const gears = [
 	// { src: `${basePath}/shield.png`, name: "Shield" },
 	// { src: `${basePath}/weapon-not-selected-gold.png`, name: "Shockwave" }
 ];
-
 const transformer = {
 	name: "Bumblebee",
 	faction: { id: 0, name: "Autobot" },
@@ -34,7 +48,7 @@ const Details = () => {
 	// };
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
-			<div className={styles.root}>
+			<Group align="between" className={styles.root}>
 				<div className={styles.image}>
 					<Image
 						src="/assets/transformers-robots/bumblebee.png"
@@ -50,50 +64,42 @@ const Details = () => {
 							className={styles["preview-2"]}
 						/>
 					</div>
-					<div className={styles.general}>
-						<div>
+					<Group align="between" className={styles.general}>
+						<Group vertical>
 							<Typography color="white" size="body-big" opacity="low">
 								Name
 							</Typography>
 							<Typography color="white" size="body-big">
 								Bumblebee
 							</Typography>
-						</div>
-						<div>
+						</Group>
+						<Group vertical>
 							<Typography color="white" size="body-big" opacity="low">
 								Faction
 							</Typography>
 							<Typography color="white" size="body-big">
 								Autobots
 							</Typography>
-						</div>
-						<div>
+						</Group>
+						<Group vertical>
 							<Typography color="white" opacity="low" size="body-big">
 								Status
 							</Typography>
-							<div
-								style={{
-									textAlign: "center",
-									marginTop: "1.2rem"
-								}}>
+							<div style={{ marginLeft: "3rem", marginTop: "1.2rem" }}>
 								<Image
 									src="/assets/svg/health_level_gold.svg"
 									title="Health level"
 									type="preview-3"
 								/>
 							</div>
-						</div>
-					</div>
-					<div className={styles.vehicle_gear}>
+						</Group>
+					</Group>
+					<Group align="between" className={styles.vehicle_gear}>
 						<div>
 							<Typography color="white" opacity="low" size="body-big">
 								Vehicle
 							</Typography>
-							<div
-								style={{
-									textAlign: "center",
-									marginTop: "6.2rem"
-								}}>
+							<div style={{ textAlign: "center", marginTop: "6.2rem" }}>
 								<Image
 									src="/assets/transformers-robots/bumblebee-car.png"
 									title="Bumblebee car"
@@ -105,16 +111,7 @@ const Details = () => {
 							<Typography color="white" opacity="low" size="body-big">
 								Gear
 							</Typography>
-							<div
-								style={{
-									display: "flex",
-									maxWidth: "37rem",
-									flexWrap: "wrap",
-									justifyContent: "space-around",
-									marginTop: "2.6rem",
-									height: "24.2rem",
-									overflowY: "scroll"
-								}}>
+							<Group wrap={true} align="around" className={styles.gear}>
 								{gears.map((gear, idx) => {
 									return (
 										<Image
@@ -125,11 +122,11 @@ const Details = () => {
 										/>
 									);
 								})}
-							</div>
+							</Group>
 						</div>
-					</div>
+					</Group>
 				</div>
-			</div>
+			</Group>
 		</BackgroundImage>
 	);
 };

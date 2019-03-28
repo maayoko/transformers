@@ -1,9 +1,7 @@
 @import "../styles/utilities.scss";
 
 .root {
-	display: flex;
 	padding: 0 4rem;
-	justify-content: space-between;
 
 	& > .image {
 	}
@@ -14,24 +12,21 @@
 
 		& > .logo {
 			text-align: center;
-			widows: 100%;
 		}
 
 		& > .general {
-			display: flex;
 			margin-top: 8rem;
-			justify-content: space-between;
-
-			& > div {
-				display: flex;
-				flex-direction: column;
-			}
 		}
 
 		& > .vehicle_gear {
-			display: flex;
-			justify-content: space-between;
 			margin-top: 5rem;
+
+			& > div > .gear {
+				max-width: 37rem;
+				margin-top: 2.6rem;
+				height: 24.2rem;
+				overflow-y: scroll;
+			}
 		}
 	}
 

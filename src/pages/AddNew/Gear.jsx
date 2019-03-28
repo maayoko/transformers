@@ -1,7 +1,18 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
+import Group from "../../components/Group/Group";
 
+/**
+ * Variables
+ */
 const basePath = "/assets/weapons";
 const gears = [
 	{ src: `${basePath}/canon.png`, name: "Canon" },
@@ -18,13 +29,7 @@ const Gear = () => {
 			<Typography size="body-big" color="white">
 				Choose your favorite gear
 			</Typography>
-			<div
-				style={{
-					display: "flex",
-					flexBasis: "51rem",
-					flexWrap: "wrap",
-					justifyContent: "space-between"
-				}}>
+			<Group wrap align="between">
 				{gears.map((gear, idx) => {
 					return (
 						<Image
@@ -36,7 +41,7 @@ const Gear = () => {
 						/>
 					);
 				})}
-			</div>
+			</Group>
 		</div>
 	);
 };

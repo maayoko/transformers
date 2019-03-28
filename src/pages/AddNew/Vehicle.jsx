@@ -1,9 +1,20 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import Label from "../../components/Label/Label";
 import Select from "../../components/Select/Select";
 import FormGroup from "../../components/FormGroup/FormGroup";
 import Image from "../../components/Image/Image";
+import Group from "../../components/Group/Group";
 
+/**
+ * Variables
+ */
 const basePath = "/assets/transformers-robots";
 const vehicles = [
 	{ src: `${basePath}/bumblebee-car.png`, name: "Bumblebee car" },
@@ -16,8 +27,8 @@ const vehicles = [
 
 const Vehicle = () => {
 	return (
-		<div style={{ width: "51rem" }}>
-			<div style={{ display: "flex", justifyContent: "space-between" }}>
+		<div style={{ maxWidth: "51rem" }}>
+			<Group align="between">
 				<FormGroup>
 					<Label htmlFor="vehicle_group">Vehicle Group</Label>
 					<Select
@@ -38,14 +49,8 @@ const Vehicle = () => {
 						options={["Select type...", "Boat", "Helicopter", "Plane"]}
 					/>
 				</FormGroup>
-			</div>
-			<div
-				style={{
-					display: "flex",
-					flexBasis: "51rem",
-					flexWrap: "wrap",
-					justifyContent: "space-between"
-				}}>
+			</Group>
+			<Group wrap align="between">
 				{vehicles.map((vehicle, idx) => {
 					return (
 						<Image
@@ -57,7 +62,7 @@ const Vehicle = () => {
 						/>
 					);
 				})}
-			</div>
+			</Group>
 		</div>
 	);
 };

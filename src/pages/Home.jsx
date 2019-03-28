@@ -1,17 +1,31 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import ButtonLink from "../components/ButtonLink/ButtonLink";
 import styles from "./Home.module.scss";
 import Typography from "../components/Typography/Typography";
 import RobotPreview from "../components/RobotPreview/RobotPreview";
 import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
 import Image from "../components/Image/Image";
+import Group from "../components/Group/Group";
+
+/**
+ * Assets
+ */
 import AutobotLogo from "../assets/images/svg/logo.svg";
 import HealtLevel from "../assets/images/svg/health_level.svg";
 import BackgroundShape from "../assets/images/bg_shape@1x.png";
 import UnderlayGold from "../assets/images/underlay-gold.png";
 
+/**
+ * Variables
+ */
 const basePath = "/assets/transformers-robots";
-
 const transformers = [
 	{
 		imageSrc: `${basePath}/ironhide2.png`,
@@ -46,19 +60,8 @@ const Home = () => {
 							to="/transformers/optimus-prime/details">
 							Check me out
 						</ButtonLink>
-						<div
-							style={{
-								position: "absolute",
-								top: "18rem",
-								left: "62rem",
-								textAlign: "left"
-							}}>
-							<div
-								style={{
-									display: "flex",
-									alignItems: "center",
-									width: "10rem"
-								}}>
+						<div className={styles.info_wrapper}>
+							<Group align="center" style={{ width: "10rem" }}>
 								<Image type="preview-2" src={AutobotLogo} title="Autobot Logo" />
 								<Typography
 									uppercase
@@ -67,19 +70,9 @@ const Home = () => {
 									opacity="high">
 									Optimus Prime
 								</Typography>
-							</div>
-							<div
-								style={{
-									marginTop: "4rem",
-									display: "flex"
-								}}>
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "center",
-										marginRight: "7rem"
-									}}>
+							</Group>
+							<Group style={{ marginTop: "4rem" }}>
+								<Group vertical align="center" style={{ marginRight: "7rem" }}>
 									<Typography
 										uppercase
 										size="body-mid"
@@ -88,13 +81,8 @@ const Home = () => {
 										Status
 									</Typography>
 									<Image type="preview-3" src={HealtLevel} title="Health level" />
-								</div>
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "center"
-									}}>
+								</Group>
+								<Group vertical align="center">
 									<Typography
 										uppercase
 										size="body-mid"
@@ -107,14 +95,10 @@ const Home = () => {
 										src="assets/transformers-robots/megatron-car.png"
 										title="Megatron car"
 									/>
-								</div>
-							</div>
-							<div style={{ marginTop: "2.5rem" }}>
-								<div
-									style={{
-										display: "flex",
-										flexDirection: "column"
-									}}>
+								</Group>
+							</Group>
+							<Group style={{ marginTop: "2.5rem" }}>
+								<Group vertical>
 									<Typography
 										uppercase
 										size="body-mid"
@@ -122,7 +106,7 @@ const Home = () => {
 										opacity="mid">
 										Gear
 									</Typography>
-									<div style={{ display: "flex" }}>
+									<Group>
 										<Image
 											type="preview-5"
 											style={{ marginRight: "1.5rem" }}
@@ -134,9 +118,9 @@ const Home = () => {
 											src="assets/weapons/shield.png"
 											title="Shield"
 										/>
-									</div>
-								</div>
-							</div>
+									</Group>
+								</Group>
+							</Group>
 						</div>
 					</BackgroundImage>
 				</main>

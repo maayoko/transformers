@@ -1,4 +1,11 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import Input from "../../components/Input/Input";
 import Label from "../../components/Label/Label";
 import Select from "../../components/Select/Select";

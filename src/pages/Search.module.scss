@@ -1,57 +1,53 @@
 @import "../styles/variables.scss";
 
 .root {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
+	margin-top: 3rem;
 
-    & > div {
-        max-width: 111rem;
-        width: 100%;
-    }
+	& > div {
+		max-width: 111rem;
+		width: 100%;
+	}
 
-    & .radio_buttons {
-        display: flex;
-        margin-top: 2rem;
+	& .radio_buttons {
+		display: flex;
+		margin-top: 2rem;
 
-        & > :not(:last-child) {
-            margin-right: 2rem;
-        }
-    }
+		& > :not(:last-child) {
+			margin-right: 2rem;
+		}
+	}
 
-    & .transformers_list {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        flex-wrap: wrap;
+	& .transformers_list {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		flex-wrap: wrap;
 
-         & > a {
-             margin-top: 5.5rem;
-             max-width: 25rem;
-             text-decoration: none;
-             position: relative;
-             z-index: 1;
+		& > a {
+			margin-top: 5.5rem;
+			max-width: 25rem;
+			text-decoration: none;
+			position: relative;
+			z-index: 1;
 
-             &:after {
-                position: absolute;
-                content: "";
-                opacity: 0;
-                box-shadow: 2px 4px 8px 4px darken($background, 5);
-                top: -2rem;
-                bottom: -2rem;
-                right: -2rem;
-                left: -2rem;
-                z-index: 10;
-                transition: opacity .3s;
-             }
+			&:after {
+				position: absolute;
+				content: "";
+				opacity: 0;
+				box-shadow: 2px 4px 8px 4px darken($background, 5);
+				top: -2rem;
+				bottom: -2rem;
+				right: -2rem;
+				left: -2rem;
+				z-index: 10;
+				transition: opacity 0.3s;
+			}
 
-             &:hover {
-                 &:after {
-                     opacity: 1;
-                 }
-             }
-         }
-    }
+			&:hover {
+				&:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }

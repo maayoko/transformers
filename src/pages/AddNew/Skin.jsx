@@ -1,7 +1,18 @@
+/**
+ * External deps
+ */
 import React from "react";
+
+/**
+ * Internal deps
+ */
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
+import Group from "../../components/Group/Group";
 
+/**
+ * Variables
+ */
 const basePath = "/assets/transformers-robots";
 const skins = [
 	{ src: `${basePath}/bumblebee.png`, name: "Bumblebee" },
@@ -18,13 +29,7 @@ const Skin = () => {
 			<Typography size="body-big" color="white">
 				Choose your favorite skin
 			</Typography>
-			<div
-				style={{
-					display: "flex",
-					flexBasis: "51rem",
-					flexWrap: "wrap",
-					justifyContent: "space-between"
-				}}>
+			<Group align="between" wrap>
 				{skins.map((skin, idx) => {
 					return (
 						<Image
@@ -36,7 +41,7 @@ const Skin = () => {
 						/>
 					);
 				})}
-			</div>
+			</Group>
 		</div>
 	);
 };

@@ -11,6 +11,13 @@
 	& > .main {
 		flex-basis: 80%;
 		text-align: center;
+
+		& .info_wrapper {
+			position: absolute;
+			top: 18rem;
+			left: 62rem;
+			text-align: left;
+		}
 	}
 
 	& > .sidebar {
