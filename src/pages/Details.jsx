@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Details.module.scss";
 import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
 import Typography from "../components/Typography/Typography";
+import Image from "../components/Image/Image";
 import BackgroundShape from "../assets/images/bg_shape_dark@1x.png";
 
 const basePath = "/assets/weapons";
@@ -37,32 +38,18 @@ class Details extends React.Component {
 			<BackgroundImage type="shape" src={BackgroundShape}>
 				<div className={styles.root}>
 					<div className={styles.image}>
-						<span
-							style={{
-								marginTop: "7rem",
-								backgroundImage: `url("/assets/transformers-robots/bumblebee.png")`,
-								backgroundPosition: "center",
-								backgroundSize: "contain",
-								backgroundRepeat: "no-repeat",
-								display: "block",
-								width: "53rem",
-								height: "58rem"
-							}}
+						<Image
+							src="/assets/transformers-robots/bumblebee.png"
+							title="Bumblebee"
+							className={styles["preview-1"]}
 						/>
 					</div>
 					<div className={styles.info}>
 						<div className={styles.logo}>
-							<span
-								style={{
-									marginTop: "1rem",
-									backgroundImage: `url("/assets/svg/autobots-logo-gold.svg")`,
-									backgroundPosition: "center",
-									backgroundSize: "contain",
-									backgroundRepeat: "no-repeat",
-									display: "inline-block",
-									width: "10rem",
-									height: "10rem"
-								}}
+							<Image
+								src="/assets/svg/autobots-logo-gold.svg"
+								title="Autobots logo"
+								className={styles["preview-2"]}
 							/>
 						</div>
 						<div className={styles.general}>
@@ -91,16 +78,10 @@ class Details extends React.Component {
 										textAlign: "center",
 										marginTop: "1.2rem"
 									}}>
-									<span
-										style={{
-											backgroundImage: `url(/assets/svg/health_level_gold.svg)`,
-											backgroundPosition: "center",
-											backgroundSize: "contain",
-											backgroundRepeat: "no-repeat",
-											display: "inline-block",
-											width: "5.2rem",
-											height: "6.6rem"
-										}}
+									<Image
+										src="/assets/svg/health_level_gold.svg"
+										title="Health level"
+										type="preview-3"
 									/>
 								</div>
 							</div>
@@ -115,16 +96,10 @@ class Details extends React.Component {
 										textAlign: "center",
 										marginTop: "6.2rem"
 									}}>
-									<span
-										style={{
-											backgroundImage: `url(/assets/transformers-robots/bumblebee-car.png)`,
-											backgroundPosition: "center",
-											backgroundSize: "contain",
-											backgroundRepeat: "no-repeat",
-											display: "inline-block",
-											width: "29rem",
-											height: "17rem"
-										}}
+									<Image
+										src="/assets/transformers-robots/bumblebee-car.png"
+										title="Bumblebee car"
+										className={styles["preview-3"]}
 									/>
 								</div>
 							</div>
@@ -142,20 +117,13 @@ class Details extends React.Component {
 										height: "24.2rem",
 										overflowY: "scroll"
 									}}>
-									{gears.map((skin, idx) => {
+									{gears.map((gear, idx) => {
 										return (
-											<span
+											<Image
 												key={idx}
-												style={{
-													marginTop: "3.6rem",
-													backgroundImage: `url(${skin.src})`,
-													backgroundPosition: "center",
-													backgroundSize: "contain",
-													backgroundRepeat: "no-repeat",
-													display: "block",
-													width: "14rem",
-													height: "8.5rem"
-												}}
+												src={gear.src}
+												title={gear.name}
+												className={styles["preview-4"]}
 											/>
 										);
 									})}
