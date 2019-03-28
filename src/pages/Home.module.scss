@@ -16,4 +16,10 @@
 	& > .sidebar {
 		flex-basis: 20%;
 	}
+
+	& .button_link {
+		position: absolute;
+		bottom: -4rem;
+		left: 62rem;
+	}
 }

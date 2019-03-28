@@ -12,35 +12,33 @@ const gears = [
 	{ src: `${basePath}/weapon-not-selected-gold.png`, name: "Shockwave" }
 ];
 
-class Gear extends React.Component {
-	render() {
-		return (
-			<div style={{ maxWidth: "51rem" }}>
-				<Typography size="body-big" color="white">
-					Choose your favorite gear
-				</Typography>
-				<div
-					style={{
-						display: "flex",
-						flexBasis: "51rem",
-						flexWrap: "wrap",
-						justifyContent: "space-between"
-					}}>
-					{gears.map((gear, idx) => {
-						return (
-							<Image
-								key={idx}
-								type="preview-6"
-								src={gear.src}
-								title={gear.name}
-								style={{ marginTop: "3.6rem" }}
-							/>
-						);
-					})}
-				</div>
+const Gear = () => {
+	return (
+		<div style={{ maxWidth: "51rem" }}>
+			<Typography size="body-big" color="white">
+				Choose your favorite gear
+			</Typography>
+			<div
+				style={{
+					display: "flex",
+					flexBasis: "51rem",
+					flexWrap: "wrap",
+					justifyContent: "space-between"
+				}}>
+				{gears.map((gear, idx) => {
+					return (
+						<Image
+							key={idx}
+							type="preview-6"
+							src={gear.src}
+							title={gear.name}
+							style={{ marginTop: "3.6rem" }}
+						/>
+					);
+				})}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default Gear;

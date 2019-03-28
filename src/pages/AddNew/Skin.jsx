@@ -12,35 +12,33 @@ const skins = [
 	{ src: `${basePath}/transformer-not-selected-gold.png`, name: "Shockwave" }
 ];
 
-class Skin extends React.Component {
-	render() {
-		return (
-			<div style={{ maxWidth: "51rem" }}>
-				<Typography size="body-big" color="white">
-					Choose your favorite skin
-				</Typography>
-				<div
-					style={{
-						display: "flex",
-						flexBasis: "51rem",
-						flexWrap: "wrap",
-						justifyContent: "space-between"
-					}}>
-					{skins.map((skin, idx) => {
-						return (
-							<Image
-								key={idx}
-								type="preview-6"
-								src={skin.src}
-								title={skin.name}
-								style={{ marginTop: "3.6rem" }}
-							/>
-						);
-					})}
-				</div>
+const Skin = () => {
+	return (
+		<div style={{ maxWidth: "51rem" }}>
+			<Typography size="body-big" color="white">
+				Choose your favorite skin
+			</Typography>
+			<div
+				style={{
+					display: "flex",
+					flexBasis: "51rem",
+					flexWrap: "wrap",
+					justifyContent: "space-between"
+				}}>
+				{skins.map((skin, idx) => {
+					return (
+						<Image
+							key={idx}
+							type="preview-6"
+							src={skin.src}
+							title={skin.name}
+							style={{ marginTop: "3.6rem" }}
+						/>
+					);
+				})}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default Skin;

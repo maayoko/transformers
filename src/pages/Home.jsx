@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../components/Button/Button";
+import ButtonLink from "../components/ButtonLink/ButtonLink";
 import styles from "./Home.module.scss";
 import Typography from "../components/Typography/Typography";
 import RobotPreview from "../components/RobotPreview/RobotPreview";
@@ -31,148 +30,134 @@ const transformers = [
 	}
 ];
 
-class Home extends React.Component {
-	render() {
-		return (
-			<BackgroundImage type="shape" src={BackgroundShape}>
-				<div className={styles.root}>
-					<main className={styles.main}>
-						<BackgroundImage type="home-gold-bg" src={UnderlayGold}>
-							<Image
-								type="preview-1"
-								title="Optimus-prime"
-								src="assets/transformers-robots/optimus-prime.png"
-							/>
-							<Button
-								style={{
-									position: "absolute",
-									bottom: "-4rem",
-									left: "62rem"
-								}}
-								variant="primary">
-								<Link to="/transformers/optimus-prime/details">Check me out</Link>
-							</Button>
+const Home = () => {
+	return (
+		<BackgroundImage type="shape" src={BackgroundShape}>
+			<div className={styles.root}>
+				<main className={styles.main}>
+					<BackgroundImage type="home-gold-bg" src={UnderlayGold}>
+						<Image
+							type="preview-1"
+							title="Optimus-prime"
+							src="assets/transformers-robots/optimus-prime.png"
+						/>
+						<ButtonLink
+							className={styles.button_link}
+							to="/transformers/optimus-prime/details">
+							Check me out
+						</ButtonLink>
+						<div
+							style={{
+								position: "absolute",
+								top: "18rem",
+								left: "62rem",
+								textAlign: "left"
+							}}>
 							<div
 								style={{
-									position: "absolute",
-									top: "18rem",
-									left: "62rem",
-									textAlign: "left"
+									display: "flex",
+									alignItems: "center",
+									width: "10rem"
+								}}>
+								<Image type="preview-2" src={AutobotLogo} title="Autobot Logo" />
+								<Typography
+									uppercase
+									size="header-big"
+									color="black"
+									opacity="high">
+									Optimus Prime
+								</Typography>
+							</div>
+							<div
+								style={{
+									marginTop: "4rem",
+									display: "flex"
 								}}>
 								<div
 									style={{
 										display: "flex",
+										flexDirection: "column",
 										alignItems: "center",
-										width: "10rem"
+										marginRight: "7rem"
 									}}>
-									<Image
-										type="preview-2"
-										src={AutobotLogo}
-										title="Autobot Logo"
-									/>
 									<Typography
 										uppercase
-										size="header-big"
+										size="body-mid"
 										color="black"
-										opacity="high">
-										Optimus Prime
+										opacity="mid">
+										Status
 									</Typography>
+									<Image type="preview-3" src={HealtLevel} title="Health level" />
 								</div>
 								<div
 									style={{
-										marginTop: "4rem",
-										display: "flex"
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "center"
 									}}>
-									<div
-										style={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-											marginRight: "7rem"
-										}}>
-										<Typography
-											uppercase
-											size="body-mid"
-											color="black"
-											opacity="mid">
-											Status
-										</Typography>
-										<Image
-											type="preview-3"
-											src={HealtLevel}
-											title="Health level"
-										/>
-									</div>
-									<div
-										style={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center"
-										}}>
-										<Typography
-											uppercase
-											size="body-mid"
-											color="black"
-											opacity="mid">
-											Vehicle
-										</Typography>
-										<Image
-											type="preview-4"
-											src="assets/transformers-robots/megatron-car.png"
-											title="Megatron car"
-										/>
-									</div>
+									<Typography
+										uppercase
+										size="body-mid"
+										color="black"
+										opacity="mid">
+										Vehicle
+									</Typography>
+									<Image
+										type="preview-4"
+										src="assets/transformers-robots/megatron-car.png"
+										title="Megatron car"
+									/>
 								</div>
-								<div style={{ marginTop: "2.5rem" }}>
-									<div
-										style={{
-											display: "flex",
-											flexDirection: "column"
-										}}>
-										<Typography
-											uppercase
-											size="body-mid"
-											color="black"
-											opacity="mid">
-											Gear
-										</Typography>
-										<div style={{ display: "flex" }}>
-											<Image
-												type="preview-5"
-												style={{ marginRight: "1.5rem" }}
-												src="assets/weapons/canon.png"
-												title="Canon"
-											/>
-											<Image
-												type="preview-5"
-												src="assets/weapons/shield.png"
-												title="Shield"
-											/>
-										</div>
+							</div>
+							<div style={{ marginTop: "2.5rem" }}>
+								<div
+									style={{
+										display: "flex",
+										flexDirection: "column"
+									}}>
+									<Typography
+										uppercase
+										size="body-mid"
+										color="black"
+										opacity="mid">
+										Gear
+									</Typography>
+									<div style={{ display: "flex" }}>
+										<Image
+											type="preview-5"
+											style={{ marginRight: "1.5rem" }}
+											src="assets/weapons/canon.png"
+											title="Canon"
+										/>
+										<Image
+											type="preview-5"
+											src="assets/weapons/shield.png"
+											title="Shield"
+										/>
 									</div>
 								</div>
 							</div>
-						</BackgroundImage>
-					</main>
-					<aside className={styles.sidebar}>
-						<Typography size="body-big" color="white">
-							Transformers at your disposal
-						</Typography>
-						<div className={styles.transformers_list}>
-							{transformers.map((transformer, idx) => (
-								<RobotPreview
-									key={idx}
-									imageSrc={transformer.imageSrc}
-									name={transformer.name}
-									faction={transformer.faction}
-								/>
-							))}
 						</div>
-					</aside>
-				</div>
-			</BackgroundImage>
-		);
-	}
-}
+					</BackgroundImage>
+				</main>
+				<aside className={styles.sidebar}>
+					<Typography size="body-big" color="white">
+						Transformers at your disposal
+					</Typography>
+					<div className={styles.transformers_list}>
+						{transformers.map((transformer, idx) => (
+							<RobotPreview
+								key={idx}
+								imageSrc={transformer.imageSrc}
+								name={transformer.name}
+								faction={transformer.faction}
+							/>
+						))}
+					</div>
+				</aside>
+			</div>
+		</BackgroundImage>
+	);
+};
 
 export default Home;
