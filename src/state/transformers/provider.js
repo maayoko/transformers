@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addTransformer, removeTransformer } from "./actionCreators";
+import { addTransformer, addTransformers, removeTransformer } from "./actionCreators";
 import { getTransformers } from "./selectors";
 
 const withTransformers = connect(
@@ -8,6 +8,7 @@ const withTransformers = connect(
 	}),
 	dispatch => ({
 		addTransformer: transformer => dispatch(addTransformer(transformer)),
+		addTransformers: transformers => dispatch(addTransformers(transformers)),
 		removeTransformer: transformer => dispatch(removeTransformer(transformer))
 	})
 );

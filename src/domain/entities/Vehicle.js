@@ -2,11 +2,10 @@ import Base from "./Base";
 
 class Vehicle extends Base {
 	constructor(group, type, model, image) {
-		super();
+		super(image);
 		this._group = group;
 		this._type = type;
 		this._model = model;
-		this._image = image;
 	}
 
 	get group() {
@@ -19,10 +18,6 @@ class Vehicle extends Base {
 
 	get model() {
 		return this._model;
-	}
-
-	get image() {
-		return this._image;
 	}
 }
 

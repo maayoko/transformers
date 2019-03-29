@@ -17,6 +17,7 @@ import AddNew from "./pages/AddNew/AddNew";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 import configureStore from "./state/store";
+import { getTransformersData } from "./state/global";
 import * as serviceWorker from "./serviceWorker";
 
 /**
@@ -25,6 +26,8 @@ import * as serviceWorker from "./serviceWorker";
 const browserHistory = createBrowserHistory();
 const store = configureStore({}, [routerMiddleware(browserHistory)]);
 const history = syncHistoryWithStore(browserHistory, store);
+
+store.dispatch(getTransformersData());
 
 ReactDOM.render(
 	<Provider store={store}>

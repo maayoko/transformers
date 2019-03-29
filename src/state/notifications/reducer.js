@@ -1,6 +1,6 @@
 import { ADD_STATUS, ADD_STATUSES } from "./actionTypes";
 
-const statuses = (state = [], action) => {
+const notifications = (state = [], action) => {
 	switch (action.type) {
 		case ADD_STATUS:
 			return [...state, action.payload];

@@ -1,6 +1,6 @@
 import Base from "./Base";
 
-class Faction extends Base {
+class Gear extends Base {
 	constructor(name, image) {
 		super(image);
 		this._name = name;
@@ -11,4 +11,4 @@ class Faction extends Base {
 	}
 }
 
-export default Faction;
+export default Gear;

@@ -1,13 +1,12 @@
-import Faction from "../../domain/entities/Faction";
 import { ADD_FACTION, ADD_FACTIONS } from "./actionTypes";
 
 const factions = (state = [], action) => {
 	switch (action.type) {
 		case ADD_FACTION:
-			return [...state, new Faction(action.payload)];
+			return [...state, action.payload];
 
 		case ADD_FACTIONS:
-			return [...state, ...action.payload.map(status => new Faction(status))];
+			return [...state, ...action.payload];
 
 		default:
 			return state;

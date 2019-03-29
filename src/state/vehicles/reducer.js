@@ -1,13 +1,12 @@
-import Vehicle from "../../domain/entities/Vehicle";
 import { ADD_VEHICLE, ADD_VEHICLES } from "./actionTypes";
 
 const vehicles = (state = [], action) => {
 	switch (action.type) {
 		case ADD_VEHICLE:
-			return [...state, new Vehicle(action.payload)];
+			return [...state, action.payload];
 
 		case ADD_VEHICLES:
-			return [...state, ...action.payload.map(vehicle => new Vehicle(vehicle))];
+			return [...state, ...action.payload];
 
 		default:
 			return state;

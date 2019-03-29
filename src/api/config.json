@@ -1,0 +1,11 @@
+{
+	"transformers": {
+		"API_URL": "https://my-json-server.typicode.com/DyslexicDcuk/transformers-api",
+		"tables": {
+			"db": "db",
+			"factions": "factions",
+			"vehicleTypes": "vehicleTypes",
+			"transformers": "transformers"
+		}
+	}
+}

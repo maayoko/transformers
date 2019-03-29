@@ -2,13 +2,12 @@ import Base from "./Base";
 
 class Transformer extends Base {
 	constructor(name, vehicle, faction, gear = [], status, image) {
-		super();
+		super(image);
 		this._name = name;
 		this._vehicle = vehicle;
 		this._faction = faction;
 		this._gear = gear;
 		this._status = status;
-		this._image = image;
 	}
 
 	get name() {
@@ -29,10 +28,6 @@ class Transformer extends Base {
 
 	get status() {
 		return this._status;
-	}
-
-	get image() {
-		return this._image;
 	}
 
 	set name(name) {

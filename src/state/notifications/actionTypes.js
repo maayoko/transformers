@@ -1,0 +1,4 @@
+const ADD_STATUS = "ADD_STATUS";
+const ADD_STATUSES = "ADD_STATUSES";
+
+export { ADD_STATUS, ADD_STATUSES };
