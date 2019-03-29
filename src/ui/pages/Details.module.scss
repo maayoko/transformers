@@ -1,0 +1,55 @@
+@import "../../styles/utilities.scss";
+
+.root {
+	padding: 0 4rem;
+
+	& > .image {
+	}
+
+	& > .info {
+		width: 100%;
+		padding: 0 14rem;
+
+		& > .logo {
+			text-align: center;
+		}
+
+		& > .general {
+			margin-top: 8rem;
+		}
+
+		& > .vehicle_gear {
+			margin-top: 5rem;
+
+			& > div > .gear {
+				max-width: 37rem;
+				margin-top: 2.6rem;
+				height: 24.2rem;
+				overflow-y: scroll;
+			}
+		}
+	}
+
+	& .preview-1 {
+		margin-top: 7rem;
+		width: 53rem;
+		height: 58rem;
+	}
+
+	& .preview-2 {
+		margin-top: 1rem;
+		width: 10rem;
+		height: 10rem;
+	}
+
+	& .preview-3 {
+		width: 29rem;
+		height: 17rem;
+	}
+
+	& .preview-4 {
+		margin-top: 3.6rem;
+		width: 14rem;
+		height: 8.5rem;
+	}
+}

@@ -1,0 +1,28 @@
+@import "../../../styles/typography";
+@import "../../../styles/variables";
+
+.big {
+	@include typography-logo-intro;
+}
+
+.small {
+	@include typography-logo-header;
+}
+
+.primary {
+	color: $primary;
+}
+
+.black {
+	color: $black;
+}
+
+.link {
+	text-decoration: none;
+	color: inherit;
+
+	&:hover,
+	&:active {
+		color: inherit;
+	}
+}

@@ -1,0 +1,57 @@
+@import "../../../styles/variables.scss";
+
+.root {
+	display: flex;
+	justify-content: center;
+	background: linear-gradient(to top, rgba(36, 35, 46, 0.4), rgba(36, 36, 46, 0));
+	position: relative;
+	z-index: 999;
+}
+
+.add_icon,
+.search_icon {
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 6rem;
+}
+
+.add_icon {
+	background-image: url("../../../assets/images/svg/add_icon.svg");
+}
+
+.search_icon {
+	background-image: url("../../../assets/images/svg/search_icon.svg");
+}
+
+.link_wrapper {
+	display: flex;
+	flex-direction: column;
+	clip-path: polygon(15% 15%, 100% 0, 100% 100%, 0 100%);
+	background-color: transparent;
+	padding: 3rem 3rem 2rem 5rem;
+	transition: all 0.3s;
+	cursor: pointer;
+	align-items: center;
+	text-decoration: none;
+
+	&:hover {
+		background-color: $primary;
+
+		& > * {
+			color: $background;
+		}
+
+		& > .add_icon {
+			background-image: url("../../../assets/images/svg/add_icon_dark.svg");
+		}
+
+		& > .search_icon {
+			background-image: url("../../../assets/images/svg/search_icon_dark.svg");
+		}
+	}
+
+	& > :last-child {
+		margin-top: 2.4rem;
+	}
+}

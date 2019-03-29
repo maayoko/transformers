@@ -1,0 +1,61 @@
+@import "../../../styles/main";
+
+.white {
+	color: $white;
+}
+
+.black {
+	color: $black;
+}
+
+.grey {
+	color: $grey;
+}
+
+.primary {
+	color: $primary;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.visible {
+	opacity: 1;
+}
+
+.high {
+	opacity: 0.8;
+}
+
+.mid {
+	opacity: 0.7;
+}
+
+.low {
+	opacity: 0.5;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.header-big {
+	@include typography-header4;
+}
+
+.body-big {
+	@include typography-body1;
+}
+
+.body-mid {
+	@include typography-body2;
+}
+
+.body-small {
+	@include typography-body3;
+}
+
+.bold {
+	font-weight: 700;
+}

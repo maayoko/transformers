@@ -1,0 +1,36 @@
+@import "../../../styles//variables.scss";
+
+.link_nav {
+	text-decoration: none;
+	background-color: transparent;
+	padding: 1.8rem 14rem 0.6rem 4.8rem;
+	transition: background-color 0.3s, color 0.3s;
+
+	&.active,
+	&:hover {
+		background-color: $grey2;
+
+		& > * {
+			color: $primary;
+		}
+	}
+}
+
+// Images
+
+.root {
+	& .preview-1 {
+		width: 31rem;
+		height: 34rem;
+	}
+
+	& .preview-2 {
+		width: 5rem;
+		height: 5rem;
+	}
+
+	& .preview-3 {
+		width: 15.5rem;
+		height: 15.5rem;
+	}
+}
