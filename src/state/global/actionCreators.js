@@ -12,7 +12,10 @@ import { addVehicles } from "../vehicles";
 import { addGears } from "../gears";
 
 const getTransformersData = () => async (dispatch, getState) => {
-	dispatch({ type: DOWNLOAD_TRANSFORMERS_DATA_PENDING });
+	dispatch({
+		type: DOWNLOAD_TRANSFORMERS_DATA_PENDING,
+		payload: "Downloading transformers data"
+	});
 
 	try {
 		const state = getState();
@@ -25,14 +28,20 @@ const getTransformersData = () => async (dispatch, getState) => {
 			gears
 		} = transformersApiSelectors.getTransformersData(await response.json(), state);
 
-		dispatch({ type: DOWNLOAD_TRANSFORMERS_DATA_SUCCESS });
+		dispatch({
+			type: DOWNLOAD_TRANSFORMERS_DATA_SUCCESS,
+			payload: "Transformers data downloaded"
+		});
 		dispatch(addTransformers(transformers));
 		dispatch(addFactions(factions));
 		dispatch(addStatuses(statuses));
 		dispatch(addVehicles(vehicles));
 		dispatch(addGears(gears));
 	} catch (e) {
-		dispatch({ type: DOWNLOAD_TRANSFORMERS_DATA_FAILURE });
+		dispatch({
+			type: DOWNLOAD_TRANSFORMERS_DATA_FAILURE,
+			payload: "Couldn't download transformers data"
+		});
 	}
 };
 

@@ -1,16 +1,17 @@
-import { ADD_STATUS, ADD_STATUSES } from "./actionTypes";
+import { NOTIFICATIONS_RESET } from "./actionTypes";
 
-const notifications = (state = [], action) => {
+const notifications = (state = null, action) => {
+	if (action.type.match(/(FAILURE|SUCCESS|PENDING)/g)) {
+		return { message: action.payload };
+	}
+
 	switch (action.type) {
-		case ADD_STATUS:
-			return [...state, action.payload];
-
-		case ADD_STATUSES:
-			return [...state, ...action.payload];
+		case NOTIFICATIONS_RESET:
+			return null;
 
 		default:
 			return state;
 	}
 };
 
-export { statuses };
+export { notifications };

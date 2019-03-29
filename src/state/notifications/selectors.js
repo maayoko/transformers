@@ -1,3 +1,3 @@
-const getStatuses = state => state.statuses;
+const getNotifications = state => state.notifications;
 
-export { getStatuses };
+export { getNotifications };

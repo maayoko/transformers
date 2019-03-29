@@ -12,6 +12,7 @@ import { statusesReducer } from "./statuses";
 import { transformerReducer } from "./transformer";
 import { transformersReducer } from "./transformers";
 import { vehiclesReducer } from "./vehicles";
+import { notificationsReducer } from "./notifications";
 import { gearsReducer } from "./gears";
 import { globalReducer } from "./global";
 
@@ -22,6 +23,7 @@ export default combineReducers({
 	transformers: transformersReducer,
 	vehicles: vehiclesReducer,
 	gears: gearsReducer,
+	notifications: notificationsReducer,
 	routing: routerReducer,
 	global: globalReducer
 });

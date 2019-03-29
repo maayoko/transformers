@@ -18,48 +18,41 @@ const getTransformersData = (transformersData, state) => {
 	const vehicles = [];
 	const gears = [];
 
-	const getPath = (pathType, imagesType, compare) =>
-		`${paths[pathType]}/${images[imagesType].list.find(compare).image}`;
+	// Helper method for get image path
+	const getImagePath = (pathType, compare) =>
+		`${paths[pathType]}/${images[pathType].list.find(compare).image}`;
 
+	// Get factions from api response
 	transformersData.factions.forEach(faction => {
-		console.log(faction);
-		const standardSrc = getPath(
-			"factions",
-			"factions",
-			image => image.name === faction.name.toLowerCase() && image.version === "gold"
-		);
-		const goldSrc = standardSrc;
-		const darkSrc = getPath(
-			"factions",
-			"factions",
-			image => image.name === faction.name.toLowerCase() && image.version === "black"
-		);
+		const cb = version => image =>
+			image.name === faction.name.toLowerCase() && image.version === version;
 
+		const standardSrc = getImagePath("factions", cb("gold"));
+		const goldSrc = standardSrc;
+
+		const darkSrc = getImagePath("factions", cb("black"));
 		factions.push(new Faction(faction.name, new Image(standardSrc, goldSrc, darkSrc)));
 	});
 
+	// Get vehicles from api response
 	transformersData.vehicleTypes.forEach(vehicle => {
 		vehicles.push(
 			new Vehicle(
 				vehicle.group,
 				vehicle.type,
 				vehicle.model,
-				new Image(
-					`${paths.vehicles}/${
-						images.vehicles.list.find(image => image.model === vehicle.model).image
-					}`
-				)
+				new Image(getImagePath("vehicles", image => image.model === vehicle.model))
 			)
 		);
 	});
 
+	// Get transformers from api response
 	transformersData.transformers.forEach(transformer => {
 		const gearList = transformer.gear.map(_gear => {
 			let gear = gears.find(g => g.name === _gear);
 			if (!gear) {
-				const standardSrc = `${paths.gears}/${
-					images.gears.list.find(__gear => __gear.type === _gear).image
-				}`;
+				// Get gears from api reponse
+				const standardSrc = getImagePath("gears", __gear => __gear.type === _gear);
 				gear = new Gear(_gear, standardSrc);
 				gears.push(gear);
 			}
@@ -69,23 +62,16 @@ const getTransformersData = (transformersData, state) => {
 
 		let status = statuses.find(_status => _status.value === transformer.status);
 		if (!status) {
-			const standardSrc = `${paths.common}/${
-				images.common.list.find(
-					_status =>
-						_status.type === "health_level" &&
-						_status.level === transformer.status.toLowerCase() &&
-						_status.version === "gold"
-				).image
-			}`;
+			// Get statuses from api reponse
+			const cb = version => _status =>
+				_status.type === "health_level" &&
+				_status.level === transformer.status.toLowerCase() &&
+				_status.version === version;
+
+			const standardSrc = getImagePath("common", cb("gold"));
 			const goldSrc = standardSrc;
-			const darkSrc = `${paths.common}/${
-				images.common.list.find(
-					_status =>
-						_status.type === "health_level" &&
-						_status.level === transformer.status.toLowerCase() &&
-						_status.version === "black"
-				).image
-			}`;
+
+			const darkSrc = getImagePath("common", cb("black"));
 			status = new Status(transformer.status, new Image(standardSrc, goldSrc, darkSrc));
 			statuses.push(status);
 		}

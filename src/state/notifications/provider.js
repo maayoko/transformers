@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import { getStatuses } from "./selectors";
+import { getNotifications } from "./selectors";
 
-const withStatuses = connect(state => ({
-	statuses: getStatuses(state)
+const withNotifications = connect(state => ({
+	notifications: getNotifications(state)
 }));
 
-export { withStatuses };
+export { withNotifications };
