@@ -8,11 +8,11 @@ import PropTypes from "prop-types";
  * Internal deps
  */
 import SidebarLink from "../SidebarLink/SidebarLink";
-import { activeState } from "../../utilities/activeState";
+import { selectActive } from "ui/utilities/selectActive";
 import styles from "./SidebarLinks.module.scss";
 
 const SidebarLinks = ({ links, initialActiveIdx }) => {
-	const { activeLinkIdx, setActiveLinkIdx } = activeState(initialActiveIdx);
+	const { activeLinkIdx, setActiveLinkIdx } = selectActive(initialActiveIdx);
 
 	return (
 		<div className={styles.root}>

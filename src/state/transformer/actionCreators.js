@@ -1,4 +1,5 @@
 import Transformer from "../../domain/entities/Transformer";
+import { createDefaultTransformer } from "domain/services/transformerService";
 import {
 	CREATE_NEW_TRANSFORMER,
 	SET_FACTION,
@@ -33,8 +34,8 @@ const setVehicle = vehicle => {
 	return { type: SET_VEHICLE, payload: vehicle };
 };
 
-const createNewTransformer = () => {
-	return { type: CREATE_NEW_TRANSFORMER, payload: new Transformer() };
+const createNewTransformer = () => (dispatch, getState) => {
+	dispatch({ type: CREATE_NEW_TRANSFORMER, payload: createDefaultTransformer(getState()) });
 };
 
 export { setName, setFaction, setGear, setSkin, setStatus, setVehicle, createNewTransformer };

@@ -11,14 +11,15 @@ import { createBrowserHistory } from "history";
 /**
  * Internal deps
  */
-import App from "../ui/App";
-import Home from "../ui/pages/Home";
-import AddNew from "../ui/pages/AddNew/AddNew";
-import Search from "../ui/pages/Search";
-import Details from "../ui/pages/Details";
-import configureStore from "../state/store";
-import { getTransformersData } from "../state/global";
-import * as serviceWorker from "../serviceWorker";
+import App from "ui/App";
+import Home from "ui/pages/Home";
+import AddNew from "ui/pages/AddNew";
+import Search from "ui/pages/Search";
+import Details from "ui/pages/Details";
+import configureStore from "state/store";
+import { getTransformersData } from "state/global";
+import { createNewTransformer } from "state/transformer";
+import * as serviceWorker from "serviceWorker";
 
 export const ready = () => {
 	/**
@@ -29,6 +30,8 @@ export const ready = () => {
 	const history = syncHistoryWithStore(browserHistory, store);
 
 	store.dispatch(getTransformersData());
+	store.dispatch(createNewTransformer());
+
 	ReactDOM.render(
 		<Provider store={store}>
 			<Router history={history}>

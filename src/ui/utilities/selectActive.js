@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const activeState = initialActiveIdx => {
+const selectActive = initialActiveIdx => {
 	const [activeLinkIdx, setActiveLinkIdx] = useState(initialActiveIdx);
 
 	return {
@@ -8,3 +8,5 @@ export const activeState = initialActiveIdx => {
 		setActiveLinkIdx
 	};
 };
+
+export { selectActive };

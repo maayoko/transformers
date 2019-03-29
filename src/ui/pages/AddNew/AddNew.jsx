@@ -2,7 +2,8 @@
  * External deps
  */
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
+import PropTypes from "prop-types";
 
 /**
  * Internal deps
@@ -12,6 +13,7 @@ import General from "./General";
 import Skin from "./Skin";
 import Vehicle from "./Vehicle";
 import Gear from "./Gear";
+import Preview from "./Preview";
 import Button from "../../components/Button/Button";
 import Image from "../../components/Image/Image";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
@@ -35,96 +37,88 @@ const links = [
 	{ to: `${basePath}/gear`, label: "Gear" }
 ];
 
-const AddNew = () => {
+const AddNew = ({
+	transformer,
+	links,
+	setName,
+	setFaction,
+	setGear,
+	setSkin,
+	setStatus,
+	setVehicle,
+	createNewTransformer
+}) => {
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
-			<Group align="between" className={styles.root}>
+			<Group align="between">
 				<SidebarLinks links={links} />
 				<div>
-					<Route exact path="/transformers/add/general" component={General} />
-					<Route exact path="/transformers/add/skin" component={Skin} />
-					<Route exact path="/transformers/add/vehicle" component={Vehicle} />
-					<Route exact path="/transformers/add/gear" component={Gear} />
-					<Route
-						exact
-						path="/transformers/add"
-						component={() => <Redirect to="/transformers/add/general" />}
-					/>
+					<Switch>
+						<Route
+							exact
+							path="/transformers/add/general"
+							render={() => (
+								<General
+									transformer={transformer}
+									updateName={setName}
+									updateStatus={setStatus}
+									updateFaction={setFaction}
+								/>
+							)}
+						/>
+						<Route
+							exact
+							path="/transformers/add/skin"
+							render={() => <Skin transformer={transformer} updateSkin={setSkin} />}
+						/>
+						<Route
+							exact
+							path="/transformers/add/vehicle"
+							render={() => (
+								<Vehicle transformer={transformer} updateVehicle={setVehicle} />
+							)}
+						/>
+						<Route
+							exact
+							path="/transformers/add/gear"
+							render={() => <Gear transformer={transformer} addGear={setGear} />}
+						/>
+						<Route
+							exact
+							path="/transformers/add"
+							render={() => <Redirect to="/transformers/add/general" />}
+						/>
+					</Switch>
 				</div>
 				<div style={{ paddingRight: "4.8rem" }}>
-					<Group>
-						<Image
-							src="/assets/transformers-robots/transformer-not-selected-gold.png"
-							title="Not selected transformer"
-							className={styles["preview-1"]}
-						/>
-						<Group vertical>
-							<div style={{ textAlign: "center" }}>
-								<Image
-									src="/assets/png/logo-not-selected-gold.png"
-									title="Not selected logo"
-									className={styles["preview-2"]}
-								/>
-							</div>
-							<Group vertical style={{ marginTop: "2.2rem" }}>
-								<Typography color="white" opacity="low" size="body-big">
-									Name
-								</Typography>
-								<Typography color="white" size="body-big">
-									Bumblebee
-								</Typography>
-							</Group>
-							<Group vertical style={{ marginTop: "2.2rem" }}>
-								<Typography color="white" opacity="low" size="body-big">
-									Faction
-								</Typography>
-								<Typography color="white" size="body-big">
-									Autobots
-								</Typography>
-							</Group>
-							<Group vertical style={{ marginTop: "2.2rem" }}>
-								<Typography color="white" opacity="low" size="body-big">
-									Status
-								</Typography>
-								<div style={{ textAlign: "center", marginTop: "1.2rem" }}>
-									<Image
-										src="/assets/svg/health_level_gold.svg"
-										title="Health level"
-										type="preview-3"
-									/>
-								</div>
-							</Group>
-						</Group>
-					</Group>
-					<Group align="between" style={{ marginTop: "4.2rem" }}>
-						<Group vertical>
-							<Typography color="white" opacity="low" size="body-big">
-								Vehicle
-							</Typography>
-							<Image
-								src="/assets/transformers-robots/transformer-car-not-selected-gold.png"
-								title="Not selected car"
-								className={styles["preview-3"]}
-							/>
-						</Group>
-						<Group vertical>
-							<Typography color="white" opacity="low" size="body-big">
-								Gear
-							</Typography>
-							<Image
-								src="/assets/weapons/weapon-not-selected-gold.png"
-								title="Not selected weapon"
-								className={styles["preview-3"]}
-							/>
-						</Group>
-					</Group>
-					<div style={{ textAlign: "center", width: "100%", marginTop: "3rem" }}>
-						<Button>Create me</Button>
-					</div>
+					<Preview transformer={transformer} onCreate={() => {}} />
 				</div>
 			</Group>
 		</BackgroundImage>
 	);
+};
+
+AddNew.propTypes = {
+	links: PropTypes.array,
+	transformer: PropTypes.shape({}).isRequired,
+	setName: PropTypes.func,
+	setFaction: PropTypes.func,
+	setSkin: PropTypes.func,
+	setVehicle: PropTypes.func,
+	setGear: PropTypes.func,
+	setStatus: PropTypes.func,
+	createNewTransformer: PropTypes.func
+};
+
+AddNew.defaultProps = {
+	links,
+	setName: () => {},
+	setFaction: () => {},
+	setSkin: () => {},
+	setVehicle: () => {},
+	setGear: () => {},
+	setStatus: () => {},
+	createNewTransformer: () => {}
 };
 
 export default AddNew;

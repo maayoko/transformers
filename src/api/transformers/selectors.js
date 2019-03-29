@@ -53,7 +53,7 @@ const getTransformersData = (transformersData, state) => {
 			if (!gear) {
 				// Get gears from api reponse
 				const standardSrc = getImagePath("gears", __gear => __gear.type === _gear);
-				gear = new Gear(_gear, standardSrc);
+				gear = new Gear(_gear, new Image(standardSrc));
 				gears.push(gear);
 			}
 
@@ -93,7 +93,8 @@ const getTransformersData = (transformersData, state) => {
 				}),
 				gearList,
 				status,
-				new Image(skinsStandardImage)
+				new Image(skinsStandardImage),
+				transformer.name.replace(/\s/g, "-").toLowerCase()
 			)
 		);
 	});

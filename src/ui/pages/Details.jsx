@@ -2,6 +2,7 @@
  * External deps
  */
 import React from "react";
+import PropTypes from "prop-types";
 
 /**
  * Internal deps
@@ -20,47 +21,93 @@ import BackgroundShape from "../../assets/images/bg_shape_dark@1x.png";
 /**
  * Variables
  */
-const basePath = "/assets/weapons";
-const gears = [
-	{ src: `${basePath}/canon.png`, name: "Canon" },
-	{ src: `${basePath}/concept2.png`, name: "Concept" },
-	{ src: `${basePath}/machine-gun.png`, name: "Machine gun" },
-	{ src: `${basePath}/rifle.png`, name: "Rifle" }
-	// { src: `${basePath}/shield.png`, name: "Shield" },
-	// { src: `${basePath}/weapon-not-selected-gold.png`, name: "Shockwave" }
-];
 const transformer = {
-	name: "Bumblebee",
-	faction: { id: 0, name: "Autobot" },
-	status: { id: 0, value: "OK" },
-	vehicle: {
-		group: "Land",
-		type: "Car",
-		model: "Camaro",
-		imageSrc: "bumblebee-car.png"
+	_id: "afb9191d-d859-4918-8da4-ccfb5c5b0b01",
+	image: {
+		_id: "0be6d656-0931-4e46-b3f4-7d35ebfae1fb",
+		standard: "/assets/images/skins/optimus-prime.png",
+		gold: "",
+		dark: ""
 	},
-	gear: [{ id: 0, name: "Sword", imageSrc: "sword.png" }]
+	name: "Optimus Prime",
+	vehicle: {
+		_id: "4b0ad81a-0349-4370-8e02-ee67cab375c9",
+		image: {
+			_id: "f1fbb299-1005-49d6-ab93-1ab0c77b4682",
+			standard: "/assets/images/vehicles/western-star-5700.png",
+			gold: "",
+			dark: ""
+		},
+		group: "Land",
+		type: "Truck",
+		model: "Western Star 5700"
+	},
+	faction: {
+		_id: "cbe7bf91-04e7-41cc-aed0-e07cdeede886",
+		image: {
+			_id: "89307493-7701-4b3f-9a36-2cca93829f79",
+			standard: "/assets/images/factions/autobots-gold.svg",
+			gold: "/assets/images/factions/autobots-gold.svg",
+			dark: "/assets/images/factions/autobots-black.png"
+		},
+		name: "Autobots"
+	},
+	gear: [
+		{
+			_id: "ade9ea16-2c55-44df-b9df-bcd0616ce7bc",
+			image: {
+				_id: "025d8443-ae09-4bc7-ac83-0f7d53fbd4d1",
+				standard: "/assets/images/gears/sword.png",
+				gold: "",
+				dark: ""
+			},
+			name: "sword"
+		},
+		{
+			_id: "cd3e4585-a80d-471f-be1a-e36e484ac4b5",
+			image: {
+				_id: "5f532a9a-8561-43b6-a05b-b1be3299e92d",
+				standard: "/assets/images/gears/shield.png",
+				gold: "",
+				dark: ""
+			},
+			name: "shield"
+		}
+	],
+	status: {
+		_id: "a4aa5162-0703-4f8c-903a-9aa4dbcef360",
+		image: {
+			_id: "ab2a8be3-2ee2-4a0f-9eb6-ae8f855f68f7",
+			standard: "/assets/images/common/health_level_gold.svg",
+			gold: "/assets/images/common/health_level_gold.svg",
+			dark: "/assets/images/common/health_level.svg"
+		},
+		value: "OK"
+	},
+	link: "optimus-prime"
 };
 
-const Details = () => {
+const Details = ({ location }) => {
 	// state = {
 	// 	editMode: false
 	// };
+	const transformer = location.state;
+
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
 			<Group align="between" className={styles.root}>
 				<div className={styles.image}>
 					<Image
-						src="/assets/transformers-robots/bumblebee.png"
-						title="Bumblebee"
+						title={transformer.name}
+						src={transformer.image.standard}
 						className={styles["preview-1"]}
 					/>
 				</div>
 				<div className={styles.info}>
 					<div className={styles.logo}>
 						<Image
-							src="/assets/svg/autobots-logo-gold.svg"
-							title="Autobots logo"
+							src={transformer.faction.image.gold}
+							title={transformer.faction.name}
 							className={styles["preview-2"]}
 						/>
 					</div>
@@ -70,7 +117,7 @@ const Details = () => {
 								Name
 							</Typography>
 							<Typography color="white" size="body-big">
-								Bumblebee
+								{transformer.name}
 							</Typography>
 						</Group>
 						<Group vertical>
@@ -78,7 +125,7 @@ const Details = () => {
 								Faction
 							</Typography>
 							<Typography color="white" size="body-big">
-								Autobots
+								{transformer.faction.name}
 							</Typography>
 						</Group>
 						<Group vertical>
@@ -87,7 +134,7 @@ const Details = () => {
 							</Typography>
 							<div style={{ marginLeft: "3rem", marginTop: "1.2rem" }}>
 								<Image
-									src="/assets/svg/health_level_gold.svg"
+									src={transformer.status.image.gold}
 									title="Health level"
 									type="preview-3"
 								/>
@@ -101,8 +148,8 @@ const Details = () => {
 							</Typography>
 							<div style={{ textAlign: "center", marginTop: "6.2rem" }}>
 								<Image
-									src="/assets/transformers-robots/bumblebee-car.png"
-									title="Bumblebee car"
+									src={transformer.vehicle.image.standard}
+									title={transformer.vehicle.model}
 									className={styles["preview-3"]}
 								/>
 							</div>
@@ -112,11 +159,11 @@ const Details = () => {
 								Gear
 							</Typography>
 							<Group wrap={true} align="around" className={styles.gear}>
-								{gears.map((gear, idx) => {
+								{transformer.gear.map((gear, idx) => {
 									return (
 										<Image
-											key={idx}
-											src={gear.src}
+											key={gear._id}
+											src={gear.image.standard}
 											title={gear.name}
 											className={styles["preview-4"]}
 										/>
@@ -129,6 +176,10 @@ const Details = () => {
 			</Group>
 		</BackgroundImage>
 	);
+};
+
+Details.propTypes = {
+	transformer: PropTypes.shape({})
 };
 
 export default Details;

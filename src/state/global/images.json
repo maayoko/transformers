@@ -41,7 +41,7 @@
 			{ "type": "machine gun", "image": "machine-gun.png" },
 			{ "type": "rifle", "image": "rifle.png" },
 			{ "type": "rifle2", "image": "rifle2.png" },
-			{ "type": "shield", "image": "shiled.png" },
+			{ "type": "shield", "image": "shield.png" },
 			{ "type": "sword", "image": "sword.png" }
 		],
 		"list_neutral": ["gear-not-selected.png"]

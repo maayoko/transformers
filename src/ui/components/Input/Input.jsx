@@ -3,11 +3,20 @@ import PropTypes from "prop-types";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
-const Input = ({ placeholder, border, size, bgColor, onChange }) => {
+const Input = ({ placeholder, border, size, bgColor, onChange, value, ...other }) => {
 	const classes = classNames(styles.root, styles[size], styles[bgColor], {
 		[styles.border]: border
 	});
-	return <input onChange={onChange} className={classes} type="text" placeholder={placeholder} />;
+	return (
+		<input
+			onChange={onChange}
+			className={classes}
+			type="text"
+			placeholder={placeholder}
+			value={value}
+			{...other}
+		/>
+	);
 };
 
 Input.propTypes = {
@@ -15,7 +24,8 @@ Input.propTypes = {
 	border: PropTypes.bool,
 	size: PropTypes.oneOf(["normal", "large"]),
 	bgColor: PropTypes.oneOf(["transparent", "dark"]),
-	onChange: PropTypes.func
+	onChange: PropTypes.func,
+	value: PropTypes.any
 };
 
 Input.defaultProps = {
@@ -23,7 +33,8 @@ Input.defaultProps = {
 	border: true,
 	size: "normal",
 	bgColor: "transparent",
-	onChange: () => {}
+	onChange: () => {},
+	value: ""
 };
 
 export default Input;

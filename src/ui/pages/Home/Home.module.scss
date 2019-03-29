@@ -5,6 +5,15 @@
 	& .transformers_list {
 		& > * {
 			margin-top: 7rem;
+			cursor: pointer;
+
+			& img {
+				transition: transform 0.3s;
+			}
+
+			&:hover img {
+				transform: scale(1.1);
+			}
 		}
 	}
 
