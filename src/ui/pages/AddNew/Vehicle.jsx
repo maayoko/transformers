@@ -45,6 +45,28 @@ const Vehicle = ({ vehicles, transformer, updateVehicle, vehicleTypes, vehicleGr
 		handler();
 	};
 
+	const filterVehicleTypes = type => {
+		if (vehicleGroup) {
+			return (
+				vehicles.find(
+					vehicle =>
+						(vehicle.group === vehicleGroup && vehicle.type === type.value) ||
+						type.value === ""
+				) != null
+			);
+		}
+
+		return true;
+	};
+
+	const filterVehicles = vehicle => {
+		if (vehicleType) {
+			return vehicle.type === vehicleType;
+		}
+
+		return true;
+	};
+
 	return (
 		<div style={{ maxWidth: "51rem" }}>
 			<Group align="between">
@@ -66,12 +88,12 @@ const Vehicle = ({ vehicles, transformer, updateVehicle, vehicleTypes, vehicleGr
 						placeholder
 						onChange={onChange(updateVehicleType)}
 						id="status"
-						options={vehicleTypes}
+						options={vehicleTypes.filter(filterVehicleTypes)}
 					/>
 				</FormGroup>
 			</Group>
 			<Group wrap align="between">
-				{vehicles.map(vehicle => {
+				{vehicles.filter(filterVehicles).map(vehicle => {
 					return (
 						<ListedImage
 							disabled={isSelectionDisabled}

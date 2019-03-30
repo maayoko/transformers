@@ -8,18 +8,14 @@ import PropTypes from "prop-types";
 /**
  * Internal deps
  */
-import Typography from "../../components/Typography/Typography";
 import General from "./General";
 import Skin from "./Skin";
 import Vehicle from "./Vehicle";
 import Gear from "./Gear";
 import Preview from "./Preview";
-import Button from "../../components/Button/Button";
-import Image from "../../components/Image/Image";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
-import SidebarLinks from "../../components/SidebarLinks/SidebarLinks";
+import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
-import styles from "./AddNew.module.scss";
 
 /**
  * Assets
