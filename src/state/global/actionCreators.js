@@ -9,7 +9,6 @@ import { addTransformers } from "../transformers";
 import { addFactions } from "../factions";
 import { addStatuses } from "../statuses";
 import { addVehicles } from "../vehicles";
-import { addGears } from "../gears";
 
 const getTransformersData = () => async (dispatch, getState) => {
 	dispatch({
@@ -24,8 +23,7 @@ const getTransformersData = () => async (dispatch, getState) => {
 			transformers,
 			factions,
 			statuses,
-			vehicles,
-			gears
+			vehicles
 		} = transformersApiSelectors.getTransformersData(await response.json(), state);
 
 		dispatch({
@@ -36,7 +34,6 @@ const getTransformersData = () => async (dispatch, getState) => {
 		dispatch(addFactions(factions));
 		dispatch(addStatuses(statuses));
 		dispatch(addVehicles(vehicles));
-		dispatch(addGears(gears));
 	} catch (e) {
 		dispatch({
 			type: DOWNLOAD_TRANSFORMERS_DATA_FAILURE,

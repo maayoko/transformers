@@ -20,6 +20,7 @@ import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createNewTransformer } from "state/transformer";
 import { createSkins } from "state/skins";
+import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
 
 export const ready = () => {
@@ -31,6 +32,7 @@ export const ready = () => {
 	const history = syncHistoryWithStore(browserHistory, store);
 
 	store.dispatch(createSkins());
+	store.dispatch(createGears());
 	store.dispatch(getTransformersData());
 	store.dispatch(createNewTransformer());
 

@@ -17,7 +17,7 @@ const getTransformersData = (transformersData, state) => {
 	const factions = [];
 	const statuses = [];
 	const vehicles = [];
-	const gears = [];
+	const gears = state.gears;
 	const skins = state.skins;
 
 	// Helper method for get image path
@@ -104,8 +104,7 @@ const getTransformersData = (transformersData, state) => {
 		transformers,
 		factions,
 		statuses,
-		vehicles,
-		gears
+		vehicles
 	};
 };
 
