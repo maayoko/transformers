@@ -12,19 +12,6 @@ import Group from "../../components/Group/Group";
 import ListedImage from "../../components/ListedImage/ListedImage";
 import { withGears } from "state/gears";
 
-/**
- * Variables
- */
-const basePath = "/assets/weapons";
-const gears = [
-	{ src: `${basePath}/canon.png`, name: "Canon" },
-	{ src: `${basePath}/concept2.png`, name: "Concept" },
-	{ src: `${basePath}/machine-gun.png`, name: "Machine gun" },
-	{ src: `${basePath}/rifle.png`, name: "Rifle" },
-	{ src: `${basePath}/shield.png`, name: "Shield" },
-	{ src: `${basePath}/weapon-not-selected-gold.png`, name: "Shockwave" }
-];
-
 const Gear = ({ transformer, gears, addGear, removeGear }) => {
 	const onGearClick = (gear, isSelected) => () => {
 		if (isSelected) {

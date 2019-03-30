@@ -14,19 +14,6 @@ import Group from "../../components/Group/Group";
 import ListedImage from "../../components/ListedImage/ListedImage";
 import { withVehicles } from "state/vehicles";
 
-/**
- * Variables
- */
-const basePath = "/assets/transformers-robots";
-const vehicles = [
-	{ src: `${basePath}/bumblebee-car.png`, name: "Bumblebee car" },
-	{ src: `${basePath}/jazz-car.png`, name: "Jazz car" },
-	{ src: `${basePath}/megatron-car.png`, name: "Megatron car" },
-	{ src: `${basePath}/palpatine-car.png`, name: "Palpatine car" },
-	{ src: `${basePath}/shockwave-car.png`, name: "Shockwave car" },
-	{ src: `${basePath}/transformer-car-not-selected-gold.png`, name: "Shockwave" }
-];
-
 const Vehicle = ({ vehicles, transformer, updateVehicle, vehicleTypes, vehicleGroups }) => {
 	const [vehicleType, updateVehicleType] = useState(null);
 	const [vehicleGroup, updateVehicleGroup] = useState(null);

@@ -70,6 +70,7 @@ const Home = ({ transformers }) => {
 									className={styles.button_link}
 									to={{
 										pathname: `/transformers/${transformer.link}/details`,
+										search: "?edit=false",
 										state: Object.assign(transformer)
 									}}>
 									Check me out

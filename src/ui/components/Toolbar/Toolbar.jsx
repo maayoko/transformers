@@ -1,14 +1,15 @@
+/**
+ * External deps
+ */
 import React from "react";
-import Typography from "../Typography/Typography";
-import styles from "./Toolbar.module.scss";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const basePath = "/transformers";
-const links = [
-	{ to: `${basePath}/add`, label: "Add new", icon: "add_icon" },
-	{ to: `${basePath}/search`, label: "Search", icon: "search_icon" }
-];
+/**
+ * Internal deps
+ */
+import Typography from "../Typography/Typography";
+import styles from "./Toolbar.module.scss";
 
 const Toolbar = ({ style, links }) => {
 	return (
@@ -29,7 +30,7 @@ Toolbar.propTypes = {
 	style: PropTypes.shape({}),
 	links: PropTypes.arrayOf(
 		PropTypes.shape({
-			to: PropTypes.string.isRequired,
+			to: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]).isRequired,
 			label: PropTypes.oneOfType([
 				PropTypes.string,
 				PropTypes.number,
@@ -41,8 +42,7 @@ Toolbar.propTypes = {
 	)
 };
 Toolbar.defaultProps = {
-	style: {},
-	links
+	style: {}
 };
 
 export default Toolbar;

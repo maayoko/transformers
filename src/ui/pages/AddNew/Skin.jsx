@@ -12,19 +12,6 @@ import Group from "../../components/Group/Group";
 import ListedImage from "../../components/ListedImage/ListedImage";
 import { withSkins } from "state/skins";
 
-/**
- * Variables
- */
-const basePath = "/assets/transformers-robots";
-const skins = [
-	{ src: `${basePath}/bumblebee.png`, name: "Bumblebee" },
-	{ src: `${basePath}/optimus-prime.png`, name: "Optimus Prime" },
-	{ src: `${basePath}/megatron.png`, name: "Megatron" },
-	{ src: `${basePath}/palpatine.png`, name: "Palpatine" },
-	{ src: `${basePath}/shockwave.png`, name: "Shockwave" },
-	{ src: `${basePath}/transformer-not-selected-gold.png`, name: "Shockwave" }
-];
-
 const Skin = ({ transformer, updateSkin, skins }) => {
 	return (
 		<div style={{ maxWidth: "51rem" }}>

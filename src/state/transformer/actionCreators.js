@@ -1,4 +1,3 @@
-import Transformer from "../../domain/entities/Transformer";
 import { createDefaultTransformer } from "domain/services/transformerService";
 import {
 	CREATE_NEW_TRANSFORMER,

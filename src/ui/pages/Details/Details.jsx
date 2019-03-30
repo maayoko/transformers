@@ -8,15 +8,15 @@ import PropTypes from "prop-types";
  * Internal deps
  */
 import styles from "./Details.module.scss";
-import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
-import Typography from "../components/Typography/Typography";
-import Image from "../components/Image/Image";
-import Group from "../components/Group/Group";
+import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
+import Typography from "../../components/Typography/Typography";
+import Image from "../../components/Image/Image";
+import Group from "../../components/Group/Group";
 
 /**
  * Assets
  */
-import BackgroundShape from "../../assets/images/bg_shape_dark@1x.png";
+import BackgroundShape from "../../../assets/images/bg_shape_dark@1x.png";
 
 /**
  * Variables
@@ -90,12 +90,7 @@ const transformer = {
 	link: "optimus-prime"
 };
 
-const Details = ({ location }) => {
-	// state = {
-	// 	editMode: false
-	// };
-	const transformer = location.state;
-
+const Details = ({ transformer, edit }) => {
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
 			<Group align="between" className={styles.root}>
@@ -162,7 +157,7 @@ const Details = ({ location }) => {
 								Gear
 							</Typography>
 							<Group wrap={true} align="around" className={styles.gear}>
-								{transformer.gear.map((gear, idx) => {
+								{transformer.gear.map(gear => {
 									return (
 										<Image
 											key={gear._id}
@@ -182,7 +177,13 @@ const Details = ({ location }) => {
 };
 
 Details.propTypes = {
-	transformer: PropTypes.shape({})
+	transformer: PropTypes.shape({}),
+	edit: PropTypes.bool
+};
+
+Details.defaultProps = {
+	transformer,
+	edit: false
 };
 
 export default Details;

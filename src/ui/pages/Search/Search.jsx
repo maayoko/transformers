@@ -17,15 +17,7 @@ import styles from "./Search.module.scss";
 /**
  * Variables
  */
-const basePath = "/assets/transformers-robots";
 const linkBasePath = "/transformers";
-const transformers = [
-	{ imageSrc: `${basePath}/ironhide2.png`, name: "Ironhide", faction: "Decepticon" },
-	{ imageSrc: `${basePath}/megatron.png`, name: "Megatron", faction: "Decepticon" },
-	{ imageSrc: `${basePath}/bumblebee.png`, name: "Bumblebee", faction: "Autobot" },
-	{ imageSrc: `${basePath}/palpatine.png`, name: "Palpatine", faction: "Decepticon" },
-	{ imageSrc: `${basePath}/optimus-prime.png`, name: "Optimus Prime", faction: "Autobot" }
-];
 
 const Search = ({ transformers, factions }) => {
 	const [searchTerm, updateSearchTerm] = useState();
@@ -87,6 +79,7 @@ const Search = ({ transformers, factions }) => {
 								key={idx}
 								to={{
 									pathname: `${linkBasePath}/${transformer.link}/details`,
+									search: "?edit=false",
 									state: transformer
 								}}>
 								<RobotPreview
