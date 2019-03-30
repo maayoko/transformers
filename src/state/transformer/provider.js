@@ -13,6 +13,7 @@ const withTransformer = connect(
 		setVehicle: vehicle => dispatch(action.setVehicle(vehicle)),
 		setStatus: status => dispatch(action.setStatus(status)),
 		setGear: gear => dispatch(action.setGear(gear)),
+		unsetGear: gear => dispatch(action.unsetGear(gear)),
 		createNewTransformer: () => dispatch(action.createNewTransformer())
 	})
 );

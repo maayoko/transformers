@@ -2,5 +2,6 @@ import helpers from "validate.js";
 
 export default {
 	isEmpty: helpers.isEmpty,
-	isString: helpers.isString
+	isString: helpers.isString,
+	replaceWithDash: value => value.replace(/\s/g, "-").toLowerCase()
 };

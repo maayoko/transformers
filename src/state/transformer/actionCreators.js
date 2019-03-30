@@ -7,7 +7,8 @@ import {
 	SET_NAME,
 	SET_SKIN,
 	SET_STATUS,
-	SET_VEHICLE
+	SET_VEHICLE,
+	UNSET_GEAR
 } from "./actionTypes";
 
 const setName = name => {
@@ -20,6 +21,10 @@ const setFaction = faction => {
 
 const setGear = gear => {
 	return { type: SET_GEAR, payload: gear };
+};
+
+const unsetGear = gear => {
+	return { type: UNSET_GEAR, payload: gear };
 };
 
 const setSkin = skin => {
@@ -38,4 +43,13 @@ const createNewTransformer = () => (dispatch, getState) => {
 	dispatch({ type: CREATE_NEW_TRANSFORMER, payload: createDefaultTransformer(getState()) });
 };
 
-export { setName, setFaction, setGear, setSkin, setStatus, setVehicle, createNewTransformer };
+export {
+	setName,
+	setFaction,
+	setGear,
+	unsetGear,
+	setSkin,
+	setStatus,
+	setVehicle,
+	createNewTransformer
+};

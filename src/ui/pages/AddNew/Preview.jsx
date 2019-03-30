@@ -67,7 +67,7 @@ const Preview = ({ transformer, onCreate }) => {
 					</Typography>
 					<Image
 						src={transformer.vehicle.image.standard}
-						title="Not selected car"
+						title={transformer.vehicle.name}
 						className={styles["preview-3"]}
 					/>
 				</Group>
@@ -75,11 +75,14 @@ const Preview = ({ transformer, onCreate }) => {
 					<Typography color="white" opacity="low" size="body-big">
 						Gear
 					</Typography>
-					<Image
-						src="/assets/weapons/weapon-not-selected-gold.png"
-						title="Not selected weapon"
-						className={styles["preview-3"]}
-					/>
+					{transformer.gear.map(gear => (
+						<Image
+							key={gear._id}
+							src={gear.image.standard}
+							title={gear.name}
+							className={styles["preview-3"]}
+						/>
+					))}
 				</Group>
 			</Group>
 			<div

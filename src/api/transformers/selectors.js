@@ -4,7 +4,7 @@ import Faction from "../../domain/entities/Faction";
 import Status from "../../domain/entities/Status";
 import Image from "../../domain/entities/Image";
 import Gear from "../../domain/entities/Gear";
-import Skin from "../../domain/entities/Skin";
+import helpers from "core/common/helpers";
 
 const autobots = ["Optimus Prime", "Bumblebee"];
 const decepticons = ["Megatron"];
@@ -95,7 +95,7 @@ const getTransformersData = (transformersData, state) => {
 					skin =>
 						skin.name.split(".")[0] === transformer.name.toLowerCase().replace(" ", "-")
 				),
-				transformer.name.replace(/\s/g, "-").toLowerCase()
+				helpers.replaceWithDash(transformer.name)
 			)
 		);
 	});

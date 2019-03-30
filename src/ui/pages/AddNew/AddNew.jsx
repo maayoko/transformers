@@ -43,11 +43,17 @@ const AddNew = ({
 	setName,
 	setFaction,
 	setGear,
+	unsetGear,
 	setSkin,
 	setStatus,
 	setVehicle,
+	addTransformer,
 	createNewTransformer
 }) => {
+	const createTransformer = () => {
+		addTransformer(transformer);
+		createNewTransformer();
+	};
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
 			<Group align="between">
@@ -81,7 +87,13 @@ const AddNew = ({
 						<Route
 							exact
 							path="/transformers/add/gear"
-							render={() => <Gear transformer={transformer} addGear={setGear} />}
+							render={() => (
+								<Gear
+									transformer={transformer}
+									addGear={setGear}
+									removeGear={unsetGear}
+								/>
+							)}
 						/>
 						<Route
 							exact
@@ -91,7 +103,7 @@ const AddNew = ({
 					</Switch>
 				</div>
 				<div style={{ paddingRight: "4.8rem" }}>
-					<Preview transformer={transformer} onCreate={() => {}} />
+					<Preview transformer={transformer} onCreate={createTransformer} />
 				</div>
 			</Group>
 		</BackgroundImage>
@@ -106,7 +118,9 @@ AddNew.propTypes = {
 	setSkin: PropTypes.func,
 	setVehicle: PropTypes.func,
 	setGear: PropTypes.func,
+	unsetGear: PropTypes.func,
 	setStatus: PropTypes.func,
+	addTransformer: PropTypes.func,
 	createNewTransformer: PropTypes.func
 };
 
@@ -117,7 +131,9 @@ AddNew.defaultProps = {
 	setSkin: () => {},
 	setVehicle: () => {},
 	setGear: () => {},
+	unsetGear: () => {},
 	setStatus: () => {},
+	addTransformer: () => {},
 	createNewTransformer: () => {}
 };
 

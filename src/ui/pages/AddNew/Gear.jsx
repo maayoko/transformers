@@ -9,6 +9,8 @@ import React from "react";
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
+import ListedImage from "../../components/ListedImage/ListedImage";
+import { withGears } from "state/gears";
 
 /**
  * Variables
@@ -23,22 +25,36 @@ const gears = [
 	{ src: `${basePath}/weapon-not-selected-gold.png`, name: "Shockwave" }
 ];
 
-const Gear = () => {
+const Gear = ({ transformer, gears, addGear, removeGear }) => {
+	const onGearClick = (gear, isSelected) => () => {
+		if (isSelected) {
+			removeGear(gear);
+		} else {
+			addGear(gear);
+		}
+	};
+
 	return (
 		<div style={{ maxWidth: "51rem" }}>
 			<Typography size="body-big" color="white">
 				Choose your favorite gear
 			</Typography>
 			<Group wrap align="between">
-				{gears.map((gear, idx) => {
+				{gears.map(gear => {
+					const isSelected = transformer.gear.indexOf(gear) > -1;
+
 					return (
-						<Image
-							key={idx}
-							type="preview-6"
-							src={gear.src}
-							title={gear.name}
-							style={{ marginTop: "3.6rem" }}
-						/>
+						<ListedImage
+							onClick={onGearClick(gear, isSelected)}
+							selected={transformer.gear.indexOf(gear) > -1}
+							key={gear._id}>
+							<Image
+								type="preview-6"
+								src={gear.image.standard}
+								title={gear.name}
+								style={{ marginTop: "3.6rem" }}
+							/>
+						</ListedImage>
 					);
 				})}
 			</Group>
@@ -46,4 +62,4 @@ const Gear = () => {
 	);
 };
 
-export default Gear;
+export default withGears(Gear);
