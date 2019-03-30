@@ -28,17 +28,23 @@ import UnderlayGold from "assets/images/underlay-gold.png";
 const basePath = "/assets/transformers-robots";
 const transformers = [
 	{
-		image: { standard: `${basePath}/ironhide2.png` },
+		skin: {
+			image: { standard: `${basePath}/ironhide2.png` }
+		},
 		name: "Ironhide",
 		faction: { name: "Decepticon" }
 	},
 	{
-		image: { standard: `${basePath}/megatron.png` },
+		skin: {
+			image: { standard: `${basePath}/megatron.png` }
+		},
 		name: "Megatron",
 		faction: { name: "Decepticon" }
 	},
 	{
-		image: { standard: `${basePath}/bumblebee.png` },
+		skin: {
+			image: { standard: `${basePath}/bumblebee.png` }
+		},
 		name: "Bumblebee",
 		faction: { name: "Autobot" }
 	}
@@ -47,7 +53,6 @@ const transformers = [
 const Home = ({ transformers }) => {
 	const { activeLinkIdx, setActiveLinkIdx } = selectActive(transformers._idx);
 	const transformer = transformers.find(t => t._id === activeLinkIdx) || transformers[0];
-	console.log(transformer);
 
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
@@ -59,7 +64,7 @@ const Home = ({ transformers }) => {
 								<Image
 									type="preview-1"
 									title={transformer.name}
-									src={transformer.image.standard}
+									src={transformer.skin.image.standard}
 								/>
 								<ButtonLink
 									className={styles.button_link}
@@ -158,7 +163,7 @@ const Home = ({ transformers }) => {
 							return (
 								<div onClick={() => setActiveLinkIdx(id)} key={id}>
 									<RobotPreview
-										imageSrc={transformer.image.standard}
+										imageSrc={transformer.skin.image.standard}
 										name={transformer.name}
 										faction={transformer.faction.name}
 									/>

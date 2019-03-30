@@ -4,6 +4,7 @@ import Gear from "../entities/Gear";
 import Faction from "../entities/Faction";
 import Image from "../entities/Image";
 import Status from "../entities/Status";
+import Skin from "../entities/Skin";
 
 const createDefaultTransformer = state => {
 	const paths = state.global.paths;
@@ -24,7 +25,7 @@ const createDefaultTransformer = state => {
 		new Faction("Unknown", new Image(factionImagePath, factionImagePath, factionImagePath)),
 		[new Gear("Unknown", new Image(gearImagePath, gearImagePath, gearImagePath))],
 		new Status("Unknown", new Image(statusImagePath, statusImagePath, statusImagePath)),
-		new Image(`${paths.skins}/${images.skins.list_neutral[0]}`),
+		new Skin("Unknown", new Image(`${paths.skins}/${images.skins.list_neutral[0]}`)),
 		"unknown"
 	);
 };

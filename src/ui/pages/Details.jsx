@@ -23,11 +23,14 @@ import BackgroundShape from "../../assets/images/bg_shape_dark@1x.png";
  */
 const transformer = {
 	_id: "afb9191d-d859-4918-8da4-ccfb5c5b0b01",
-	image: {
-		_id: "0be6d656-0931-4e46-b3f4-7d35ebfae1fb",
-		standard: "/assets/images/skins/optimus-prime.png",
-		gold: "",
-		dark: ""
+	skin: {
+		name: "optimus-prime",
+		image: {
+			_id: "0be6d656-0931-4e46-b3f4-7d35ebfae1fb",
+			standard: "/assets/images/skins/optimus-prime.png",
+			gold: "",
+			dark: ""
+		}
 	},
 	name: "Optimus Prime",
 	vehicle: {
@@ -99,7 +102,7 @@ const Details = ({ location }) => {
 				<div className={styles.image}>
 					<Image
 						title={transformer.name}
-						src={transformer.image.standard}
+						src={transformer.skin.image.standard}
 						className={styles["preview-1"]}
 					/>
 				</div>

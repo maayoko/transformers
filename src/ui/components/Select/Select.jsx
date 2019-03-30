@@ -3,11 +3,22 @@ import PropTypes from "prop-types";
 import styles from "./Select.module.scss";
 import classNames from "classnames";
 
-const Select = ({ options, onChange, id, placeholder, width, selected, ...other }) => {
-	const classes = classNames(styles.root, { [styles.placeholder]: placeholder }, styles[width]);
+const Select = ({ options, onChange, id, placeholder, width, selected, disabled, ...other }) => {
+	const classes = classNames(
+		styles.root,
+		{ [styles.placeholder]: placeholder },
+		{ [styles.disabled]: disabled },
+		styles[width]
+	);
 
 	return (
-		<select id={id} name={id} className={classes} onChange={onChange} {...other}>
+		<select
+			disabled={disabled}
+			id={id}
+			name={id}
+			className={classes}
+			onChange={onChange}
+			{...other}>
 			{options.map((option, idx) => {
 				return (
 					<option
@@ -37,10 +48,12 @@ Select.propTypes = {
 	).isRequired,
 	onChange: PropTypes.func.isRequired,
 	width: PropTypes.oneOf(["small", "normal"]),
-	selected: PropTypes.any
+	selected: PropTypes.any,
+	disabled: PropTypes.bool
 };
 Select.defaultProp = {
-	width: "normal"
+	width: "normal",
+	disabled: false
 };
 
 export default Select;

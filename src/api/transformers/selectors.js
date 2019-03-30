@@ -4,6 +4,7 @@ import Faction from "../../domain/entities/Faction";
 import Status from "../../domain/entities/Status";
 import Image from "../../domain/entities/Image";
 import Gear from "../../domain/entities/Gear";
+import Skin from "../../domain/entities/Skin";
 
 const autobots = ["Optimus Prime", "Bumblebee"];
 const decepticons = ["Megatron"];
@@ -17,6 +18,7 @@ const getTransformersData = (transformersData, state) => {
 	const statuses = [];
 	const vehicles = [];
 	const gears = [];
+	const skins = state.skins;
 
 	// Helper method for get image path
 	const getImagePath = (pathType, compare) =>
@@ -76,10 +78,6 @@ const getTransformersData = (transformersData, state) => {
 			statuses.push(status);
 		}
 
-		const skinsStandardImage = `${paths.skins}/${images.skins.list.find(
-			skin => skin.split(".")[0] === transformer.name.toLowerCase().replace(" ", "-")
-		)}`;
-
 		transformers.push(
 			new Transformer(
 				transformer.name,
@@ -93,7 +91,10 @@ const getTransformersData = (transformersData, state) => {
 				}),
 				gearList,
 				status,
-				new Image(skinsStandardImage),
+				skins.find(
+					skin =>
+						skin.name.split(".")[0] === transformer.name.toLowerCase().replace(" ", "-")
+				),
 				transformer.name.replace(/\s/g, "-").toLowerCase()
 			)
 		);

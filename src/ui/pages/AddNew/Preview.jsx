@@ -18,7 +18,7 @@ const Preview = ({ transformer, onCreate }) => {
 		<div className={styles.root}>
 			<Group>
 				<Image
-					src={transformer.image.standard}
+					src={transformer.skin.image.standard}
 					title="Not selected transformer"
 					className={styles["preview-1"]}
 				/>

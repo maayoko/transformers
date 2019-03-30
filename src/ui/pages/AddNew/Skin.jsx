@@ -9,7 +9,7 @@ import React from "react";
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
-import Transition from "../../components/Transition/Transition";
+import ListedImage from "../../components/ListedImage/ListedImage";
 import { withSkins } from "state/skins";
 
 /**
@@ -34,13 +34,18 @@ const Skin = ({ transformer, updateSkin, skins }) => {
 			<Group align="between" wrap>
 				{skins.map(skin => {
 					return (
-						<Image
+						<ListedImage
+							onClick={() => updateSkin(skin)}
 							key={skin._id}
-							type="preview-6"
-							src={skin.image.standard}
-							title={skin.name}
-							style={{ marginTop: "3.6rem" }}
-						/>
+							selected={transformer.skin._id === skin._id}>
+							<Image
+								key={skin._id}
+								type="preview-6"
+								src={skin.image.standard}
+								title={skin.name}
+								style={{ marginTop: "3.6rem" }}
+							/>
+						</ListedImage>
 					);
 				})}
 			</Group>

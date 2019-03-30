@@ -30,9 +30,9 @@ export const ready = () => {
 	const store = configureStore({}, [routerMiddleware(browserHistory)]);
 	const history = syncHistoryWithStore(browserHistory, store);
 
+	store.dispatch(createSkins());
 	store.dispatch(getTransformersData());
 	store.dispatch(createNewTransformer());
-	store.dispatch(createSkins());
 
 	ReactDOM.render(
 		<Provider store={store}>

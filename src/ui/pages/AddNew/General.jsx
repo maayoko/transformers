@@ -14,7 +14,16 @@ import { withStatuses } from "state/statuses";
 import { withFactions } from "state/factions";
 import styles from "./General.module.scss";
 
-const General = ({ transformer, updateName, updateStatus, updateFaction, factions, statuses }) => {
+const General = ({
+	transformer,
+	updateName,
+	updateStatus,
+	updateFaction,
+	factions,
+	factionsOptions,
+	statuses,
+	statusOptions
+}) => {
 	const handleChange = handler => e => {
 		handler(e.target.value);
 	};
@@ -23,15 +32,6 @@ const General = ({ transformer, updateName, updateStatus, updateFaction, faction
 		const value = values.find(value => value._id === e.target.value);
 		handler(value);
 	};
-
-	const statusOptions = [
-		{ value: "", label: "Select status..." },
-		...statuses.map(status => ({ value: status._id, label: status.value }))
-	];
-	const factionOptions = [
-		{ value: "", label: "Select faction..." },
-		...factions.map(faction => ({ value: faction._id, label: faction.name }))
-	];
 
 	return (
 		<div className={styles.root}>
@@ -59,7 +59,7 @@ const General = ({ transformer, updateName, updateStatus, updateFaction, faction
 					placeholder
 					onChange={handleSelectChange(updateFaction, factions)}
 					id="faction"
-					options={factionOptions}
+					options={factionsOptions}
 				/>
 			</FormGroup>
 		</div>

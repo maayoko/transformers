@@ -47,4 +47,13 @@
 	&.normal {
 		max-width: 49.5rem;
 	}
+
+	&.disabled {
+		border-color: rgba($primary, 0.5);
+		color: rgba($white, 0.3);
+
+		&:hover {
+			cursor: not-allowed;
+		}
+	}
 }
