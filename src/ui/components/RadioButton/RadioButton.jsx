@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Typography from "../Typography/Typography";
 import styles from "./RadioButton.module.scss";
 
-const RadioButton = ({ label, name, checked, onChange }) => {
+const RadioButton = ({ label, name, checked, onChange, value, ...other }) => {
 	const inputRef = useRef();
 
 	useEffect(() => {
@@ -13,13 +13,14 @@ const RadioButton = ({ label, name, checked, onChange }) => {
 	}, [checked]);
 
 	return (
-		<div className={styles.root}>
+		<div className={styles.root} {...other}>
 			<input
 				ref={inputRef}
 				onChange={onChange}
 				name={name}
 				className={styles.input}
 				type="radio"
+				value={value}
 			/>
 			<span className={styles.radio_mark} />
 			<Typography size="body-mid" color="white">
@@ -33,11 +34,13 @@ RadioButton.propTypes = {
 	label: PropTypes.string.isRequired,
 	name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	onChange: PropTypes.func,
-	checked: PropTypes.bool
+	checked: PropTypes.bool,
+	value: PropTypes.any
 };
 RadioButton.defaultProps = {
 	onChange: () => {},
-	checked: false
+	checked: false,
+	value: ""
 };
 
 export default RadioButton;
