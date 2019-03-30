@@ -19,6 +19,7 @@ import Details from "ui/pages/Details";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createNewTransformer } from "state/transformer";
+import { createSkins } from "state/skins";
 import * as serviceWorker from "serviceWorker";
 
 export const ready = () => {
@@ -31,6 +32,7 @@ export const ready = () => {
 
 	store.dispatch(getTransformersData());
 	store.dispatch(createNewTransformer());
+	store.dispatch(createSkins());
 
 	ReactDOM.render(
 		<Provider store={store}>

@@ -1,0 +1,16 @@
+$scale: (
+	duration: 0.3s,
+	size: 1.1
+);
+
+.root {
+	&.scale {
+		& > * {
+			transition: transform map-get($scale, duration);
+		}
+
+		&:hover > * {
+			transform: scale(map-get($scale, size));
+		}
+	}
+}

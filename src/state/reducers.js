@@ -14,6 +14,7 @@ import { transformersReducer } from "./transformers";
 import { vehiclesReducer } from "./vehicles";
 import { notificationsReducer } from "./notifications";
 import { gearsReducer } from "./gears";
+import { skinsReducer } from "./skins";
 import { globalReducer } from "./global";
 
 export default combineReducers({
@@ -24,6 +25,7 @@ export default combineReducers({
 	vehicles: vehiclesReducer,
 	gears: gearsReducer,
 	notifications: notificationsReducer,
+	skins: skinsReducer,
 	routing: routerReducer,
 	global: globalReducer
 });

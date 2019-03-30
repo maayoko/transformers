@@ -9,6 +9,8 @@ import React from "react";
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
+import Transition from "../../components/Transition/Transition";
+import { withSkins } from "state/skins";
 
 /**
  * Variables
@@ -23,19 +25,19 @@ const skins = [
 	{ src: `${basePath}/transformer-not-selected-gold.png`, name: "Shockwave" }
 ];
 
-const Skin = () => {
+const Skin = ({ transformer, updateSkin, skins }) => {
 	return (
 		<div style={{ maxWidth: "51rem" }}>
 			<Typography size="body-big" color="white">
 				Choose your favorite skin
 			</Typography>
 			<Group align="between" wrap>
-				{skins.map((skin, idx) => {
+				{skins.map(skin => {
 					return (
 						<Image
-							key={idx}
+							key={skin._id}
 							type="preview-6"
-							src={skin.src}
+							src={skin.image.standard}
 							title={skin.name}
 							style={{ marginTop: "3.6rem" }}
 						/>
@@ -46,4 +48,4 @@ const Skin = () => {
 	);
 };
 
-export default Skin;
+export default withSkins(Skin);
