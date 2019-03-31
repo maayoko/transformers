@@ -50,9 +50,10 @@ const transformers = [
 	}
 ];
 
-const Home = ({ transformers }) => {
+const Home = ({ transformers, setCurrentTransformer }) => {
 	const { activeLinkIdx, setActiveLinkIdx } = selectActive(transformers._idx);
 	const transformer = transformers.find(t => t._id === activeLinkIdx) || transformers[0];
+	console.log(transformer);
 
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
@@ -67,11 +68,14 @@ const Home = ({ transformers }) => {
 									src={transformer.skin.image.standard}
 								/>
 								<ButtonLink
+									onClick={() => {
+										setCurrentTransformer(transformer);
+									}}
 									className={styles.button_link}
 									to={{
 										pathname: `/transformers/${transformer.link}/details`,
 										search: "?edit=false",
-										state: Object.assign(transformer)
+										state: { currentTransformer: transformer }
 									}}>
 									Check me out
 								</ButtonLink>

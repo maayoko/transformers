@@ -18,7 +18,7 @@ export default withRouter(({ location, ...other }) => {
 	switch (endPoint) {
 		case "details":
 			const { edit } = parse(location.search);
-			const shouldEdit = edit === "true";
+			const shouldEdit = JSON.parse(edit);
 			links = [
 				...baseLinks,
 				{
@@ -35,7 +35,5 @@ export default withRouter(({ location, ...other }) => {
 		default:
 			links = [...baseLinks];
 	}
-
-	console.log(links);
 	return <Toolbar links={links} {...other} />;
 });

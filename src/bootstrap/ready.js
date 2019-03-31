@@ -19,6 +19,7 @@ import Details from "ui/pages/Details";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createNewTransformer } from "state/transformer";
+import { setCurrentTransformer } from "state/currentTransformer";
 import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
@@ -30,6 +31,12 @@ export const ready = () => {
 	const browserHistory = createBrowserHistory();
 	const store = configureStore({}, [routerMiddleware(browserHistory)]);
 	const history = syncHistoryWithStore(browserHistory, store);
+	const currentTransformer = history.location.state && history.location.state.currentTransformer;
+	console.log(currentTransformer, history);
+
+	if (currentTransformer) {
+		store.dispatch(setCurrentTransformer(currentTransformer));
+	}
 
 	store.dispatch(createSkins());
 	store.dispatch(createGears());

@@ -1,4 +1,9 @@
-import { ADD_TRANSFORMER, ADD_TRANSFORMERS, REMOVE_TRANSFORMER } from "./actionTypes";
+import {
+	ADD_TRANSFORMER,
+	ADD_TRANSFORMERS,
+	REMOVE_TRANSFORMER,
+	UPDATE_TRANSFORMER
+} from "./actionTypes";
 
 const addTransformer = transformer => {
 	return { type: ADD_TRANSFORMER, payload: transformer };
@@ -12,4 +17,8 @@ const removeTransformer = transformer => {
 	return { type: REMOVE_TRANSFORMER, payload: transformer };
 };
 
-export { addTransformer, addTransformers, removeTransformer };
+const updateTransformer = transformer => {
+	return { type: UPDATE_TRANSFORMER, payload: transformer };
+};
+
+export { addTransformer, addTransformers, removeTransformer, updateTransformer };

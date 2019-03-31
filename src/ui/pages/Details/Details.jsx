@@ -12,11 +12,13 @@ import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
+import Skin from "../AddNew/Skin";
 
 /**
  * Assets
  */
 import BackgroundShape from "../../../assets/images/bg_shape_dark@1x.png";
+import NewIcon from "assets/images/svg/new_gold.svg";
 
 /**
  * Variables
@@ -90,7 +92,16 @@ const transformer = {
 	link: "optimus-prime"
 };
 
-const Details = ({ transformer, edit }) => {
+const Details = ({
+	transformer,
+	edit,
+	skinService,
+	statusService,
+	nameService,
+	factionService,
+	gearService,
+	vehicleService
+}) => {
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
 			<Group align="between" className={styles.root}>
@@ -100,6 +111,16 @@ const Details = ({ transformer, edit }) => {
 						src={transformer.skin.image.standard}
 						className={styles["preview-1"]}
 					/>
+					{edit ? (
+						<img
+							onClick={() => skinService.toggleEditSkin(!skinService.editSkin)}
+							src={NewIcon}
+							alt="Edit icon"
+						/>
+					) : null}
+					{edit && skinService.editSkin ? (
+						<Skin transformer={transformer} updateSkin={skinService.updateSkin} />
+					) : null}
 				</div>
 				<div className={styles.info}>
 					<div className={styles.logo}>

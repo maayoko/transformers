@@ -10,6 +10,7 @@ import { routerReducer } from "react-router-redux";
 import { factionsReducer } from "./factions";
 import { statusesReducer } from "./statuses";
 import { transformerReducer } from "./transformer";
+import { currentTransformerReducer } from "./currentTransformer";
 import { transformersReducer } from "./transformers";
 import { vehiclesReducer } from "./vehicles";
 import { notificationsReducer } from "./notifications";
@@ -21,6 +22,7 @@ export default combineReducers({
 	factions: factionsReducer,
 	statuses: statusesReducer,
 	transformer: transformerReducer,
+	currentTransformer: currentTransformerReducer,
 	transformers: transformersReducer,
 	vehicles: vehiclesReducer,
 	gears: gearsReducer,

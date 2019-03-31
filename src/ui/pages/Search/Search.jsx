@@ -80,7 +80,7 @@ const Search = ({ transformers, factions }) => {
 								to={{
 									pathname: `${linkBasePath}/${transformer.link}/details`,
 									search: "?edit=false",
-									state: transformer
+									state: { currentTransformer: transformer }
 								}}>
 								<RobotPreview
 									imageSrc={transformer.skin.image.standard}
