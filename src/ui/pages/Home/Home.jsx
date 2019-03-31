@@ -13,8 +13,6 @@ import RobotPreview from "ui/components/RobotPreview/RobotPreview";
 import BackgroundImage from "ui/components/BackgroundImage/BackgroundImage";
 import Image from "ui/components/Image/Image";
 import Group from "ui/components/Group/Group";
-import { selectActive } from "ui/utilities/selectActive";
-import styles from "./Home.module.scss";
 
 /**
  * Assets
@@ -50,137 +48,132 @@ const transformers = [
 	}
 ];
 
-const Home = ({ transformers, setCurrentTransformer }) => {
-	const { activeLinkIdx, setActiveLinkIdx } = selectActive(transformers._idx);
-	const transformer = transformers.find(t => t._id === activeLinkIdx) || transformers[0];
-	console.log(transformer);
-
-	return (
-		<BackgroundImage type="shape" src={BackgroundShape}>
-			<div className={styles.root}>
-				<main className={styles.main}>
-					<BackgroundImage type="home-gold-bg" src={UnderlayGold}>
-						{transformer ? (
-							<>
-								<Image
-									type="preview-1"
-									title={transformer.name}
-									src={transformer.skin.image.standard}
-								/>
-								<ButtonLink
-									onClick={() => {
-										setCurrentTransformer(transformer);
-									}}
-									className={styles.button_link}
-									to={{
-										pathname: `/transformers/${transformer.link}/details`,
-										search: "?edit=false",
-										state: { currentTransformer: transformer }
-									}}>
-									Check me out
-								</ButtonLink>
-								<div className={styles.info_wrapper}>
-									<Group
-										align="center"
-										style={{ width: "10rem", height: "6.5rem" }}>
-										<Image
-											type="preview-2"
-											src={transformer.faction.image.dark}
-											title="Autobot Logo"
-										/>
+const Home = ({
+	transformers,
+	setCurrentTransformer,
+	styles,
+	selectActiveService,
+	transformer
+}) => (
+	<BackgroundImage type="shape" src={BackgroundShape}>
+		<div className={styles.root}>
+			<main className={styles.main}>
+				<BackgroundImage type="home-gold-bg" src={UnderlayGold}>
+					{transformer ? (
+						<>
+							<Image
+								type="preview-1"
+								title={transformer.name}
+								src={transformer.skin.image.standard}
+							/>
+							<ButtonLink
+								onClick={() => {
+									setCurrentTransformer(transformer);
+								}}
+								className={styles.button_link}
+								to={{
+									pathname: `/transformers/${transformer.link}/details`,
+									search: "?edit=false",
+									state: { currentTransformer: transformer }
+								}}>
+								Check me out
+							</ButtonLink>
+							<div className={styles.info_wrapper}>
+								<Group align="center" style={{ width: "10rem", height: "6.5rem" }}>
+									<Image
+										type="preview-2"
+										src={transformer.faction.image.dark}
+										title="Autobot Logo"
+									/>
+									<Typography
+										uppercase
+										size="header-big"
+										color="black"
+										opacity="high">
+										{transformer.name}
+									</Typography>
+								</Group>
+								<Group style={{ marginTop: "4rem" }}>
+									<Group vertical align="center" style={{ marginRight: "7rem" }}>
 										<Typography
 											uppercase
-											size="header-big"
+											size="body-mid"
 											color="black"
-											opacity="high">
-											{transformer.name}
+											opacity="mid">
+											Status
 										</Typography>
+										<Image
+											type="preview-3"
+											src={transformer.status.image.dark}
+											title="Health level"
+										/>
 									</Group>
-									<Group style={{ marginTop: "4rem" }}>
-										<Group
-											vertical
-											align="center"
-											style={{ marginRight: "7rem" }}>
-											<Typography
-												uppercase
-												size="body-mid"
-												color="black"
-												opacity="mid">
-												Status
-											</Typography>
-											<Image
-												type="preview-3"
-												src={transformer.status.image.dark}
-												title="Health level"
-											/>
-										</Group>
-										<Group vertical align="center">
-											<Typography
-												uppercase
-												size="body-mid"
-												color="black"
-												opacity="mid">
-												Vehicle
-											</Typography>
-											<Image
-												type="preview-4"
-												src={transformer.vehicle.image.standard}
-												title={transformer.vehicle.model}
-											/>
-										</Group>
+									<Group vertical align="center">
+										<Typography
+											uppercase
+											size="body-mid"
+											color="black"
+											opacity="mid">
+											Vehicle
+										</Typography>
+										<Image
+											type="preview-4"
+											src={transformer.vehicle.image.standard}
+											title={transformer.vehicle.model}
+										/>
 									</Group>
-									<Group style={{ marginTop: "1rem" }}>
-										<Group vertical>
-											<Typography
-												uppercase
-												size="body-mid"
-												color="black"
-												opacity="mid">
-												Gear
-											</Typography>
-											<Group>
-												{transformer.gear.map(_gear => (
-													<Image
-														key={_gear._id}
-														type="preview-5"
-														style={{ marginRight: "1.5rem" }}
-														src={_gear.image.standard}
-														title={_gear.name}
-													/>
-												))}
-											</Group>
+								</Group>
+								<Group style={{ marginTop: "1rem" }}>
+									<Group vertical>
+										<Typography
+											uppercase
+											size="body-mid"
+											color="black"
+											opacity="mid">
+											Gear
+										</Typography>
+										<Group>
+											{transformer.gear.map(_gear => (
+												<Image
+													key={_gear._id}
+													type="preview-5"
+													style={{ marginRight: "1.5rem" }}
+													src={_gear.image.standard}
+													title={_gear.name}
+												/>
+											))}
 										</Group>
 									</Group>
-								</div>
-							</>
-						) : (
-							"Loading"
-						)}
-					</BackgroundImage>
-				</main>
-				<aside className={styles.sidebar}>
-					<Typography size="body-big" color="white">
-						Transformers at your disposal
-					</Typography>
-					<div className={styles.transformers_list}>
-						{transformers.map((transformer, idx) => {
-							const id = transformer._id || idx;
-							return (
-								<div onClick={() => setActiveLinkIdx(id)} key={id}>
-									<RobotPreview
-										imageSrc={transformer.skin.image.standard}
-										name={transformer.name}
-										faction={transformer.faction.name}
-									/>
-								</div>
-							);
-						})}
-					</div>
-				</aside>
-			</div>
-		</BackgroundImage>
-	);
-};
+								</Group>
+							</div>
+						</>
+					) : (
+						"Loading"
+					)}
+				</BackgroundImage>
+			</main>
+			<aside className={styles.sidebar}>
+				<Typography size="body-big" color="white">
+					Transformers at your disposal
+				</Typography>
+				<div className={styles.transformers_list}>
+					{transformers.map((transformer, idx) => {
+						const id = transformer._id || idx;
+						return (
+							<div onClick={() => selectActiveService.setActiveLinkIdx(id)} key={id}>
+								<RobotPreview
+									imageSrc={transformer.skin.image.standard}
+									name={transformer.name}
+									faction={transformer.faction.name}
+								/>
+							</div>
+						);
+					})}
+				</div>
+			</aside>
+		</div>
+	</BackgroundImage>
+);
 
 Home.propTypes = {
 	transformers: PropTypes.arrayOf(PropTypes.shape({}))

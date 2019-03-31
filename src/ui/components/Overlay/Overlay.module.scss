@@ -1,0 +1,26 @@
+.root {
+	display: flex;
+	justify-content: center;
+	padding: 3rem;
+	background-color: rgba(#1c1c22, 0.97);
+
+	&.fixed {
+		z-index: 99999;
+		position: fixed;
+		top: 8rem;
+		left: 4rem;
+		bottom: 1rem;
+		right: 4rem;
+
+		& > div {
+			overflow-y: scroll;
+		}
+
+		& .close_button {
+			position: absolute;
+			right: 2rem;
+			top: 2rem;
+			cursor: pointer;
+		}
+	}
+}

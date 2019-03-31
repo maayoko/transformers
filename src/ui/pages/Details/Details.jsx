@@ -13,6 +13,11 @@ import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
 import Skin from "../AddNew/Skin";
+import Vehicle from "../AddNew/Vehicle";
+import Overlay from "ui/components/Overlay";
+import General from "../AddNew/General";
+import Button from "../../components/Button/Button";
+import Gear from "../AddNew/Gear";
 
 /**
  * Assets
@@ -96,12 +101,15 @@ const Details = ({
 	transformer,
 	edit,
 	skinService,
-	statusService,
-	nameService,
-	factionService,
+	generalService,
 	gearService,
 	vehicleService
 }) => {
+	const createImage = onClick => {
+		return (
+			<Image onClick={onClick} src={NewIcon} alt="Edit icon" className={styles.edit_icon} />
+		);
+	};
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
 			<Group align="between" className={styles.root}>
@@ -111,16 +119,18 @@ const Details = ({
 						src={transformer.skin.image.standard}
 						className={styles["preview-1"]}
 					/>
-					{edit ? (
-						<img
-							onClick={() => skinService.toggleEditSkin(!skinService.editSkin)}
-							src={NewIcon}
-							alt="Edit icon"
-						/>
-					) : null}
-					{edit && skinService.editSkin ? (
-						<Skin transformer={transformer} updateSkin={skinService.updateSkin} />
-					) : null}
+					{edit && createImage(() => skinService.toggleEditSkin(!skinService.editSkin))}
+					{edit && skinService.editSkin && (
+						<Overlay variant="fixed" closeButton>
+							<Skin
+								transformer={transformer}
+								updateSkin={skin => {
+									skinService.toggleEditSkin(false);
+									skinService.updateSkin(skin);
+								}}
+							/>
+						</Overlay>
+					)}
 				</div>
 				<div className={styles.info}>
 					<div className={styles.logo}>
@@ -129,9 +139,30 @@ const Details = ({
 							title={transformer.faction.name}
 							className={styles["preview-2"]}
 						/>
+						{edit &&
+							createImage(() =>
+								generalService.toggleEditGeneral(!generalService.editGeneral)
+							)}
+						{edit && generalService.editGeneral && (
+							<Overlay variant="fixed" closeButton>
+								<div>
+									<General
+										transformer={transformer}
+										updateName={generalService.updateName}
+										updateStatus={generalService.updateStatus}
+										updateFaction={generalService.updateFaction}
+									/>
+									<Button
+										style={{ marginTop: "4rem" }}
+										onClick={() => generalService.toggleEditGeneral(false)}>
+										Done
+									</Button>
+								</div>
+							</Overlay>
+						)}
 					</div>
 					<Group align="between" className={styles.general}>
-						<Group vertical>
+						<Group vertical style={{ position: "relative" }}>
 							<Typography color="white" size="body-big" opacity="low">
 								Name
 							</Typography>
@@ -139,7 +170,7 @@ const Details = ({
 								{transformer.name}
 							</Typography>
 						</Group>
-						<Group vertical>
+						<Group vertical style={{ position: "relative" }}>
 							<Typography color="white" size="body-big" opacity="low">
 								Faction
 							</Typography>
@@ -147,7 +178,7 @@ const Details = ({
 								{transformer.faction.name}
 							</Typography>
 						</Group>
-						<Group vertical>
+						<Group vertical style={{ position: "relative" }}>
 							<Typography color="white" opacity="low" size="body-big">
 								Status
 							</Typography>
@@ -161,11 +192,28 @@ const Details = ({
 						</Group>
 					</Group>
 					<Group align="between" className={styles.vehicle_gear}>
-						<div>
+						<div style={{ position: "relative" }}>
 							<Typography color="white" opacity="low" size="body-big">
 								Vehicle
 							</Typography>
 							<div style={{ textAlign: "center", marginTop: "6.2rem" }}>
+								{edit &&
+									createImage(() =>
+										vehicleService.toggleEditVehicle(
+											!vehicleService.editVehicle
+										)
+									)}
+								{edit && vehicleService.editVehicle && (
+									<Overlay variant="fixed" closeButton>
+										<Vehicle
+											transformer={transformer}
+											updateVehicle={vehicle => {
+												vehicleService.toggleEditVehicle(false);
+												vehicleService.updateVehicle(vehicle);
+											}}
+										/>
+									</Overlay>
+								)}
 								<Image
 									src={transformer.vehicle.image.standard}
 									title={transformer.vehicle.model}
@@ -173,7 +221,7 @@ const Details = ({
 								/>
 							</div>
 						</div>
-						<div>
+						<div style={{ position: "relative" }}>
 							<Typography color="white" opacity="low" size="body-big">
 								Gear
 							</Typography>
@@ -189,6 +237,23 @@ const Details = ({
 									);
 								})}
 							</Group>
+							{edit &&
+								createImage(() =>
+									gearService.toggleEditGear(!gearService.editGear)
+								)}
+							{edit && gearService.editGear && (
+								<Overlay
+									variant="fixed"
+									closeButton={{
+										onClose: () => gearService.toggleEditGear(false)
+									}}>
+									<Gear
+										addGear={gearService.addGear}
+										removeGear={gearService.removeGear}
+										transformer={transformer}
+									/>
+								</Overlay>
+							)}
 						</div>
 					</Group>
 				</div>

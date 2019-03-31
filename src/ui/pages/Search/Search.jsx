@@ -1,7 +1,7 @@
 /**
  * External deps
  */
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 /**
@@ -19,80 +19,66 @@ import styles from "./Search.module.scss";
  */
 const linkBasePath = "/transformers";
 
-const Search = ({ transformers, factions }) => {
-	const [searchTerm, updateSearchTerm] = useState();
-	const [selectedFaction, updateSelectedFaction] = useState();
-
-	const onInputChange = e => {
-		updateSearchTerm(e.target.value);
-	};
-
-	const onRadioChange = faction => () => {
-		updateSelectedFaction(faction);
-	};
-
-	return (
-		<Group fullWidth vertical align="center" className={styles.root}>
-			<Group vertical>
-				<Input
-					onChange={onInputChange}
-					size="large"
-					border={false}
-					bgColor="dark"
-					value={searchTerm}
-					placeholder="E.g. Optimus Prime"
-				/>
-				<Group className={styles.radio_buttons}>
-					{factions.map(faction => (
-						<RadioButton
-							checked={selectedFaction && faction._id === selectedFaction._id}
-							key={faction._id}
-							onChange={onRadioChange(faction)}
-							label={faction.name}
-							name="faction"
-						/>
+const Search = ({
+	transformers,
+	factions,
+	searchTermService,
+	selectedFactionService,
+	filterService,
+	setCurrentTransformer
+}) => (
+	<Group fullWidth vertical align="center" className={styles.root}>
+		<Group vertical>
+			<Input
+				onChange={searchTermService.onSearchTermChange}
+				size="large"
+				border={false}
+				bgColor="dark"
+				value={searchTermService.searchTerm}
+				placeholder="E.g. Optimus Prime"
+			/>
+			<Group className={styles.radio_buttons}>
+				{factions.map(faction => (
+					<RadioButton
+						checked={
+							selectedFactionService.selectedFaction &&
+							faction._id === selectedFactionService.selectedFaction._id
+						}
+						key={faction._id}
+						onChange={selectedFactionService.onFactionChange(faction)}
+						label={faction.name}
+						name="faction"
+					/>
+				))}
+				<Button onClick={selectedFactionService.onFactionChange(null)} type="basic">
+					Clear
+				</Button>
+			</Group>
+			<Group align="between" fullWidth wrap className={styles.transformers_list}>
+				{transformers
+					.filter(filterService.filterTransformersBySearchTerm)
+					.filter(filterService.filterTransformersByFaction)
+					.map(transformer => (
+						<Link
+							onClick={() => {
+								setCurrentTransformer(transformer);
+							}}
+							key={transformer._id}
+							to={{
+								pathname: `${linkBasePath}/${transformer.link}/details`,
+								search: "?edit=false",
+								state: { currentTransformer: transformer }
+							}}>
+							<RobotPreview
+								imageSrc={transformer.skin.image.standard}
+								name={transformer.name}
+								faction={transformer.faction.name}
+							/>
+						</Link>
 					))}
-					<Button onClick={() => updateSelectedFaction(null)} type="basic">
-						Clear
-					</Button>
-				</Group>
-				<Group align="between" fullWidth wrap className={styles.transformers_list}>
-					{transformers
-						.filter(transformer => {
-							if (searchTerm) {
-								return transformer.name
-									.toLowerCase()
-									.match(searchTerm.toLowerCase());
-							}
-
-							return true;
-						})
-						.filter(transformer => {
-							if (selectedFaction) {
-								return transformer.faction._id === selectedFaction._id;
-							}
-
-							return true;
-						})
-						.map((transformer, idx) => (
-							<Link
-								key={idx}
-								to={{
-									pathname: `${linkBasePath}/${transformer.link}/details`,
-									search: "?edit=false",
-									state: { currentTransformer: transformer }
-								}}>
-								<RobotPreview
-									imageSrc={transformer.skin.image.standard}
-									name={transformer.name}
-									faction={transformer.faction.name}
-								/>
-							</Link>
-						))}
-				</Group>
 			</Group>
 		</Group>
-	);
-};
+	</Group>
+);
 
 export default Search;

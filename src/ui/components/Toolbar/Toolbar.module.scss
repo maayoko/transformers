@@ -9,11 +9,18 @@
 }
 
 .add_icon,
-.search_icon {
+.search_icon,
+.home_icon,
+.edit_icon,
+.done_icon {
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 6rem;
 	height: 6rem;
+}
+
+.home_icon {
+	background-image: url("../../../assets/images/svg/home_gold.svg");
 }
 
 .add_icon {
@@ -22,6 +29,14 @@
 
 .search_icon {
 	background-image: url("../../../assets/images/svg/search_icon.svg");
+}
+
+.edit_icon {
+	background-image: url("../../../assets/images/svg/new_gold.svg");
+}
+
+.done_icon {
+	background-image: url("../../../assets/images/svg/check_circle_gold.svg");
 }
 
 .link_wrapper {
@@ -35,7 +50,8 @@
 	align-items: center;
 	text-decoration: none;
 
-	&:hover {
+	&:hover,
+	&.active_link {
 		background-color: $primary;
 
 		& > * {
@@ -48,6 +64,18 @@
 
 		& > .search_icon {
 			background-image: url("../../../assets/images/svg/search_icon_dark.svg");
+		}
+
+		& > .home_icon {
+			background-image: url("../../../assets/images/svg/home_dark.svg");
+		}
+
+		& > .edit_icon {
+			background-image: url("../../../assets/images/svg/new_dark.svg");
+		}
+
+		& > .done_icon {
+			background-image: url("../../../assets/images/svg/check_circle_dark.svg");
 		}
 	}
 

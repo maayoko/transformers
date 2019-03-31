@@ -8,11 +8,13 @@ import Toolbar from "./Toolbar";
  */
 const basePath = "/transformers";
 const baseLinks = [
+	{ to: `/`, label: "Home", icon: "home_icon" },
 	{ to: `${basePath}/add`, label: "Add new", icon: "add_icon" },
 	{ to: `${basePath}/search`, label: "Search", icon: "search_icon" }
 ];
 
-export default withRouter(({ location, ...other }) => {
+export default withRouter(({ location, match, ...other }) => {
+	console.log(match);
 	let links;
 	const endPoint = location.pathname.split("/").slice(-1)[0];
 	switch (endPoint) {
@@ -28,12 +30,18 @@ export default withRouter(({ location, ...other }) => {
 						state: location.state
 					},
 					label: shouldEdit ? "Done" : "Edit",
-					icon: "add_icon"
+					icon: shouldEdit ? "done_icon" : "edit_icon"
 				}
 			];
 			break;
 		default:
 			links = [...baseLinks];
 	}
-	return <Toolbar links={links} {...other} />;
+	return (
+		<Toolbar
+			activeLink={links.find(link => link.to === location.pathname)}
+			links={links}
+			{...other}
+		/>
+	);
 });

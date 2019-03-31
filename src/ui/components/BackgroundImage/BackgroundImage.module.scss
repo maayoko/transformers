@@ -15,4 +15,10 @@
 		position: relative;
 		top: -8rem;
 	}
+
+	&.icon {
+		width: 2.4rem;
+		height: 2.4rem;
+		background-size: contain;
+	}
 }

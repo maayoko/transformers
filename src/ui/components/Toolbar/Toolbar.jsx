@@ -4,6 +4,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 /**
  * Internal deps
@@ -11,17 +12,22 @@ import { Link } from "react-router-dom";
 import Typography from "../Typography/Typography";
 import styles from "./Toolbar.module.scss";
 
-const Toolbar = ({ style, links }) => {
+const Toolbar = ({ style, links, activeLink }) => {
 	return (
 		<div style={style} className={styles.root}>
-			{links.map((link, idx) => (
-				<Link key={idx} to={link.to} className={styles.link_wrapper}>
-					<span className={styles[link.icon]} />
-					<Typography bold size="body-small" color="white">
-						{link.label}
-					</Typography>
-				</Link>
-			))}
+			{links.map((link, idx) => {
+				const classes = classNames(styles.link_wrapper, {
+					[styles.active_link]: activeLink && activeLink === link
+				});
+				return (
+					<Link key={idx} to={link.to} className={classes}>
+						<span className={styles[link.icon]} />
+						<Typography bold size="body-small" color="white">
+							{link.label}
+						</Typography>
+					</Link>
+				);
+			})}
 		</div>
 	);
 };
@@ -37,9 +43,16 @@ Toolbar.propTypes = {
 				PropTypes.node,
 				PropTypes.func
 			]).isRequired,
-			icon: PropTypes.oneOf(["add_icon", "search_icon"])
+			icon: PropTypes.oneOf([
+				"add_icon",
+				"search_icon",
+				"home_icon",
+				"edit_icon",
+				"done_icon"
+			])
 		})
-	)
+	),
+	activeLink: PropTypes.any
 };
 Toolbar.defaultProps = {
 	style: {}

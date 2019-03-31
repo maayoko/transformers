@@ -26,24 +26,24 @@ export default withTransformers(
 				currentTransformer || (location.state && location.state.currentTransformer);
 
 			const [editSkin, toggleEditSkin] = useState(false);
-			const [editName, toggleEditName] = useState(false);
-			const [editFaction, toggleEditFaction] = useState(false);
-			const [editStatus, toggleEditStatus] = useState(false);
+			const [editGeneral, toggleEditGeneral] = useState(false);
 			const [editVehicle, toggleEditVehicle] = useState(false);
 			const [editGear, toggleEditGear] = useState(false);
 
 			const skinService = { editSkin, toggleEditSkin, updateSkin };
-			const nameService = { editName, toggleEditName, updateName };
-			const factionService = { editFaction, toggleEditFaction, updateFaction };
-			const statusService = { editStatus, toggleEditStatus, updateStatus };
+			const generalService = {
+				editGeneral,
+				toggleEditGeneral,
+				updateName,
+				updateStatus,
+				updateFaction
+			};
 			const vehicleService = { editVehicle, toggleEditVehicle, updateVehicle };
 			const gearService = { editGear, toggleEditGear, addGear, removeGear };
 
 			const resetStates = () => {
 				skinService.toggleEditSkin(false);
-				nameService.toggleEditName(false);
-				factionService.toggleEditFaction(false);
-				statusService.toggleEditStatus(false);
+				generalService.toggleEditGeneral(false);
 				vehicleService.toggleEditVehicle(false);
 				gearService.toggleEditGear(false);
 			};
@@ -65,9 +65,7 @@ export default withTransformers(
 					transformer={transformer}
 					edit={shouldEdit}
 					skinService={skinService}
-					nameService={nameService}
-					factionService={factionService}
-					statusService={statusService}
+					generalService={generalService}
 					vehicleService={vehicleService}
 					gearService={gearService}
 					{...other}
