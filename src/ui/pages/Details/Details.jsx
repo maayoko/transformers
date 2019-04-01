@@ -12,12 +12,12 @@ import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import Typography from "../../components/Typography/Typography";
 import Image from "../../components/Image/Image";
 import Group from "../../components/Group/Group";
-import Skin from "../AddNew/Skin";
-import Vehicle from "../AddNew/Vehicle";
+import Skin from "../common/Skin";
+import Vehicle from "../common/Vehicle";
 import Overlay from "ui/components/Overlay";
-import General from "../AddNew/General";
+import General from "../common/General";
 import Button from "../../components/Button/Button";
-import Gear from "../AddNew/Gear";
+import Gear from "../common/Gear";
 
 /**
  * Assets

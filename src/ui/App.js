@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import Background from "./components/Background/Background";
 import Toolbar from "./components/Toolbar";
+import Notifications from "ui/components/Notifications";
 import "../styles/_main.scss";
 
 class App extends Component {
 	render() {
 		return (
 			<Background>
+				<Notifications />
 				<Header />
 				{this.props.children}
 				<Toolbar style={{ position: "fixed", width: "100%", bottom: 0 }} />

@@ -1,0 +1,11 @@
+@import "../../../styles/variables.scss";
+
+.toast {
+	background-color: $primary;
+}
+
+.body {
+	color: $background;
+	font-size: 1.6rem;
+	text-align: center;
+}

@@ -8,11 +8,11 @@ import PropTypes from "prop-types";
 /**
  * Internal deps
  */
-import General from "./General";
-import Skin from "./Skin";
-import Vehicle from "./Vehicle";
-import Gear from "./Gear";
-import Preview from "./Preview";
+import General from "../common/General";
+import Skin from "../common/Skin";
+import Vehicle from "../common/Vehicle";
+import Gear from "../common/Gear";
+import Preview from "../common/Preview";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
