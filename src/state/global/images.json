@@ -92,6 +92,14 @@
 				"level": "mia",
 				"image": "health_level_mia_dark.svg"
 			}
+		],
+		"list_neutral": [
+			{
+				"type": "health_level",
+				"version": "neutral",
+				"level": "not-selected",
+				"image": "health_level_not_selected.png"
+			}
 		]
 	}
 }

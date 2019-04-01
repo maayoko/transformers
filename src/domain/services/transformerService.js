@@ -9,7 +9,7 @@ import Skin from "../entities/Skin";
 const createDefaultTransformer = state => {
 	const paths = state.global.paths;
 	const images = state.global.images;
-	const statusImagePath = `${paths.common}/${images.common.list[0].image}`;
+	const statusImagePath = `${paths.common}/${images.common.list_neutral[0].image}`;
 	const gearImagePath = `${paths.gears}/${images.gears.list_neutral[0]}`;
 	const factionImagePath = `${paths.factions}/${images.factions.list_neutral[0]}`;
 	const vehicleImagePath = `${paths.vehicles}/${images.vehicles.list_neutral[0]}`;

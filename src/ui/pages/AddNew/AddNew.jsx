@@ -16,6 +16,7 @@ import Preview from "../common/Preview";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
+import { Row, Col } from "../../components/Grid";
 
 /**
  * Assets
