@@ -23,7 +23,16 @@ const Group = ({ className, style, children, align, vertical, fullWidth, wrap, .
 Group.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.shape({}),
-	align: PropTypes.oneOf(["center", "end", "start", "baseline", "stretch", "between", "around"]),
+	align: PropTypes.oneOf([
+		"center",
+		"end",
+		"start",
+		"baseline",
+		"stretch",
+		"between",
+		"around",
+		"evenly"
+	]),
 	vertical: PropTypes.bool,
 	fullWidth: PropTypes.bool,
 	wrap: PropTypes.bool

@@ -14,14 +14,14 @@ import Group from "../../../components/Group/Group";
 
 const Preview = ({ transformer, onCreate, styles }) => (
 	<div className={styles.root}>
-		<Group>
+		<Group align="evenly">
 			<Image
 				src={transformer.skin.image.standard}
 				title="Not selected transformer"
 				className={styles["preview-1"]}
 			/>
-			<Group vertical>
-				<div style={{ textAlign: "center" }}>
+			<Group vertical style={{ width: "15rem" }}>
+				<div style={{ marginLeft: "3rem" }}>
 					<Image
 						src={transformer.faction.image.gold}
 						title="Not selected logo"
@@ -48,7 +48,7 @@ const Preview = ({ transformer, onCreate, styles }) => (
 					<Typography color="white" opacity="low" size="body-big">
 						Status
 					</Typography>
-					<div style={{ textAlign: "center", marginTop: "1.2rem" }}>
+					<div style={{ marginLeft: "3rem", marginTop: "1.2rem" }}>
 						<Image
 							src={transformer.status.image.gold}
 							title="Health level"
@@ -58,8 +58,8 @@ const Preview = ({ transformer, onCreate, styles }) => (
 				</Group>
 			</Group>
 		</Group>
-		<Group align="between" style={{ marginTop: "4.2rem" }}>
-			<Group vertical>
+		<Group align="evenly" style={{ marginTop: "4.2rem" }}>
+			<Group vertical style={{ maxWidth: "15.5rem" }}>
 				<Typography color="white" opacity="low" size="body-big">
 					Vehicle
 				</Typography>
@@ -69,18 +69,20 @@ const Preview = ({ transformer, onCreate, styles }) => (
 					className={styles["preview-3"]}
 				/>
 			</Group>
-			<Group vertical>
+			<Group vertical style={{ maxWidth: "25rem", width: "100%" }}>
 				<Typography color="white" opacity="low" size="body-big">
 					Gear
 				</Typography>
-				{transformer.gear.map(gear => (
-					<Image
-						key={gear._id}
-						src={gear.image.standard}
-						title={gear.name}
-						className={styles["preview-3"]}
-					/>
-				))}
+				<Group style={{ overflowX: "scroll" }}>
+					{transformer.gear.map(gear => (
+						<Image
+							key={gear._id}
+							src={gear.image.standard}
+							title={gear.name}
+							className={styles["preview-3"]}
+						/>
+					))}
+				</Group>
 			</Group>
 		</Group>
 		<div onClick={onCreate} style={{ textAlign: "center", width: "100%", marginTop: "3rem" }}>
