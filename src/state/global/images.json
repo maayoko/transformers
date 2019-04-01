@@ -49,8 +49,8 @@
 		"list": [
 			{ "name": "autobots", "version": "gold", "image": "autobots-gold.svg" },
 			{ "name": "autobots", "version": "black", "image": "autobots-black.png" },
-			{ "name": "decepticons", "version": "gold", "image": "decepticons-black.png" },
-			{ "name": "decepticons", "version": "black", "image": "decepticons-black.png" }
+			{ "name": "decepticons", "version": "gold", "image": "decepticons-gold.svg" },
+			{ "name": "decepticons", "version": "black", "image": "decepticons-black.svg" }
 		],
 		"list_neutral": ["faction-not-selected.png"]
 	},
@@ -72,25 +72,25 @@
 				"type": "health_level",
 				"version": "gold",
 				"level": "injured",
-				"image": "health_level_gold.svg"
+				"image": "health_level_injured_gold.svg"
 			},
 			{
 				"type": "health_level",
 				"version": "black",
 				"level": "injured",
-				"image": "health_level.svg"
+				"image": "health_level_injured_dark.svg"
 			},
 			{
 				"type": "health_level",
 				"version": "gold",
 				"level": "mia",
-				"image": "health_level_gold.svg"
+				"image": "health_level_mia_gold.svg"
 			},
 			{
 				"type": "health_level",
 				"version": "black",
 				"level": "mia",
-				"image": "health_level.svg"
+				"image": "health_level_mia_dark.svg"
 			}
 		]
 	}
