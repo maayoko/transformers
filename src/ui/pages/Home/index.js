@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withTransformers } from "state/transformers";
 import { withCurrentTransformer } from "state/currentTransformer";
 import Home from "./Home";
@@ -10,6 +10,8 @@ export default withTransformers(
 		const selectActiveService = selectActive(transformers._idx);
 		const transformer =
 			transformers.find(t => t._id === selectActiveService.activeLinkIdx) || transformers[0];
+
+		useEffect(() => {});
 
 		return (
 			<Home

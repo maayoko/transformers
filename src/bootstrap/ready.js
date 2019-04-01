@@ -32,7 +32,6 @@ export const ready = () => {
 	const store = configureStore({}, [routerMiddleware(browserHistory)]);
 	const history = syncHistoryWithStore(browserHistory, store);
 	const currentTransformer = history.location.state && history.location.state.currentTransformer;
-	console.log(currentTransformer, history);
 
 	if (currentTransformer) {
 		store.dispatch(setCurrentTransformer(currentTransformer));
