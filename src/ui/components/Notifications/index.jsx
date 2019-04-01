@@ -8,7 +8,8 @@ export default withNotifications(({ notifications }) => {
 		toast(notifications.message, {
 			hideProgressBar: true,
 			bodyClassName: styles.body,
-			className: styles.toast
+			className: styles.toast,
+			autoClose: 1500
 		});
 	}
 	return null;

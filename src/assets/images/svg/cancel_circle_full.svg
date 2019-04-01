@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="cancel-circle" transform="translate(-8 -8)">
+    <g id="Group_4" data-name="Group 4" transform="translate(8 8)">
+      <path id="Path_4" data-name="Path 4" d="M24.243,14.757a1,1,0,0,1,.707,1.707L21.414,20l3.535,3.535a1,1,0,1,1-1.414,1.414L20,21.414,16.465,24.95a1,1,0,1,1-1.414-1.414L18.586,20,15.05,16.465a1,1,0,1,1,1.414-1.414L20,18.586l3.535-3.535a1,1,0,0,1,.707-.293ZM20,8A12,12,0,1,0,32,20,12.006,12.006,0,0,0,20,8Z" transform="translate(-8 -8)" fill="#f36"/>
+    </g>
+  </g>
+</svg>

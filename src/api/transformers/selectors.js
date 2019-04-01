@@ -95,7 +95,8 @@ const getTransformersData = (transformersData, state) => {
 					skin =>
 						skin.name.split(".")[0] === transformer.name.toLowerCase().replace(" ", "-")
 				),
-				helpers.replaceWithDash(transformer.name)
+				helpers.replaceWithDash(transformer.name),
+				transformer.id
 			)
 		);
 	});

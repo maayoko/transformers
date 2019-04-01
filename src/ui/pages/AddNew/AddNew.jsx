@@ -43,12 +43,10 @@ const AddNew = ({
 	setSkin,
 	setStatus,
 	setVehicle,
-	addTransformer,
 	createNewTransformer
 }) => {
 	const createTransformer = () => {
-		addTransformer(transformer);
-		createNewTransformer();
+		createNewTransformer(transformer);
 	};
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
@@ -129,7 +127,6 @@ AddNew.defaultProps = {
 	setGear: () => {},
 	unsetGear: () => {},
 	setStatus: () => {},
-	addTransformer: () => {},
 	createNewTransformer: () => {}
 };
 

@@ -8,7 +8,7 @@ import {
 	SET_SKIN,
 	SET_STATUS,
 	SET_VEHICLE,
-	CREATE_NEW_TRANSFORMER
+	CREATE_DEFAULT_TRANSFORMER
 } from "./actionTypes";
 
 const transformer = (state = new Transformer(), action) => {
@@ -41,7 +41,7 @@ const transformer = (state = new Transformer(), action) => {
 		case SET_VEHICLE:
 			return { ...state, vehicle: action.payload };
 
-		case CREATE_NEW_TRANSFORMER:
+		case CREATE_DEFAULT_TRANSFORMER:
 			return action.payload;
 
 		default:

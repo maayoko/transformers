@@ -3,6 +3,7 @@
  */
 import React from "react";
 import PropTypes from "prop-types";
+import { stringify } from "query-string";
 
 /**
  * Internal deps
@@ -73,7 +74,7 @@ const Home = ({
 								className={styles.button_link}
 								to={{
 									pathname: `/transformers/${transformer.link}/details`,
-									search: "?edit=false",
+									search: `?${stringify({ edit: false, delete: false })}`,
 									state: { currentTransformer: transformer }
 								}}>
 								Check me out

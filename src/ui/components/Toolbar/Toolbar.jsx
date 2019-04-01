@@ -12,12 +12,13 @@ import classNames from "classnames";
 import Typography from "../Typography/Typography";
 import styles from "./Toolbar.module.scss";
 
-const Toolbar = ({ style, links, activeLink }) => {
+const Toolbar = ({ style, links, activeLink, disabledLinks }) => {
 	return (
 		<div style={style} className={styles.root}>
 			{links.map((link, idx) => {
 				const classes = classNames(styles.link_wrapper, {
-					[styles.active_link]: activeLink && activeLink === link
+					[styles.active_link]: activeLink && activeLink === link,
+					[styles.disabled_link]: !!disabledLinks.find(dLink => dLink === link)
 				});
 				return (
 					<Link key={idx} to={link.to} className={classes}>
@@ -48,14 +49,17 @@ Toolbar.propTypes = {
 				"search_icon",
 				"home_icon",
 				"edit_icon",
-				"done_icon"
+				"done_icon",
+				"delete_icon"
 			])
 		})
 	),
-	activeLink: PropTypes.any
+	activeLink: PropTypes.any,
+	disabledLinks: PropTypes.array
 };
 Toolbar.defaultProps = {
-	style: {}
+	style: {},
+	disabledLinks: []
 };
 
 export default Toolbar;

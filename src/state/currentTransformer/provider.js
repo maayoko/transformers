@@ -15,7 +15,11 @@ const withCurrentTransformer = connect(
 		addGear: gear => dispatch(action.addGear(gear)),
 		removeGear: gear => dispatch(action.removeGear(gear)),
 		clearCurrentTransformer: () => dispatch(action.clearCurrentTransformer()),
-		setCurrentTransformer: transformer => dispatch(action.setCurrentTransformer(transformer))
+		setCurrentTransformer: transformer => dispatch(action.setCurrentTransformer(transformer)),
+		updateCurrentTransformer: transformer =>
+			dispatch(action.updateCurrentTransformer(transformer)),
+		deleteCurrentTransformer: transformer =>
+			dispatch(action.deleteCurrentTransformer(transformer))
 	})
 );
 

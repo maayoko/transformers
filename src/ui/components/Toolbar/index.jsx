@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { parse } from "query-string";
+import { parse, stringify } from "query-string";
 import Toolbar from "./Toolbar";
 
 /**
@@ -14,25 +14,37 @@ const baseLinks = [
 ];
 
 export default withRouter(({ location, match, ...other }) => {
-	console.log(match);
 	let links;
+	let disabledLinks = [];
 	const endPoint = location.pathname.split("/").slice(-1)[0];
 	switch (endPoint) {
 		case "details":
-			const { edit } = parse(location.search);
+			const { edit, delete: _delete } = parse(location.search);
 			const shouldEdit = JSON.parse(edit);
-			links = [
-				...baseLinks,
+			const isDeleted = JSON.parse(_delete);
+			const detailsLinks = [
 				{
 					to: {
 						pathname: location.pathname,
-						search: `?edit=${!shouldEdit}`,
+						search: `?${stringify({ edit: !shouldEdit, delete: false })}`,
 						state: location.state
 					},
 					label: shouldEdit ? "Done" : "Edit",
 					icon: shouldEdit ? "done_icon" : "edit_icon"
+				},
+				{
+					to: {
+						pathname: location.pathname,
+						search: `?${stringify({ edit: shouldEdit, delete: true })}`,
+						state: location.state
+					},
+					label: "Delete",
+					icon: "delete_icon"
 				}
 			];
+
+			isDeleted && disabledLinks.push(...detailsLinks);
+			links = [...baseLinks, ...detailsLinks];
 			break;
 		default:
 			links = [...baseLinks];
@@ -40,6 +52,7 @@ export default withRouter(({ location, match, ...other }) => {
 	return (
 		<Toolbar
 			activeLink={links.find(link => link.to === location.pathname)}
+			disabledLinks={disabledLinks}
 			links={links}
 			{...other}
 		/>

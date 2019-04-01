@@ -10,7 +10,8 @@ export default withTransformers(
 			location,
 			clearCurrentTransformer,
 			currentTransformer,
-			updateTransformer,
+			updateCurrentTransformer,
+			deleteCurrentTransformer,
 			updateName,
 			updateSkin,
 			updateFaction,
@@ -18,10 +19,12 @@ export default withTransformers(
 			addGear,
 			removeGear,
 			updateVehicle,
+			history,
 			...other
 		}) => {
-			const { edit } = parse(location.search);
+			const { edit, delete: _delete } = parse(location.search);
 			const shouldEdit = JSON.parse(edit);
+			const isDeletedEnabled = JSON.parse(_delete);
 			const transformer =
 				currentTransformer || (location.state && location.state.currentTransformer);
 
@@ -49,9 +52,15 @@ export default withTransformers(
 			};
 
 			useEffect(() => {
-				if (!shouldEdit) {
-					updateTransformer(transformer);
+				if (!shouldEdit && !isDeletedEnabled) {
+					updateCurrentTransformer(transformer);
 					resetStates();
+				}
+
+				if (isDeletedEnabled) {
+					/* eslint-disable no-restricted-globals */
+					const shouldDelete = confirm("Delete transformer?");
+					shouldDelete ? deleteCurrentTransformer(transformer) : history.goBack();
 				}
 				return () => {
 					// Clear current transformer only if we are not on details page

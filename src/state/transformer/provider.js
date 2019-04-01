@@ -14,7 +14,8 @@ const withTransformer = connect(
 		setStatus: status => dispatch(action.setStatus(status)),
 		setGear: gear => dispatch(action.setGear(gear)),
 		unsetGear: gear => dispatch(action.unsetGear(gear)),
-		createNewTransformer: () => dispatch(action.createNewTransformer())
+		createDefaultTransformer: () => dispatch(action.createDefaultTransformer()),
+		createNewTransformer: transformer => dispatch(action.createNewTransformer(transformer))
 	})
 );
 

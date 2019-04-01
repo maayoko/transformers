@@ -18,7 +18,7 @@ import Search from "ui/pages/Search";
 import Details from "ui/pages/Details";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
-import { createNewTransformer } from "state/transformer";
+import { createDefaultTransformer } from "state/transformer";
 import { setCurrentTransformer } from "state/currentTransformer";
 import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
@@ -41,7 +41,7 @@ export const ready = () => {
 	store.dispatch(createSkins());
 	store.dispatch(createGears());
 	store.dispatch(getTransformersData());
-	store.dispatch(createNewTransformer());
+	store.dispatch(createDefaultTransformer());
 
 	ReactDOM.render(
 		<Provider store={store}>

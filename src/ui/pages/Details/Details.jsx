@@ -121,7 +121,9 @@ const Details = ({
 					/>
 					{edit && createImage(() => skinService.toggleEditSkin(!skinService.editSkin))}
 					{edit && skinService.editSkin && (
-						<Overlay variant="fixed" closeButton>
+						<Overlay
+							variant="fixed"
+							closeButton={{ onClose: () => skinService.toggleEditSkin(false) }}>
 							<Skin
 								transformer={transformer}
 								updateSkin={skin => {
@@ -144,7 +146,11 @@ const Details = ({
 								generalService.toggleEditGeneral(!generalService.editGeneral)
 							)}
 						{edit && generalService.editGeneral && (
-							<Overlay variant="fixed" closeButton>
+							<Overlay
+								variant="fixed"
+								closeButton={{
+									onClose: () => generalService.toggleEditGeneral(false)
+								}}>
 								<div>
 									<General
 										transformer={transformer}
@@ -204,7 +210,11 @@ const Details = ({
 										)
 									)}
 								{edit && vehicleService.editVehicle && (
-									<Overlay variant="fixed" closeButton>
+									<Overlay
+										variant="fixed"
+										closeButton={{
+											onClose: () => vehicleService.toggleEditVehicle(false)
+										}}>
 										<Vehicle
 											transformer={transformer}
 											updateVehicle={vehicle => {

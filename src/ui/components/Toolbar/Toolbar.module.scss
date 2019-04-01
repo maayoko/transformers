@@ -1,5 +1,31 @@
 @import "../../../styles/variables.scss";
 
+@mixin icons() {
+	.home_icon {
+		background-image: url("../../../assets/images/svg/home_gold.svg");
+	}
+
+	.add_icon {
+		background-image: url("../../../assets/images/svg/add_icon.svg");
+	}
+
+	.search_icon {
+		background-image: url("../../../assets/images/svg/search_icon.svg");
+	}
+
+	.edit_icon {
+		background-image: url("../../../assets/images/svg/new_gold.svg");
+	}
+
+	.done_icon {
+		background-image: url("../../../assets/images/svg/check_circle_gold.svg");
+	}
+
+	.delete_icon {
+		background-image: url("../../../assets/images/svg/cancel_circle.svg");
+	}
+}
+
 .root {
 	display: flex;
 	justify-content: center;
@@ -12,32 +38,15 @@
 .search_icon,
 .home_icon,
 .edit_icon,
-.done_icon {
+.done_icon,
+.delete_icon {
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 6rem;
 	height: 6rem;
 }
 
-.home_icon {
-	background-image: url("../../../assets/images/svg/home_gold.svg");
-}
-
-.add_icon {
-	background-image: url("../../../assets/images/svg/add_icon.svg");
-}
-
-.search_icon {
-	background-image: url("../../../assets/images/svg/search_icon.svg");
-}
-
-.edit_icon {
-	background-image: url("../../../assets/images/svg/new_gold.svg");
-}
-
-.done_icon {
-	background-image: url("../../../assets/images/svg/check_circle_gold.svg");
-}
+@include icons;
 
 .link_wrapper {
 	display: flex;
@@ -76,6 +85,24 @@
 
 		& > .done_icon {
 			background-image: url("../../../assets/images/svg/check_circle_dark.svg");
+		}
+
+		& > .delete_icon {
+			background-image: url("../../../assets/images/svg/cancel_circle_full.svg");
+		}
+	}
+
+	&.disabled_link {
+		cursor: not-allowed;
+		opacity: 0.3;
+
+		&:hover {
+			@include icons;
+			background-color: initial;
+
+			& > * {
+				color: $white;
+			}
 		}
 	}
 

@@ -3,6 +3,7 @@
  */
 import React from "react";
 import { Link } from "react-router-dom";
+import { stringify } from "query-string";
 
 /**
  * Internal deps
@@ -66,7 +67,7 @@ const Search = ({
 							key={transformer._id}
 							to={{
 								pathname: `${linkBasePath}/${transformer.link}/details`,
-								search: "?edit=false",
+								search: `?${stringify({ edit: false, delete: false })}`,
 								state: { currentTransformer: transformer }
 							}}>
 							<RobotPreview
