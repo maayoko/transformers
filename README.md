@@ -22,10 +22,17 @@ You can run this application locally by following this steps
 
 1. Clone this repository into your local drive
 2. Navigate to the cloned folder
+3. ```bash
+   git checkout develop
+   ```
+    Optionally you can clone directly develop branch
+    ```bash
+        git clone -b develop --single-branch https://github.com/maayoko/transformers.git
+    ```
 
 ### Development environment
 
-Now, f you'd like to run this app in development environment issue the following command in your terminal
+Now, if you'd like to run this app in development environment issue the following command in your terminal
 
 ```bash
     yarn install && yarn start
