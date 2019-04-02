@@ -1,7 +1,10 @@
+@import "../../../styles/mediaQuery.scss";
+
 .root {
 	background-repeat: no-repeat;
 	width: 100%;
 	display: inline-block;
+	padding-bottom: 13.4rem;
 
 	&.shape {
 		min-height: calc(100vh - 8.5rem);
@@ -14,6 +17,13 @@
 		width: 100rem;
 		position: relative;
 		top: -8rem;
+
+		@include respond(tab-port) {
+			background-image: none !important;
+			width: initial;
+			top: 0;
+			width: 100%;
+		}
 	}
 
 	&.icon {

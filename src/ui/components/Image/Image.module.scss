@@ -1,3 +1,5 @@
+@import "../../../styles/mediaQuery.scss";
+
 .root {
 	object-fit: contain;
 
@@ -6,6 +8,11 @@
 		bottom: -10rem;
 		left: 20rem;
 		height: 43rem;
+
+		@include respond(tab-port) {
+			position: initial;
+			margin-top: 5rem;
+		}
 	}
 
 	&.preview-2 {

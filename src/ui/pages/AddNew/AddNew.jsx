@@ -16,7 +16,7 @@ import Preview from "../common/Preview";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage";
 import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
-import { Row, Col, Grid } from "../../components/Grid";
+import { Row, Col } from "../../components/Grid";
 
 /**
  * Assets
@@ -51,62 +51,56 @@ const AddNew = ({
 	};
 	return (
 		<BackgroundImage type="shape" src={BackgroundShape}>
-			<Grid fluid>
-				<Row>
-					<Col md={2}>
-						<SidebarLinks links={links} />
-					</Col>
-					<Col style={{ padding: "0 5rem" }} md={5}>
-						<Switch>
-							<Route
-								exact
-								path="/transformers/add/general"
-								render={() => (
-									<General
-										transformer={transformer}
-										updateName={setName}
-										updateStatus={setStatus}
-										updateFaction={setFaction}
-									/>
-								)}
-							/>
-							<Route
-								exact
-								path="/transformers/add/skin"
-								render={() => (
-									<Skin transformer={transformer} updateSkin={setSkin} />
-								)}
-							/>
-							<Route
-								exact
-								path="/transformers/add/vehicle"
-								render={() => (
-									<Vehicle transformer={transformer} updateVehicle={setVehicle} />
-								)}
-							/>
-							<Route
-								exact
-								path="/transformers/add/gear"
-								render={() => (
-									<Gear
-										transformer={transformer}
-										addGear={setGear}
-										removeGear={unsetGear}
-									/>
-								)}
-							/>
-							<Route
-								exact
-								path="/transformers/add"
-								render={() => <Redirect to="/transformers/add/general" />}
-							/>
-						</Switch>
-					</Col>
-					<Col md={5} style={{ paddingRight: "4.8rem" }}>
-						<Preview transformer={transformer} onCreate={createTransformer} />
-					</Col>
-				</Row>
-			</Grid>
+			<Group align="between">
+				<SidebarLinks links={links} />
+				<div style={{ padding: "0 5rem" }}>
+					<Switch>
+						<Route
+							exact
+							path="/transformers/add/general"
+							render={() => (
+								<General
+									transformer={transformer}
+									updateName={setName}
+									updateStatus={setStatus}
+									updateFaction={setFaction}
+								/>
+							)}
+						/>
+						<Route
+							exact
+							path="/transformers/add/skin"
+							render={() => <Skin transformer={transformer} updateSkin={setSkin} />}
+						/>
+						<Route
+							exact
+							path="/transformers/add/vehicle"
+							render={() => (
+								<Vehicle transformer={transformer} updateVehicle={setVehicle} />
+							)}
+						/>
+						<Route
+							exact
+							path="/transformers/add/gear"
+							render={() => (
+								<Gear
+									transformer={transformer}
+									addGear={setGear}
+									removeGear={unsetGear}
+								/>
+							)}
+						/>
+						<Route
+							exact
+							path="/transformers/add"
+							render={() => <Redirect to="/transformers/add/general" />}
+						/>
+					</Switch>
+				</div>
+				<div style={{ paddingRight: "4.8rem" }}>
+					<Preview transformer={transformer} onCreate={createTransformer} />
+				</div>
+			</Group>
 		</BackgroundImage>
 	);
 };

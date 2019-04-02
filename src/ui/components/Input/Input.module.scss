@@ -1,5 +1,6 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/typography.scss";
+@import "../../../styles/mediaQuery.scss";
 
 .root {
 	border: 1px solid transparent;
@@ -39,6 +40,18 @@
 
 		&::placeholder {
 			@include typography-input;
+		}
+
+		@include respond(tab-land) {
+			min-width: 80rem;
+		}
+
+		@include respond(tab-port) {
+			min-width: 50rem;
+		}
+
+		@include respond(phone) {
+			min-width: 30rem;
 		}
 	}
 

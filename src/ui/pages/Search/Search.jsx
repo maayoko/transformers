@@ -55,7 +55,7 @@ const Search = ({
 					Clear
 				</Button>
 			</Group>
-			<Group align="between" fullWidth wrap className={styles.transformers_list}>
+			<Group fullWidth wrap className={styles.transformers_list}>
 				{transformers
 					.filter(filterService.filterTransformersBySearchTerm)
 					.filter(filterService.filterTransformersByFaction)

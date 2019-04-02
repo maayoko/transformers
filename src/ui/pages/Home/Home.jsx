@@ -67,18 +67,6 @@ const Home = ({
 								title={transformer.name}
 								src={transformer.skin.image.standard}
 							/>
-							<ButtonLink
-								onClick={() => {
-									setCurrentTransformer(transformer);
-								}}
-								className={styles.button_link}
-								to={{
-									pathname: `/transformers/${transformer.link}/details`,
-									search: `?${stringify({ edit: false, delete: false })}`,
-									state: { currentTransformer: transformer }
-								}}>
-								Check me out
-							</ButtonLink>
 							<div className={styles.info_wrapper}>
 								<Group align="center" style={{ width: "10rem", height: "6.5rem" }}>
 									<Image
@@ -147,6 +135,18 @@ const Home = ({
 									</Group>
 								</Group>
 							</div>
+							<ButtonLink
+								onClick={() => {
+									setCurrentTransformer(transformer);
+								}}
+								className={styles.button_link}
+								to={{
+									pathname: `/transformers/${transformer.link}/details`,
+									search: `?${stringify({ edit: false, delete: false })}`,
+									state: { currentTransformer: transformer }
+								}}>
+								Check me out
+							</ButtonLink>
 						</>
 					) : (
 						"Loading"

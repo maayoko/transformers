@@ -1,11 +1,21 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/mediaQuery.scss";
 
 .root {
 	margin-top: 3rem;
+	padding-bottom: 13.4rem;
 
 	& > div {
-		max-width: 111rem;
+		max-width: 116rem;
 		width: 100%;
+
+		@include respond(tab-land) {
+			width: 88rem;
+		}
+
+		@include respond(tab-port) {
+			width: 88rem;
+		}
 	}
 
 	& .radio_buttons {
@@ -18,35 +28,18 @@
 	}
 
 	& .transformers_list {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-		flex-wrap: wrap;
-
 		& > a {
 			margin-top: 5.5rem;
-			max-width: 25rem;
+			width: 29rem;
 			text-decoration: none;
 			position: relative;
 			z-index: 1;
-
-			&:after {
-				position: absolute;
-				content: "";
-				opacity: 0;
-				box-shadow: 2px 4px 8px 4px darken($background, 5);
-				top: -2rem;
-				bottom: -2rem;
-				right: -2rem;
-				left: -2rem;
-				z-index: 10;
-				transition: opacity 0.3s;
-			}
+			transition: box-shadow 0.3s;
+			padding: 2rem;
 
 			&:hover {
-				&:after {
-					opacity: 1;
-				}
+				opacity: 1;
+				box-shadow: 2px 4px 8px 4px darken($background, 5);
 			}
 		}
 	}

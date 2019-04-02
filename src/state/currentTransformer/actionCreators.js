@@ -1,6 +1,6 @@
 import * as transformersApi from "api/transformers";
 import { updateTransformer, removeTransformer } from "../transformers";
-import { push } from "react-router-redux";
+import { replace } from "react-router-redux";
 import {
 	UPDATE_CURRENT_TRANSFORMER_FACTION,
 	UPDATE_CURRENT_TRANSFORMER_NAME,
@@ -90,7 +90,7 @@ const deleteCurrentTransformer = transformer => async dispatch => {
 			payload: "Current transformer succesfully deleted."
 		});
 		dispatch(removeTransformer(transformer));
-		setTimeout(() => dispatch(push("/")), 1000);
+		setTimeout(() => dispatch(replace("/")), 1000);
 	} catch (e) {
 		dispatch({
 			type: DELETE_CURRENT_TRANSFORMER_FAILURE,
