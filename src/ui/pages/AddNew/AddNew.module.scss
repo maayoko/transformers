@@ -1,0 +1,30 @@
+@import "../../../styles/mediaQuery.scss";
+
+.root {
+	& .menu_with_options {
+		flex-basis: 60%;
+
+		// :first-child {
+		// 	flex-basis: 35%;
+		// }
+
+		& > :last-child {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+
+		@include respond(tab-land) {
+			flex-basis: 100%;
+		}
+	}
+
+	& .preview {
+		padding-right: 4.8rem;
+		flex-basis: 40%;
+
+		@include respond(tab-land) {
+			padding-right: 2rem;
+		}
+	}
+}

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { shuffle, sampleSize } from "lodash";
 import { withTransformers } from "state/transformers";
 import { withCurrentTransformer } from "state/currentTransformer";
 import Home from "./Home";
@@ -9,7 +8,7 @@ import { selectActive } from "../../utilities/selectActive";
 export default withTransformers(
 	withCurrentTransformer(({ transformers, setCurrentTransformer }) => {
 		const selectActiveService = selectActive(transformers._idx);
-		const _transformers = sampleSize(shuffle(transformers), 3);
+		const _transformers = transformers.slice(0, 3);
 		const transformer =
 			_transformers.find(t => t._id === selectActiveService.activeLinkIdx) ||
 			_transformers[0];

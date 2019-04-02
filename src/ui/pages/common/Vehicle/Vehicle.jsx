@@ -25,7 +25,7 @@ const Vehicle = ({
 	isVehicleTypeDisabled,
 	isSelectionDisabled
 }) => (
-	<div style={{ maxWidth: "51rem" }}>
+	<div style={{ width: "51rem" }}>
 		<Group align="between">
 			<FormGroup>
 				<Label htmlFor="vehicle_group">Vehicle Group</Label>

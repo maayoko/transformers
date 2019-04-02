@@ -7,10 +7,10 @@
 	&.fixed {
 		z-index: 99999;
 		position: fixed;
-		top: 8rem;
-		left: 4rem;
-		bottom: 1rem;
-		right: 4rem;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
 
 		& > div {
 			overflow-y: scroll;

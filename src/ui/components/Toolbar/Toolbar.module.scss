@@ -1,4 +1,5 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/mediaQuery.scss";
 
 @mixin icons() {
 	.home_icon {
@@ -32,6 +33,9 @@
 	background: linear-gradient(to top, rgba(36, 35, 46, 0.4), rgba(36, 36, 46, 0));
 	position: relative;
 	z-index: 999;
+	position: fixed;
+	width: 100vw;
+	bottom: 0;
 }
 
 .add_icon,
@@ -44,6 +48,11 @@
 	background-size: contain;
 	width: 4.4rem;
 	height: 4.4rem;
+
+	@include respond(phone) {
+		width: 3.4rem;
+		height: 3.4rem;
+	}
 }
 
 @include icons;
@@ -108,5 +117,9 @@
 
 	& > :last-child {
 		margin-top: 2.4rem;
+
+		@include respond(phone) {
+			margin-top: 1.4rem;
+		}
 	}
 }

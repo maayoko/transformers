@@ -151,7 +151,7 @@ const Details = ({
 								closeButton={{
 									onClose: () => generalService.toggleEditGeneral(false)
 								}}>
-								<div>
+								<div style={{ width: "40rem" }}>
 									<General
 										transformer={transformer}
 										updateName={generalService.updateName}

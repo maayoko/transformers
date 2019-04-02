@@ -24,7 +24,6 @@
 	}
 
 	&.normal {
-		min-width: 49.5rem;
 		height: 4rem;
 		@include typography-body1;
 
@@ -51,7 +50,7 @@
 		}
 
 		@include respond(phone) {
-			min-width: 30rem;
+			min-width: 100%;
 		}
 	}
 
