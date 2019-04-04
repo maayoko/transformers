@@ -17,6 +17,7 @@ import AddNew from "ui/pages/AddNew";
 import Search from "ui/pages/Search";
 import Details from "ui/pages/Details";
 import Login from "ui/pages/Login";
+import { Provider as AuthProvider } from "ui/components/Auth";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createDefaultTransformer } from "state/transformer";
@@ -25,7 +26,7 @@ import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
 
-export const ready = () => {
+export const ready = app => {
 	/**
 	 * Variables
 	 */
@@ -44,23 +45,25 @@ export const ready = () => {
 	store.dispatch(createDefaultTransformer());
 
 	ReactDOM.render(
-		<Provider store={store}>
-			<Router history={history}>
-				<App>
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/transformers/search" component={Search} />
-						<Route
-							exact
-							path="/transformers/:transformer/details"
-							component={Details}
-						/>
-						<Route exact path="/login" component={Login} />
-						<Route path="/transformers/add" component={AddNew} />
-					</Switch>
-				</App>
-			</Router>
-		</Provider>,
+		<AuthProvider auth={{ enable: () => {}, disable: () => {} }}>
+			<Provider store={store}>
+				<Router history={history}>
+					<App>
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/transformers/search" component={Search} />
+							<Route
+								exact
+								path="/transformers/:transformer/details"
+								component={Details}
+							/>
+							<Route exact path="/login" component={Login} />
+							<Route path="/transformers/add" component={AddNew} />
+						</Switch>
+					</App>
+				</Router>
+			</Provider>
+		</AuthProvider>,
 		document.getElementById("root")
 	);
 

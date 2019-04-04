@@ -1,10 +1,10 @@
 class Application {
-	ready(app) {
-		this.app = app;
+	ready(render) {
+		this.render = render;
 		return this;
 	}
 	start() {
-		this.app();
+		this.render(this);
 	}
 }
 

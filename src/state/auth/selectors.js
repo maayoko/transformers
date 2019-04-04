@@ -1,3 +1,3 @@
-const getCurrentTransformer = state => state.currentTransformer;
+const getAuth = state => state.auth;
 
-export { getCurrentTransformer };
+export { getAuth };

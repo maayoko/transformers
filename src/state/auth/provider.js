@@ -4,7 +4,7 @@ import { getCurrentTransformer } from "./selectors";
 
 const withCurrentTransformer = connect(
 	state => ({
-		currentTransformer: getCurrentTransformer(state)
+		auth: getCurrentTransformer(state)
 	}),
 	dispatch => ({
 		updateName: name => dispatch(action.updateName(name)),
