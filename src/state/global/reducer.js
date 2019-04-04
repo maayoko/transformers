@@ -1,9 +1,11 @@
-import paths from "./paths.json";
-import images from "./images.json";
+import paths from "./config/paths.json";
+import images from "./config/images.json";
+import credentials from "./config/credentials.json";
 
 const initialState = {
 	paths,
-	images
+	images,
+	credentials
 };
 
 const globalReducer = (state = initialState, action) => {

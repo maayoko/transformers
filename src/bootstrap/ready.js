@@ -16,6 +16,7 @@ import Home from "ui/pages/Home";
 import AddNew from "ui/pages/AddNew";
 import Search from "ui/pages/Search";
 import Details from "ui/pages/Details";
+import Login from "ui/pages/Login";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createDefaultTransformer } from "state/transformer";
@@ -54,6 +55,7 @@ export const ready = () => {
 							path="/transformers/:transformer/details"
 							component={Details}
 						/>
+						<Route exact path="/login" component={Login} />
 						<Route path="/transformers/add" component={AddNew} />
 					</Switch>
 				</App>
