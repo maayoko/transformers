@@ -9,7 +9,10 @@ export default withNotifications(({ notifications }) => {
 			hideProgressBar: true,
 			bodyClassName: styles.body,
 			className: styles.toast,
-			autoClose: 1500
+			autoClose: 1500,
+			onClose: () => {
+				notifications.onClose && notifications.onClose();
+			}
 		});
 	}
 	return null;
