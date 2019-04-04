@@ -1,10 +1,8 @@
 import { connect } from "react-redux";
-import { getVehicles, getVehicleGroup, getVehicleTypes } from "./selectors";
+import { getUser } from "./selectors";
 
-const withVehicles = connect(state => ({
-	vehicles: getVehicles(state),
-	vehicleTypes: getVehicleTypes(state),
-	vehicleGroups: getVehicleGroup(state)
+const withUser = connect(state => ({
+	user: getUser(state)
 }));
 
-export { withVehicles };
+export { withUser };

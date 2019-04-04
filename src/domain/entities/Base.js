@@ -1,9 +1,8 @@
 import { v4 } from "uuid";
 
 class Base {
-	constructor(image) {
+	constructor() {
 		this._id = v4();
-		this.image = image;
 	}
 }
 

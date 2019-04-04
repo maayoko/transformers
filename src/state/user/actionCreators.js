@@ -1,11 +1,12 @@
-import { ADD_VEHICLE, ADD_VEHICLES } from "./actionTypes";
+import { CREATE_USER, DELETE_USER } from "./actionTypes";
+import * as userService from "domain/services/userService";
 
-const addVehicle = vehicle => {
-	return { type: ADD_VEHICLE, payload: vehicle };
+const createUser = user => {
+	return { type: CREATE_USER, payload: userService.createUser(user) };
 };
 
-const addVehicles = vehicles => {
-	return { type: ADD_VEHICLES, payload: vehicles };
+const deleteUser = () => {
+	return { type: DELETE_USER };
 };
 
-export { addVehicle, addVehicles };
+export { createUser, deleteUser };

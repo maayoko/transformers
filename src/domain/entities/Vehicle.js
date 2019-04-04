@@ -1,6 +1,6 @@
-import Base from "./Base";
+import BaseImage from "./BaseImage";
 
-class Vehicle extends Base {
+class Vehicle extends BaseImage {
 	constructor(group, type, model, image) {
 		super(image);
 		this.group = group;

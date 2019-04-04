@@ -25,6 +25,7 @@ import { setCurrentTransformer } from "state/currentTransformer";
 import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
+import GoogleAuth from "../core/common/auth/google";
 
 export const ready = app => {
 	/**
@@ -32,8 +33,12 @@ export const ready = app => {
 	 */
 	const browserHistory = createBrowserHistory();
 	const store = configureStore({}, [routerMiddleware(browserHistory)]);
+	const storeState = store.getState();
 	const history = syncHistoryWithStore(browserHistory, store);
 	const currentTransformer = history.location.state && history.location.state.currentTransformer;
+	const googleAuth = GoogleAuth.getInstance({
+		clientId: storeState.global.credentials.CLIENT_ID
+	});
 
 	if (currentTransformer) {
 		store.dispatch(setCurrentTransformer(currentTransformer));
@@ -45,7 +50,7 @@ export const ready = app => {
 	store.dispatch(createDefaultTransformer());
 
 	ReactDOM.render(
-		<AuthProvider auth={{ enable: () => {}, disable: () => {} }}>
+		<AuthProvider auth={googleAuth}>
 			<Provider store={store}>
 				<Router history={history}>
 					<App>

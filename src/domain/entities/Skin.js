@@ -1,6 +1,6 @@
-import Base from "./Base";
+import BaseImage from "./BaseImage";
 
-class Skin extends Base {
+class Skin extends BaseImage {
 	constructor(name, image) {
 		super(image);
 		this.name = name;

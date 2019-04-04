@@ -1,12 +1,26 @@
-import { createGApiElement, appendGapiElement } from "./dom";
+import { render } from "./dom";
+
+const transformers = {
+	google: {
+		instance: null
+	}
+};
+window.transformers = transformers;
+
+const getInstance = options => {
+	let instance = window.transformers.google.instance;
+	if (instance == null) {
+		instance = window.transformers.google.instance = Google.getInstance(options);
+	}
+	return instance;
+};
 
 class Google {
-	static instance = null;
-
 	static getInstance = options => {
-		const instance = Google.instance;
+		let instance = transformers.google.instance;
+
 		if (instance === null) {
-			new Google(options);
+			transformers.google.instance = instance = new Google(options);
 		}
 
 		return instance;
@@ -23,8 +37,14 @@ class Google {
 		redirectUri,
 		scope = "profile email",
 		accessType = "online",
-		clientId
+		clientId,
+		prompt = "",
+		responseType
 	}) {
+		if (clientId == null) {
+			throw new Error("`CLIENT_ID` has to be provided.");
+		}
+
 		this._googleOptions = {
 			client_id: clientId,
 			cookie_policy: cookiePolicy,
@@ -37,41 +57,54 @@ class Google {
 			scope: scope,
 			access_type: accessType
 		};
-		this._elemId = "google-auth";
 		this._apiUrl = apiUrl;
+		this._prompt = prompt;
+		this._responseType = responseType;
 	}
 
-	_insertGApiIntoDOM = (id, cb) => {
-		if (d.getElementById(this.elemId)) {
-			return;
-		}
-
-		let { js, fjs } = createGApiElement(id, this._apiUrl);
-		appendGapiElement(js, fjs);
-		js.onload = cb;
-	};
-
-	_onScriptLoad = () => {
+	_onScriptLoad = gapi => {
+		this._gapi = gapi;
 		const params = this._googleOptions;
 
-		if (this.options.responseType === "code") {
+		if (this._responseType === "code") {
 			params.access_type = "offline";
 		}
 
-		window.gapi.load("auth2", () => {
-			if (!window.gapi.auth2.getAuthInstance()) {
-				window.gapi.auth2
+		this._gapi.load("auth2", () => {
+			if (!this._gapi.auth2.getAuthInstance()) {
+				this._gapi.auth2
 					.init(params)
 					.then(() => (this.ready = true), err => (this.ready = false));
 			}
 		});
 	};
 
+	_getAuthInstance = () => {
+		return this._gapi.auth2.getAuthInstance();
+	};
+
 	enable = () => {
-		this._insertGApiIntoDOM(this.elem, this._onScriptLoad);
+		const { _apiUrl } = this;
+		render(_apiUrl, this._onScriptLoad);
 	};
 
 	disable = () => {};
+
+	login = () => {
+		if (this.ready) {
+			const auth2 = this._getAuthInstance();
+			const options = { prompt: this._prompt };
+
+			if (this._responseType === "code") {
+				return auth2.grantOfflineAccess(options);
+			} else {
+				return auth2.signIn(options);
+			}
+		}
+
+		return Promise.reject("Google auth not ready yet.");
+	};
 }
 
+export { getInstance };
 export default Google;

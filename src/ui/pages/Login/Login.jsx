@@ -2,22 +2,15 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import PropTypes from "prop-types";
 
-const Login = ({ clientId, onSuccess, onFailure }) => {
+const Login = ({ login }) => {
 	return (
-		<GoogleLogin
-			onFailure={onFailure}
-			onSuccess={onSuccess}
-			clientId={clientId}
-			isSignedIn={true}
-		/>
+		<div style={{ color: "white" }} onClick={login}>
+			Log me in
+		</div>
 	);
 };
 
-Login.propTypes = {
-	clientId: PropTypes.string.isRequired,
-	onSuccess: PropTypes.func.isRequired,
-	onFailure: PropTypes.func.isRequired
-};
+Login.propTypes = {};
 
 Login.defaultProps = {};
 

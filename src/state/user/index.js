@@ -1,5 +1,5 @@
 export * from "./actionCreators";
 export * from "./actionTypes";
-export { vehicles as vehiclesReducer } from "./reducer";
+export { user as userReducer } from "./reducer";
 export * from "./selectors";
 export * from "./provider";

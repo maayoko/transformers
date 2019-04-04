@@ -1,16 +1,16 @@
-import { ADD_VEHICLE, ADD_VEHICLES } from "./actionTypes";
+import { CREATE_USER, DELETE_USER } from "./actionTypes";
 
-const vehicles = (state = [], action) => {
+const user = (state = null, action) => {
 	switch (action.type) {
-		case ADD_VEHICLE:
-			return [...state, action.payload];
+		case CREATE_USER:
+			return action.payload;
 
-		case ADD_VEHICLES:
-			return [...state, ...action.payload];
+		case DELETE_USER:
+			return null;
 
 		default:
 			return state;
 	}
 };
 
-export { vehicles };
+export { user };
