@@ -17,7 +17,9 @@ import AddNew from "ui/pages/AddNew";
 import Search from "ui/pages/Search";
 import Details from "ui/pages/Details";
 import Login from "ui/pages/Login";
+import User from "ui/pages/User";
 import { Provider as AuthProvider } from "ui/components/Auth";
+import PrivateRoute from "ui/components/PrivateRoute";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
 import { createDefaultTransformer } from "state/transformer";
@@ -64,6 +66,7 @@ export const ready = app => {
 							/>
 							<Route exact path="/login" component={Login} />
 							<Route path="/transformers/add" component={AddNew} />
+							<PrivateRoute path="/users/:user" component={User} />
 						</Switch>
 					</App>
 				</Router>
