@@ -1,7 +1,7 @@
 import * as authApi from "api/auth";
 import { getGoogleUserDetails, getGoogleAuthDetails } from "api/auth/selectors";
 import * as authService from "domain/services/authService";
-import { createUser } from "../user";
+import { createUser, getUserLink } from "../user";
 import { getCredentials } from "../global";
 import { push } from "react-router-redux";
 import {
@@ -25,7 +25,7 @@ const googleLogin = () => async (dispatch, getState) => {
 			type: GOOGLE_LOGIN,
 			payload: authService.createAuth(getState(), getGoogleAuthDetails(response))
 		});
-		dispatch(push("/calendar"));
+		dispatch(push(`/users/${getUserLink(getState())}`));
 	} catch (e) {
 		dispatch({ type: GOOGLE_LOGIN_FAILURE, payload: "Login faild. Please try again." });
 	}
@@ -34,7 +34,7 @@ const googleLogin = () => async (dispatch, getState) => {
 const googleLogout = () => async (dispatch, getState) => {
 	dispatch({ type: GOOGLE_LOGOUT_PENDING, payload: "Logging out. Please wait." });
 	try {
-		const response = await authApi.googleLogout(getCredentials(getState()));
+		await authApi.googleLogout(getCredentials(getState()));
 		dispatch({ type: GOOGLE_LOGOUT_SUCCESS, payload: "You've succesfully logged out." });
 		dispatch({ type: GOOGLE_LOGOUT, payload: null });
 		dispatch(push("/login"));

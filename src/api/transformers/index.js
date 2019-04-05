@@ -1,6 +1,6 @@
 import { transformers } from "../config.json";
 import http from "../../core/common/http";
-import { notFound } from "../../core/common/http/interceptors/response";
+// import { notFound } from "../../core/common/http/interceptors/response";
 
 const getAll = () => {
 	return http.get(`${transformers.API_URL}/${transformers.tables.db}`);

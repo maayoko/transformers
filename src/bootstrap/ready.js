@@ -39,7 +39,9 @@ export const ready = app => {
 	const history = syncHistoryWithStore(browserHistory, store);
 	const currentTransformer = history.location.state && history.location.state.currentTransformer;
 	const googleAuth = GoogleAuth.getInstance({
-		clientId: storeState.global.credentials.CLIENT_ID
+		clientId: storeState.global.credentials.CLIENT_ID,
+		discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+		scope: "profile email https://www.googleapis.com/auth/calendar"
 	});
 
 	if (currentTransformer) {

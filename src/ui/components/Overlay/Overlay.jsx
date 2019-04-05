@@ -25,7 +25,7 @@ const Overlay = ({ variant, children, closeButton, ...other }) => {
 };
 
 Overlay.propTypes = {
-	variant: PropTypes.oneOfType(["fixed"]),
+	variant: PropTypes.oneOf(["fixed"]),
 	closeButton: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.shape({

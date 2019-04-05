@@ -70,7 +70,7 @@ class Google {
 			params.access_type = "offline";
 		}
 
-		this._gapi.load("auth2", () => {
+		this._gapi.load("client:auth2", () => {
 			if (!this._gapi.auth2.getAuthInstance()) {
 				this._gapi.auth2
 					.init(params)
@@ -108,3 +108,13 @@ class Google {
 
 export { getInstance };
 export default Google;
+
+/*
+curl \
+  'https://www.googleapis.com/calendar/v3/users/me/calendarList' \
+  --header 'Authorization: Bearer ya29.GlviBg2lyW3DLRFejgvYmbteEvv4RjHGApyLbi0uQT7loZ-DcqhVlrLpkDSQ_6wvgh5ARNLTVDHlDj5G7zyvL7NKf_wZ2QKYrWaxMUSa2y7euVXZw6Ex21fpQ_HO' \
+  --header 'Accept: application/json' \
+  --compressed
+
+  https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Foauth2.example.com%2Fcallback&response_type=token&client_id=616541988612-pl2rsjntpop90jsgb88afe1ltdn09dgr.apps.googleusercontent.com
+  */

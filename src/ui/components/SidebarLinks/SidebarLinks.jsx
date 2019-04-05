@@ -30,15 +30,17 @@ const SidebarLinks = ({ links, initialActiveIdx }) => {
 };
 
 SidebarLinks.propTypes = {
-	links: PropTypes.arrayOf({
-		to: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
-		label: PropTypes.oneOfType([
-			PropTypes.string,
-			PropTypes.number,
-			PropTypes.func,
-			PropTypes.node
-		])
-	}).isRequired,
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			to: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
+			label: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number,
+				PropTypes.func,
+				PropTypes.node
+			])
+		})
+	).isRequired,
 	initialActiveIdx: PropTypes.number
 };
 SidebarLinks.defaultProps = {

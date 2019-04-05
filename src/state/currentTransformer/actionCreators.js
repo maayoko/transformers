@@ -61,7 +61,8 @@ const updateCurrentTransformer = transformer => async dispatch => {
 		payload: "Updating current transformer."
 	});
 	try {
-		const response = await transformersApi.updateCurrentTransformer(transformer);
+		await transformersApi.updateCurrentTransformer(transformer);
+		// const response = await transformersApi.updateCurrentTransformer(transformer);
 		// const _transformer = await response.json();
 		const _transformer = transformer;
 		dispatch({
