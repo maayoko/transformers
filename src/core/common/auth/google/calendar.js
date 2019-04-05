@@ -1,8 +1,9 @@
-import { loadScript } from "./dom";
+import { render } from "./dom";
 
 const transformers = {
 	google: {
-		instance: null
+		instance: null,
+		calendar: null
 	}
 };
 window.transformers = transformers;
@@ -10,17 +11,17 @@ window.transformers = transformers;
 const getInstance = options => {
 	let instance = window.transformers.google.instance;
 	if (instance == null) {
-		instance = window.transformers.google.instance = Google.getInstance(options);
+		instance = window.transformers.google.instance = GoogleCalendar.getInstance(options);
 	}
 	return instance;
 };
 
-class Google {
+class GoogleCalendar {
 	static getInstance = options => {
 		let instance = transformers.google.instance;
 
 		if (instance === null) {
-			transformers.google.instance = instance = new Google(options);
+			transformers.google.instance = instance = new GoogleCalendar(options);
 		}
 
 		return instance;
@@ -78,36 +79,34 @@ class Google {
 
 		gapi.load("client:auth2", () => {
 			if (!gapi.auth2.getAuthInstance()) {
-				// gapi.auth2
-				// 	.init(params)
-				// 	.then(() => (this.ready = true), err => (this.ready = false));
+				gapi.auth2
+					.init(params)
+					.then(() => (this.ready = true), err => (this.ready = false));
 			}
 
-			gapi.client
-				.init({
-					apiKey: this._apiKey,
-					clientId: params.client_id,
-					discoveryDocs: params.discoveryDocs,
-					scope: params.scope
-				})
-				.then(() => (this.ready = true), err => (this.ready = false));
+			gapi.client.init({
+				apiKey: API_KEY,
+				clientId: CLIENT_ID,
+				discoveryDocs: DISCOVERY_DOCS,
+				scope: SCOPES
+			});
 		});
 	};
 
-	getAuthInstance = () => {
+	_getAuthInstance = () => {
 		return this._gapi.auth2.getAuthInstance();
 	};
 
 	enable = () => {
 		const { _apiUrl } = this;
-		loadScript(_apiUrl, this._onScriptLoad);
+		render(_apiUrl, this._onScriptLoad);
 	};
 
 	disable = () => {};
 
 	login = () => {
 		if (this.ready) {
-			const auth2 = this.getAuthInstance();
+			const auth2 = this._getAuthInstance();
 			const options = { prompt: this._prompt };
 
 			if (this._responseType === "code") {

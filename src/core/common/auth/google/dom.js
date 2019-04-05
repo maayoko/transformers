@@ -27,7 +27,7 @@ const appendElement = (js, fjs) => {
 	return js;
 };
 
-const render = (apiUrl, cb) => {
+const loadScript = (apiUrl, cb) => {
 	if (isRendered(elemId)) {
 		return;
 	}
@@ -37,4 +37,4 @@ const render = (apiUrl, cb) => {
 	appendedJS.onload = () => cb(window.gapi);
 };
 
-export { render };
+export { loadScript };

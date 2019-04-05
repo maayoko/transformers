@@ -25,6 +25,10 @@
 	.delete_icon {
 		background-image: url("../../../assets/images/svg/cancel_circle.svg");
 	}
+
+	.login_icon {
+		background-image: url("../../../assets/images/svg/login_gold.svg");
+	}
 }
 
 .root {
@@ -43,7 +47,8 @@
 .home_icon,
 .edit_icon,
 .done_icon,
-.delete_icon {
+.delete_icon,
+.login_icon {
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 4.4rem;
@@ -98,6 +103,10 @@
 
 		& > .delete_icon {
 			background-image: url("../../../assets/images/svg/cancel_circle_full.svg");
+		}
+
+		& > .login_icon {
+			background-image: url("../../../assets/images/svg/login_dark.svg");
 		}
 	}
 

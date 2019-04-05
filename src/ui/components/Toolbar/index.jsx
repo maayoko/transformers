@@ -10,7 +10,8 @@ const basePath = "/transformers";
 const baseLinks = [
 	{ to: `/`, label: "Home", icon: "home_icon" },
 	{ to: `${basePath}/add`, label: "Add new", icon: "add_icon" },
-	{ to: `${basePath}/search`, label: "Search", icon: "search_icon" }
+	{ to: `${basePath}/search`, label: "Search", icon: "search_icon" },
+	{ to: `/login`, label: "Login", icon: "login_icon" }
 ];
 
 export default withRouter(({ location, match, ...other }) => {

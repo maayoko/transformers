@@ -7,8 +7,7 @@ export default withUser(({ user }) => {
 	const sidebarLinks = [
 		{ to: `/users/${user.link}/events`, label: "Events" },
 		{ to: `/users/${user.link}/settings`, label: "Settings" },
-		{ to: `/users/${user.link}/events`, label: "Events" },
-		{ to: `/users/${user.link}/events`, label: "Events" }
+		{ to: `/users/${user.link}/profile`, label: "Profile" }
 	];
 	console.log(sidebarLinks);
 	return <User styles={styles} user={user} sidebarLinks={sidebarLinks} />;

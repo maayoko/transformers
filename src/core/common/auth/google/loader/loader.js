@@ -1,4 +1,4 @@
-import { loadScript } from "./dom";
+import { loadScript } from "../dom";
 
 const transformers = {
 	google: {
@@ -15,17 +15,7 @@ const getInstance = options => {
 	return instance;
 };
 
-class Google {
-	static getInstance = options => {
-		let instance = transformers.google.instance;
-
-		if (instance === null) {
-			transformers.google.instance = instance = new Google(options);
-		}
-
-		return instance;
-	};
-
+class Loader {
 	constructor({
 		apiUrl = "https://apis.google.com/js/api.js",
 		cookiePolicy = "single_host_origin",
@@ -40,7 +30,9 @@ class Google {
 		clientId,
 		apiKey,
 		prompt = "",
-		responseType
+		responseType,
+		services = "client:auth2",
+		initService
 	}) {
 		if (clientId == null) {
 			throw new Error("`CLIENT_ID` has to be provided.");
@@ -66,9 +58,10 @@ class Google {
 		this._apiKey = apiKey;
 		this._prompt = prompt;
 		this._responseType = responseType;
+		this._services = services;
 	}
 
-	_onScriptLoad = gapi => {
+	onScriptLoad = gapi => {
 		this._gapi = gapi;
 		const params = this._googleOptions;
 
@@ -76,7 +69,7 @@ class Google {
 			params.access_type = "offline";
 		}
 
-		gapi.load("client:auth2", () => {
+		gapi.load(this._services, () => {
 			if (!gapi.auth2.getAuthInstance()) {
 				// gapi.auth2
 				// 	.init(params)
@@ -94,42 +87,16 @@ class Google {
 		});
 	};
 
-	getAuthInstance = () => {
+	_getAuthInstance = () => {
 		return this._gapi.auth2.getAuthInstance();
 	};
 
-	enable = () => {
+	load = () => {
 		const { _apiUrl } = this;
-		loadScript(_apiUrl, this._onScriptLoad);
+		loadScript(_apiUrl, this.onScriptLoad);
 	};
 
-	disable = () => {};
-
-	login = () => {
-		if (this.ready) {
-			const auth2 = this.getAuthInstance();
-			const options = { prompt: this._prompt };
-
-			if (this._responseType === "code") {
-				return auth2.grantOfflineAccess(options);
-			} else {
-				return auth2.signIn(options);
-			}
-		}
-
-		return Promise.reject("Google auth not ready yet.");
-	};
+	unload = () => {};
 }
 
-export { getInstance };
-export default Google;
-
-/*
-curl \
-  'https://www.googleapis.com/calendar/v3/users/me/calendarList' \
-  --header 'Authorization: Bearer ya29.GlviBg2lyW3DLRFejgvYmbteEvv4RjHGApyLbi0uQT7loZ-DcqhVlrLpkDSQ_6wvgh5ARNLTVDHlDj5G7zyvL7NKf_wZ2QKYrWaxMUSa2y7euVXZw6Ex21fpQ_HO' \
-  --header 'Accept: application/json' \
-  --compressed
-
-  https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Foauth2.example.com%2Fcallback&response_type=token&client_id=616541988612-pl2rsjntpop90jsgb88afe1ltdn09dgr.apps.googleusercontent.com
-  */
+export default Loader;

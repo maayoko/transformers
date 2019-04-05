@@ -1,0 +1,62 @@
+import Loader from "./loader";
+
+class Auth2Loader extends Loader {
+	constructor({
+		apiUrl = "https://apis.google.com/js/api.js",
+		cookiePolicy = "single_host_origin",
+		loginHint,
+		hostedDomain,
+		fetchBasicProfile = true,
+		discoveryDocs,
+		uxMode = "popup",
+		redirectUri,
+		scope = "profile email",
+		accessType = "online",
+		clientId,
+		apiKey,
+		prompt = "",
+		responseType,
+		services = "client:auth2"
+	}) {
+		if (clientId == null) {
+			throw new Error("`CLIENT_ID` has to be provided.");
+		}
+
+		if (apiKey == null) {
+			throw new Error("`API_KEY` has to be provided.");
+		}
+
+		this._googleOptions = {
+			client_id: clientId,
+			cookie_policy: cookiePolicy,
+			login_hint: loginHint,
+			hosted_domain: hostedDomain,
+			fetch_basic_profile: fetchBasicProfile,
+			discoveryDocs: discoveryDocs,
+			ux_mode: uxMode,
+			redirect_uri: redirectUri,
+			scope: scope,
+			access_type: accessType
+		};
+		this._apiUrl = apiUrl;
+		this._apiKey = apiKey;
+		this._prompt = prompt;
+		this._responseType = responseType;
+		this._services = services;
+	}
+
+	onScriptLoad = gapi => {
+		this._gapi = gapi;
+		const params = this._googleOptions;
+
+		if (this._responseType === "code") {
+			params.access_type = "offline";
+		}
+
+		if (!gapi.auth2.getAuthInstance()) {
+			gapi.auth2.init(params).then(() => (this.ready = true), err => (this.ready = false));
+		}
+	};
+}
+
+export default Auth2Loader;

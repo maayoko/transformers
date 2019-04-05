@@ -2,10 +2,12 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import PropTypes from "prop-types";
 import Button from "../../components/Button/Button";
+import Typography from "../../components/Typography/Typography";
 
 const Login = ({ login }) => {
 	return (
 		<>
+			<Typography color="white">Sign in with Google account</Typography>
 			<Button variant="primary" onClick={login}>
 				Log me in
 			</Button>

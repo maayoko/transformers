@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
 import Typography from "../../components/Typography/Typography";
@@ -11,6 +11,7 @@ const User = ({ user, sidebarLinks, styles }) => (
 		<SidebarLinks links={sidebarLinks} />
 		<Switch>
 			<Route exact path="/users/:user/events" component={Events} />
+			<Route exact path="/users/:user" render={() => <Redirect to={sidebarLinks[0].to} />} />
 		</Switch>
 		<Typography as="h1" color="white" size="body-big">
 			hello user {user.name}

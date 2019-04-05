@@ -50,7 +50,8 @@ Toolbar.propTypes = {
 				"home_icon",
 				"edit_icon",
 				"done_icon",
-				"delete_icon"
+				"delete_icon",
+				"login_icon"
 			])
 		})
 	),

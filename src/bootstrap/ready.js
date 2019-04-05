@@ -40,6 +40,7 @@ export const ready = app => {
 	const currentTransformer = history.location.state && history.location.state.currentTransformer;
 	const googleAuth = GoogleAuth.getInstance({
 		clientId: storeState.global.credentials.CLIENT_ID,
+		apiKey: storeState.global.credentials.API_KEY,
 		discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
 		scope: "profile email https://www.googleapis.com/auth/calendar"
 	});
