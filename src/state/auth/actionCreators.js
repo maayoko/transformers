@@ -4,6 +4,7 @@ import * as authService from "domain/services/authService";
 import { createUser, getUserLink } from "../user";
 import { getCredentials } from "../global";
 import { push } from "react-router-redux";
+import debug from "debug";
 import {
 	GOOGLE_LOGIN_FAILURE,
 	GOOGLE_LOGIN_PENDING,
@@ -14,6 +15,8 @@ import {
 	GOOGLE_LOGIN,
 	GOOGLE_LOGOUT
 } from "./actionTypes";
+
+const authDebug = debug("auth:actions");
 
 const googleLogin = () => async (dispatch, getState) => {
 	dispatch({ type: GOOGLE_LOGIN_PENDING, payload: "Signin in. Please wait." });
@@ -27,6 +30,8 @@ const googleLogin = () => async (dispatch, getState) => {
 		});
 		dispatch(push(`/users/${getUserLink(getState())}`));
 	} catch (e) {
+		authDebug(e);
+		console.log(e);
 		dispatch({ type: GOOGLE_LOGIN_FAILURE, payload: "Login faild. Please try again." });
 	}
 };

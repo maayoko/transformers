@@ -1,18 +1,23 @@
-import { getInstance } from "./loader";
+import { getLoader } from "./loader";
 
 class Auth {
-	_loader = getInstance();
+	_loader = getLoader();
 
-	constructor({ grantOfflineAccess = false }) {
+	constructor({ grantOfflineAccess = false, prompt = "" }) {
 		this._options = {
-			grantOfflineAccess
+			grantOfflineAccess,
+			prompt
 		};
 	}
 
+	getAuthInstance = () => {
+		return this._loader.gapi.auth2.getAuthInstance();
+	};
+
 	login = () => {
-		if (this.ready) {
-			const auth2 = this._getAuthInstance();
-			const options = { prompt: this._prompt };
+		if (this._loader.ready) {
+			const auth2 = this.getAuthInstance();
+			const options = { prompt: this._options.prompt };
 
 			if (this._options.grantOfflineAccess) {
 				return auth2.grantOfflineAccess(options);
@@ -32,7 +37,13 @@ class Auth {
 	};
 
 	isLoggedIn = () => {
-		this._loader.getAuthInstance().isSignedIn.get();
+		this._getAuthInstance().isSignedIn.get();
 	};
 }
+
+const getInstance = (options = {}) => {
+	return new Auth(options);
+};
+
+export { getInstance };
 export default Auth;

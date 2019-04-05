@@ -11,7 +11,11 @@ const User = ({ user, sidebarLinks, styles }) => (
 		<SidebarLinks links={sidebarLinks} />
 		<Switch>
 			<Route exact path="/users/:user/events" component={Events} />
-			<Route exact path="/users/:user" render={() => <Redirect to={sidebarLinks[0].to} />} />
+			<Route
+				exact
+				path="/users/:user"
+				render={() => <Redirect to={`/users/${user.link}/events`} />}
+			/>
 		</Switch>
 		<Typography as="h1" color="white" size="body-big">
 			hello user {user.name}

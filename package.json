@@ -129,6 +129,7 @@
 		]
 	},
 	"devDependencies": {
+		"debug": "^4.1.1",
 		"node-sass": "^4.11.0",
 		"prettier": "^1.16.4"
 	}

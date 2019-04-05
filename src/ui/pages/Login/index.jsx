@@ -9,10 +9,10 @@ export default withAuthManager(
 		console.log(auth, parse(location.hash));
 		useEffect(() => {
 			/* eslint-disable no-unused-expressions */
-			authManager.enable();
+			authManager.load();
 
 			() => {
-				authManager.disable();
+				authManager.unload();
 			};
 		}, [authManager]);
 

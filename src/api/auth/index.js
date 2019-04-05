@@ -1,13 +1,13 @@
-import { getInstance } from "core/common/auth/google";
+import { getInstance } from "core/common/auth/google/auth";
 
-const googleLogin = credentials => {
-	const auth = getInstance(credentials);
+const googleLogin = () => {
+	const auth = getInstance();
 	return auth.login();
 };
 
-const googleLogout = credentials => {
-	const auth = getInstance(credentials);
-	auth.logout();
+const googleLogout = () => {
+	const auth = getInstance();
+	return auth.logout();
 };
 
 export { googleLogin, googleLogout };

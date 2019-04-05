@@ -28,7 +28,7 @@ class ClientLoader extends Loader {
 	}
 
 	onScriptLoad = gapi => {
-		this._gapi = gapi;
+		this.gapi = gapi;
 		const params = this._googleOptions;
 
 		gapi.load(this._services, () => {

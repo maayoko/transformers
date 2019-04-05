@@ -13,18 +13,14 @@ class Auth2Loader extends Loader {
 		scope = "profile email",
 		accessType = "online",
 		clientId,
-		apiKey,
 		prompt = "",
 		responseType,
-		services = "client:auth2"
+		services = "auth2"
 	}) {
 		if (clientId == null) {
 			throw new Error("`CLIENT_ID` has to be provided.");
 		}
-
-		if (apiKey == null) {
-			throw new Error("`API_KEY` has to be provided.");
-		}
+		super(apiUrl);
 
 		this._googleOptions = {
 			client_id: clientId,
@@ -39,7 +35,6 @@ class Auth2Loader extends Loader {
 			access_type: accessType
 		};
 		this._apiUrl = apiUrl;
-		this._apiKey = apiKey;
 		this._prompt = prompt;
 		this._responseType = responseType;
 		this._services = services;
@@ -53,9 +48,13 @@ class Auth2Loader extends Loader {
 			params.access_type = "offline";
 		}
 
-		if (!gapi.auth2.getAuthInstance()) {
-			gapi.auth2.init(params).then(() => (this.ready = true), err => (this.ready = false));
-		}
+		gapi.load(this._services, () => {
+			if (!gapi.auth2.getAuthInstance()) {
+				gapi.auth2
+					.init(params)
+					.then(() => (this.ready = true), err => (this.ready = false));
+			}
+		});
 	};
 }
 

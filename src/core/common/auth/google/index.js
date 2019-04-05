@@ -1,4 +1,4 @@
-import { loadScript } from "./dom";
+import { loadScript } from "./loader/dom";
 
 const transformers = {
 	google: {

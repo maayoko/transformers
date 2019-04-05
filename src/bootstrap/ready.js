@@ -27,7 +27,7 @@ import { setCurrentTransformer } from "state/currentTransformer";
 import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
-import GoogleAuth from "../core/common/auth/google";
+import { createLoader, loaderTypes } from "../core/common/auth/google/loader";
 
 export const ready = app => {
 	/**
@@ -38,7 +38,7 @@ export const ready = app => {
 	const storeState = store.getState();
 	const history = syncHistoryWithStore(browserHistory, store);
 	const currentTransformer = history.location.state && history.location.state.currentTransformer;
-	const googleAuth = GoogleAuth.getInstance({
+	const clientLoader = createLoader(loaderTypes.CLIENT, {
 		clientId: storeState.global.credentials.CLIENT_ID,
 		apiKey: storeState.global.credentials.API_KEY,
 		discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
@@ -55,7 +55,7 @@ export const ready = app => {
 	store.dispatch(createDefaultTransformer());
 
 	ReactDOM.render(
-		<AuthProvider auth={googleAuth}>
+		<AuthProvider auth={clientLoader}>
 			<Provider store={store}>
 				<Router history={history}>
 					<App>
