@@ -1,8 +1,13 @@
 import { getInstance } from "core/common/auth/google/events";
 
 const getAll = options => {
-	const calendarApi = getInstance();
-	return calendarApi.getEvents(options);
+	const eventsApi = getInstance();
+	return eventsApi.getEvents(options);
 };
 
-export { getAll };
+const updateEvent = event => {
+	const eventsApi = getInstance();
+	return eventsApi.updateEvent(event);
+};
+
+export { getAll, updateEvent };

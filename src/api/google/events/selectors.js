@@ -25,4 +25,16 @@ const getEventsDetails = response => {
 	});
 };
 
-export { getEventsDetails };
+const prepareEventForUpdate = event => {
+	return {
+		summary: event.title,
+		start: {
+			dateTime: event.startTime
+		},
+		end: {
+			dateTime: event.endTime
+		}
+	};
+};
+
+export { getEventsDetails, prepareEventForUpdate };

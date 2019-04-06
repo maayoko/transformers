@@ -21,9 +21,6 @@ const transformers = (state = [], action) => {
 				...state.reduce((transformers, transformer) => {
 					let _transformer =
 						transformer._id === action.payload._id ? action.payload : transformer;
-
-					console.log(transformer, action.payload);
-
 					return [...transformers, _transformer];
 				}, [])
 			];
