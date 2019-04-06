@@ -33,7 +33,7 @@ const Vehicle = ({
 					width="small"
 					placeholder
 					onChange={onVehicleGroupChange}
-					id="status"
+					id="vehicle_group"
 					options={vehicleGroups}
 				/>
 			</FormGroup>
@@ -44,7 +44,7 @@ const Vehicle = ({
 					width="small"
 					placeholder
 					onChange={onVehicleTypeChange}
-					id="status"
+					id="vehicle_type"
 					options={vehicleTypes.filter(filterService.filterVehicleTypes)}
 				/>
 			</FormGroup>

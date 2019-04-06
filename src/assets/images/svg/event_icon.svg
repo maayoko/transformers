@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="69.5" width="83">
+  <defs>
+    <path id="path-1" opacity="1" fill-rule="evenodd" d="M1,19 L1,8.587466629197696 C1,4.414359983138966 4.368450235652897,1 8.485444968117548,1 L19,1 "/>
+    <path id="path-2" opacity="1" fill-rule="evenodd" d="M64,14.500000000000227 L18.99999999999818,14.500000000000227 "/>
+    <path id="path-3" opacity="1" fill-rule="evenodd" d="M19.260437500000002,56.00163322445187 L8.59375,56.00163322445187 C4.417187500000001,56.00163322445187 1,58.813765748950246 1,62.250816612226046 C1,65.68786747550183 4.417187500000001,68.50000000000023 8.59375,68.50000000000023 L81.88609375,68.50000000000023 C81.949375,68.50000000000023 82,65.0982267848812 82,60.940503966402424 L82,22.05949603359779 C82,17.901773215119 81.949375,14.5 81.88609375,14.5 L74.17590625,14.5 L63.926874999999995,14.5 "/>
+    <path id="path-4" opacity="1" fill-rule="evenodd" d="M18.99999999999818,55 L18.99999999999818,1 "/>
+    <path id="path-5" opacity="1" fill-rule="evenodd" d="M1,61.74999999999999 L1,19 "/>
+    <path id="path-6" opacity="1" fill-rule="evenodd" d="M25.5,28 L50.00229664953431,28 L71.5,28 "/>
+    <path id="path-7" opacity="1" fill-rule="evenodd" d="M25.5,39 L50.00229664953431,39 L71.5,39 "/>
+    <path id="path-8" opacity="1" fill-rule="evenodd" d="M25.5,50 L50.00229664953431,50 L71.5,50 "/>
+  </defs>
+  <g opacity="1">
+    <g opacity="1">
+      <use xlink:href="#path-1" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-2" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-3" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-4" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-5" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-6" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-7" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+    </g>
+    <g opacity="1">
+      <use xlink:href="#path-8" fill-opacity="0" stroke="rgb(255,202,0)" stroke-opacity="1" stroke-width="2" stroke-linecap="butt" stroke-linejoin="miter"/>
+    </g>
+  </g>
+</svg>

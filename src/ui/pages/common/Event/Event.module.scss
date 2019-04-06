@@ -1,0 +1,21 @@
+@import "../../../../styles/variables.scss";
+
+.root {
+	background-color: $background1;
+	clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+	min-width: 50rem;
+	min-height: 31.5rem;
+	padding: 3rem;
+	position: relative;
+	justify-content: flex-end;
+
+	& > .header {
+		margin-bottom: 6rem;
+
+		& > .event_image {
+			width: 8rem;
+			height: 6.8rem;
+			margin-bottom: 1.6rem;
+		}
+	}
+}
