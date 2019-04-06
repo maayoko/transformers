@@ -1,2 +1,10 @@
 .root {
+	& > .sidebar_links {
+		flex-basis: 15%;
+	}
+
+	& > .routes {
+		padding: 0 3rem;
+		flex-basis: 85%;
+	}
 }

@@ -7,19 +7,20 @@ import Typography from "../../components/Typography/Typography";
 import Events from "../common/Events";
 
 const User = ({ user, sidebarLinks, styles }) => (
-	<Group align="between">
-		<SidebarLinks links={sidebarLinks} />
-		<Switch>
-			<Route exact path="/users/:user/events" component={Events} />
-			<Route
-				exact
-				path="/users/:user"
-				render={() => <Redirect to={`/users/${user.link}/events`} />}
-			/>
-		</Switch>
-		<Typography as="h1" color="white" size="body-big">
-			hello user {user.name}
-		</Typography>
+	<Group className={styles.root} align="between">
+		<Group className={styles.sidebar_links}>
+			<SidebarLinks links={sidebarLinks} />
+		</Group>
+		<Group className={styles.routes}>
+			<Switch>
+				<Route exact path="/users/:user/events" component={Events} />
+				<Route
+					exact
+					path="/users/:user"
+					render={() => <Redirect to={`/users/${user.link}/events`} />}
+				/>
+			</Switch>
+		</Group>
 	</Group>
 );
 

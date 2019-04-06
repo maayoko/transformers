@@ -15,6 +15,7 @@ const getEventsDetails = response => {
 				.add(1, "hour");
 		const endDate = end.dateTime || moment(end.date).endOf("day") || moment().endOf("day");
 		return {
+			id: event.id,
 			title: event.summary,
 			startDate: startDate,
 			endDate: endDate,

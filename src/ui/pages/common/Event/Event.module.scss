@@ -18,4 +18,18 @@
 			margin-bottom: 1.6rem;
 		}
 	}
+
+	& > .action_buttons {
+		position: absolute;
+		right: 1rem;
+		top: 2rem;
+
+		& > img {
+			cursor: pointer;
+
+			&:first-child {
+				margin-bottom: 1rem;
+			}
+		}
+	}
 }
