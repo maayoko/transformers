@@ -1,4 +1,4 @@
-import { getInstance } from "core/common/auth/google/calendar";
+import { getInstance } from "core/common/auth/google/events";
 
 const getAll = options => {
 	const calendarApi = getInstance();

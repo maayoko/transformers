@@ -1,3 +1,3 @@
-const getCurrentTransformer = state => state.currentTransformer;
+const getEvents = state => state.events;
 
-export { getCurrentTransformer };
+export { getEvents };

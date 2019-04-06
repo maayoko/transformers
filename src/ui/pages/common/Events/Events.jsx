@@ -1,6 +1,6 @@
 import React from "react";
 
-const Events = () => <div>Events</div>;
+const Events = ({ events }) => <div style={{ color: "white" }}>Events: {events.length}</div>;
 
 Events.propTypes = {};
 
