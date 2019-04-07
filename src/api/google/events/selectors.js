@@ -63,4 +63,12 @@ const prepareEventForUpdate = event => {
 	};
 };
 
-export { getEventsDetails, prepareEventForUpdate };
+const prepareEventForDelete = event => {
+	const eventId = event.id;
+	return {
+		calendarId: "primary",
+		eventId
+	};
+};
+
+export { getEventsDetails, prepareEventForUpdate, prepareEventForDelete };

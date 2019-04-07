@@ -1,12 +1,16 @@
 import * as googleEventsApi from "api/google/events";
-import { getEventsDetails } from "api/google/events/selectors";
+import { getEventsDetails, prepareEventForDelete } from "api/google/events/selectors";
 import * as eventService from "domain/services/eventService";
 import {
 	GET_EVENTS,
 	GET_EVENTS_FAILURE,
 	GET_EVENTS_PENDING,
 	GET_EVENTS_SUCCESS,
-	UPDATE_EVENT
+	UPDATE_EVENT,
+	DELETE_EVENT_FAILURE,
+	DELETE_EVENT_PENDING,
+	DELETE_EVENT_SUCCESS,
+	DELETE_EVENT
 } from "./actionTypes";
 
 const getEvents = options => async dispatch => {
@@ -25,4 +29,18 @@ const updateEvent = event => {
 	return { type: UPDATE_EVENT, payload: event };
 };
 
-export { getEvents, updateEvent };
+const deleteEvent = event => async dispatch => {
+	dispatch({ type: DELETE_EVENT_PENDING, payload: "Deleting event." });
+	try {
+		await googleEventsApi.deleteEvent(prepareEventForDelete(event));
+		dispatch({
+			type: DELETE_EVENT_SUCCESS,
+			payload: "Event succesfully deleted."
+		});
+		dispatch({ type: DELETE_EVENT, payload: event });
+	} catch (e) {
+		dispatch({ type: DELETE_EVENT_FAILURE, payload: "Deleting event failed." });
+	}
+};
+
+export { getEvents, updateEvent, deleteEvent };

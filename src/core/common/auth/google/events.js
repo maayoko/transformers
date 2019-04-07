@@ -16,6 +16,10 @@ class Events {
 	updateEvent = event => {
 		return this._events.update(event);
 	};
+
+	deleteEvent = event => {
+		return this._events.delete(event);
+	};
 }
 
 const getInstance = () => {

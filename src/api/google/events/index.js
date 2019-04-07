@@ -10,4 +10,9 @@ const updateEvent = event => {
 	return eventsApi.updateEvent(event);
 };
 
-export { getAll, updateEvent };
+const deleteEvent = event => {
+	const eventsApi = getInstance();
+	return eventsApi.deleteEvent(event);
+};
+
+export { getAll, updateEvent, deleteEvent };

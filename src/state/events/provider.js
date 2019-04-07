@@ -7,7 +7,8 @@ const withEvents = connect(
 		events: getEvents(state)
 	}),
 	dispatch => ({
-		getEvents: options => dispatch(action.getEvents(options))
+		getEvents: options => dispatch(action.getEvents(options)),
+		deleteEvent: event => dispatch(action.deleteEvent(event))
 	})
 );
 

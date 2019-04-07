@@ -48,7 +48,6 @@ const updateCurrentEvent = event => async dispatch => {
 		dispatch(updateEvent(event));
 		dispatch(clearCurrentEvent());
 	} catch (e) {
-		console.log(e);
 		dispatch({ type: UPDATE_CURRENT_EVENT_FAILURE, payload: "Updating current event failed." });
 	}
 };
