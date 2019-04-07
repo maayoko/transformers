@@ -1,0 +1,23 @@
+.root {
+	& .toolbar {
+		width: 50rem;
+
+		& > :first-child {
+			flex-basis: 70%;
+		}
+
+		& > :last-child {
+			flex-basis: 30%;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	& .events_list {
+		margin-top: 3.5rem;
+
+		& > *:not(:last-child) {
+			margin-bottom: 5rem;
+		}
+	}
+}

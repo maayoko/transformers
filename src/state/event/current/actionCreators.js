@@ -1,3 +1,4 @@
+import debug from "debug";
 import * as googleEventsApi from "api/google/events";
 import { prepareEventForUpdate } from "api/google/events/selectors";
 import { updateEvent } from "../../events";
@@ -12,6 +13,7 @@ import {
 	UPDATE_CURRENT_EVENT_PENDING,
 	UPDATE_CURRENT_EVENT_SUCCESS
 } from "./actionTypes";
+const currentEventDebug = debug("Event:current");
 
 const updateCurrentEventTitle = title => {
 	return { type: UPDATE_CURRENT_EVENT_TITLE, payload: title };
@@ -48,6 +50,8 @@ const updateCurrentEvent = event => async dispatch => {
 		dispatch(updateEvent(event));
 		dispatch(clearCurrentEvent());
 	} catch (e) {
+		currentEventDebug(e);
+		console.error(e);
 		dispatch({ type: UPDATE_CURRENT_EVENT_FAILURE, payload: "Updating current event failed." });
 	}
 };

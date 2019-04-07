@@ -12,4 +12,4 @@ if [ ! -d "$NODE_MODULES_DIR" ]; then
   yarn install
 fi
 
-yarn start
+DEBUG=* && yarn start

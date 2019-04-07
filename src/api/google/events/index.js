@@ -15,4 +15,9 @@ const deleteEvent = event => {
 	return eventsApi.deleteEvent(event);
 };
 
-export { getAll, updateEvent, deleteEvent };
+const createEvent = event => {
+	const eventsApi = getInstance();
+	return eventsApi.createEvent(event);
+};
+
+export { getAll, updateEvent, deleteEvent, createEvent };

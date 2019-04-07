@@ -17,7 +17,7 @@ const User = ({ user, sidebarLinks, styles }) => (
 				<Route
 					exact
 					path="/users/:user"
-					render={() => <Redirect to={`/users/${user.link}/events`} />}
+					render={() => <Redirect to={`/users/${user.link}/home`} />}
 				/>
 			</Switch>
 		</Group>

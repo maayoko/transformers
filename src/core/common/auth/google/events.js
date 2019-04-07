@@ -20,6 +20,10 @@ class Events {
 	deleteEvent = event => {
 		return this._events.delete(event);
 	};
+
+	createEvent = event => {
+		return this._events.insert(event);
+	};
 }
 
 const getInstance = () => {

@@ -1,4 +1,4 @@
-import { GET_EVENTS, UPDATE_EVENT, DELETE_EVENT } from "./actionTypes";
+import { GET_EVENTS, UPDATE_EVENT, DELETE_EVENT, ADD_EVENT } from "./actionTypes";
 
 const events = (state = [], action) => {
 	switch (action.type) {
@@ -16,6 +16,9 @@ const events = (state = [], action) => {
 
 		case DELETE_EVENT:
 			return [...state.filter(event => event._id !== action.payload._id)];
+
+		case ADD_EVENT:
+			return [...state, action.payload];
 
 		default:
 			return state;

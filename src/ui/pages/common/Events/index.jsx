@@ -3,6 +3,7 @@ import Events from "./Events";
 import { withEvents } from "state/events";
 import { withCurrentEvent } from "state/event/current";
 import moment from "moment";
+import styles from "./Events.module.scss";
 
 export default withCurrentEvent(
 	withEvents(({ events, setCurrentEvent, currentEvent, getEvents }) => {
@@ -66,6 +67,7 @@ export default withCurrentEvent(
 				onEventsLengthChange={onEventsLengthChange}
 				events={events}
 				selectOptions={selectOptions}
+				styles={styles}
 			/>
 		);
 	})

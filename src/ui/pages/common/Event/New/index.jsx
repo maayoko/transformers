@@ -1,5 +1,5 @@
 import React from "react";
-import Event from "./common/Event";
+import Event from "../common/Event";
 import { withNewEvent } from "state/event/new";
 import actions from "../common/actions";
 
@@ -10,7 +10,6 @@ export default withNewEvent(
 		updateNewEventDate,
 		updateNewEventStartTime,
 		updateNewEventEndTime,
-		clearNewEvent,
 		createNewEvent
 	}) => {
 		return (

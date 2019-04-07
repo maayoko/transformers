@@ -1,59 +1,47 @@
 import moment from "moment";
+import { getEndDate, getStartDate, getTimes } from "./utils";
 
-const getDate = dateTime => {
-	return moment(dateTime).toDate();
-};
-const getStartDate = eventTime => {
-	if (eventTime.dateTime) {
-		return getDate(eventTime.dateTime);
-	}
+const getEventDetails = event => {
+	const start = event.start;
+	const end = event.end;
+	const startDate = getStartDate(start);
+	const endDate = getEndDate(end);
 
-	// if date prop is not defined moment will take today's date
-	return moment(eventTime.date)
-		.startOf("day")
-		.add(1, "hour")
-		.toDate();
-};
-
-const getEndDate = eventTime => {
-	if (eventTime.dateTime) {
-		return getDate(eventTime.dateTime);
-	}
-
-	return moment(eventTime.date)
-		.endOf("day")
-		.toDate();
+	return {
+		id: event.id,
+		title: event.summary,
+		startDate: startDate,
+		endDate: endDate,
+		startTime: startDate,
+		endTime: endDate
+	};
 };
 
 const getEventsDetails = response => {
 	const eventsData = response.result.items;
-	return eventsData.map(event => {
-		const start = event.start;
-		const end = event.end;
-		const startDate = getStartDate(start);
-		const endDate = getEndDate(end);
-
-		return {
-			id: event.id,
-			title: event.summary,
-			startDate: startDate,
-			endDate: endDate,
-			startTime: startDate,
-			endTime: endDate
-		};
-	});
+	return eventsData.map(event => getEventDetails(event));
 };
 
 const prepareEventForUpdate = event => {
-	const date = moment(event.startDate).format("YYYY-MM-DD");
-	const start = moment(event.startTime).format("kk:mm");
-	const end = moment(event.endTime).format("kk:mm");
-	const startTime = moment(`${date} ${start}`).format();
-	const endTime = moment(`${date} ${end}`).format();
+	const { endTime, startTime } = getTimes(event);
 	return {
 		calendarId: "primary",
 		summary: event.title,
 		eventId: event.id,
+		start: {
+			dateTime: startTime
+		},
+		end: {
+			dateTime: endTime
+		}
+	};
+};
+
+const prepareEventForCreate = event => {
+	const { startTime, endTime } = getTimes(event);
+	return {
+		calendarId: "primary",
+		summary: event.title,
 		start: {
 			dateTime: startTime
 		},
@@ -71,4 +59,10 @@ const prepareEventForDelete = event => {
 	};
 };
 
-export { getEventsDetails, prepareEventForUpdate, prepareEventForDelete };
+export {
+	getEventDetails,
+	getEventsDetails,
+	prepareEventForUpdate,
+	prepareEventForDelete,
+	prepareEventForCreate
+};
