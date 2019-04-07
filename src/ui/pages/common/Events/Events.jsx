@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Group from "../../../components/Group/Group";
 import Select from "../../../components/Select/Select";
-import Event from "../Event";
-import CurrentEvent from "../CurrentEvent";
+import EventDetails from "../Event/Details";
+import CurrentEvent from "../Event/Current";
 
 const Events = ({ events, selectOptions, onEventsLengthChange }) => (
 	<Group align="between">
 		<Group vertical>
 			<Select onChange={onEventsLengthChange} id="events_period" options={selectOptions} />
 			{events.map(event => (
-				<Event key={event._id} event={event} />
+				<EventDetails key={event._id} event={event} />
 			))}
 		</Group>
 		<Group>

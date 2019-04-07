@@ -11,7 +11,7 @@ import {
 const currentEvent = (state = createEvent({}), action) => {
 	switch (action.type) {
 		case UPDATE_CURRENT_EVENT_DATE:
-			return { ...state, date: action.payload };
+			return { ...state, startDate: action.payload, endDate: action.payload };
 
 		case UPDATE_CURRENT_EVENT_TITLE:
 			return { ...state, title: action.payload };
@@ -23,7 +23,7 @@ const currentEvent = (state = createEvent({}), action) => {
 			return { ...state, endTime: action.payload };
 
 		case CLEAR_CURRENT_EVENT:
-			return action.payload;
+			return createEvent({});
 
 		case SET_CURRENT_EVENT:
 			return { ...action.payload };

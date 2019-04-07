@@ -15,7 +15,7 @@ import { transformersReducer } from "./transformers";
 import { vehiclesReducer } from "./vehicles";
 import { notificationsReducer } from "./notifications";
 import { eventsReducer } from "./events";
-import { currentEventReducer } from "./currentEvent";
+import { currentEventReducer } from "./event/current";
 import { userReducer } from "./user";
 import { authReducer } from "./auth";
 import { gearsReducer } from "./gears";

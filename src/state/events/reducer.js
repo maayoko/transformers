@@ -9,7 +9,8 @@ const events = (state = [], action) => {
 			return [
 				...state.reduce((acc, event) => {
 					const latestEvent = event._id === action.payload._id ? action.payload : event;
-					return latestEvent;
+					acc.push(latestEvent);
+					return acc;
 				}, [])
 			];
 

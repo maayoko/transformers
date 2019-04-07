@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
-import Typography from "../../../components/Typography/Typography";
-import Group from "../../../components/Group/Group";
-import Image from "../../../components/Image/Image";
+import Typography from "../../../../components/Typography/Typography";
+import Group from "../../../../components/Group/Group";
+import Image from "../../../../components/Image/Image";
+import propTypes from "../common/types";
 
 import EventImageSrc from "assets/images/svg/event_icon.svg";
 import DeleteImageSrc from "assets/images/svg/cancel_circle_red.svg";
 import UpdateImageSrc from "assets/images/svg/new_gold.svg";
 
-const Event = ({ event, styles, onDelete, setCurrent }) => (
+const DetailsEvent = ({ event, styles, onDelete, setCurrent }) => (
 	<Group align="end" vertical className={styles.root}>
 		<Group vertical className={styles.action_buttons}>
 			<Image src={UpdateImageSrc} title={"Update icon"} onClick={() => setCurrent(event)} />
@@ -50,22 +51,17 @@ const Event = ({ event, styles, onDelete, setCurrent }) => (
 	</Group>
 );
 
-Event.propTypes = {
-	event: PropTypes.shape({
-		title: PropTypes.string,
-		startDate: PropTypes.oneOf([PropTypes.string, PropTypes.shape({})]),
-		startTime: PropTypes.oneOf([PropTypes.string, PropTypes.shape({})]),
-		endTime: PropTypes.oneOf([PropTypes.string, PropTypes.shape({})])
-	}).isRequired,
+DetailsEvent.propTypes = {
+	event: propTypes.event,
 	onDelete: PropTypes.func,
 	setCurrent: PropTypes.func,
 	styles: PropTypes.shape({})
 };
 
-Event.defaultProps = {
+DetailsEvent.defaultProps = {
 	onDelete: () => {},
 	setCurrent: () => {},
 	styles: {}
 };
 
-export default Event;
+export default DetailsEvent;

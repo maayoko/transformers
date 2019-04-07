@@ -1,11 +1,11 @@
 import React from "react";
-import Event from "./Event";
-import { withCurrentEvent } from "state/currentEvent";
-import styles from "./Event.module.scss";
+import DetailsEvent from "./DetailsEvent";
+import { withCurrentEvent } from "state/event/current";
+import styles from "./DetailsEvent.module.scss";
 
 export default withCurrentEvent(({ event, deleteEvent, setCurrentEvent, ...other }) => {
 	return (
-		<Event
+		<DetailsEvent
 			event={event}
 			onDelete={deleteEvent}
 			setCurrent={setCurrentEvent}

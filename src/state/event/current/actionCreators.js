@@ -1,6 +1,6 @@
 import * as googleEventsApi from "api/google/events";
 import { prepareEventForUpdate } from "api/google/events/selectors";
-import { updateEvent } from "../events";
+import { updateEvent } from "../../events";
 import {
 	UPDATE_CURRENT_EVENT_DATE,
 	UPDATE_CURRENT_EVENT_END_TIME,
@@ -30,7 +30,7 @@ const updateCurrentEventEndTime = time => {
 };
 
 const clearCurrentEvent = () => {
-	return { type: CLEAR_CURRENT_EVENT, payload: null };
+	return { type: CLEAR_CURRENT_EVENT };
 };
 
 const setCurrentEvent = event => {
@@ -45,9 +45,10 @@ const updateCurrentEvent = event => async dispatch => {
 			type: UPDATE_CURRENT_EVENT_SUCCESS,
 			payload: "Current event succesfully updated."
 		});
-		dispatch(clearCurrentEvent());
 		dispatch(updateEvent(event));
+		dispatch(clearCurrentEvent());
 	} catch (e) {
+		console.log(e);
 		dispatch({ type: UPDATE_CURRENT_EVENT_FAILURE, payload: "Updating current event failed." });
 	}
 };

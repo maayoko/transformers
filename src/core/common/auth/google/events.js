@@ -12,6 +12,10 @@ class Events {
 	getEvents = options => {
 		return this._events.list(options);
 	};
+
+	updateEvent = event => {
+		return this._events.update(event);
+	};
 }
 
 const getInstance = () => {
