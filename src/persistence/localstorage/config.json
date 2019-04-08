@@ -1,0 +1,8 @@
+{
+	"auth": {
+		"key": "auth"
+	},
+	"user": {
+		"key": "user"
+	}
+}
