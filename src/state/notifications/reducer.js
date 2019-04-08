@@ -2,7 +2,8 @@ import { NOTIFICATIONS_RESET } from "./actionTypes";
 
 const notifications = (state = null, action) => {
 	if (action.type.match(/(FAILURE|SUCCESS|PENDING)/g)) {
-		return { message: action.payload };
+		const { payload, ...other } = action;
+		return { message: payload, ...other };
 	}
 
 	switch (action.type) {

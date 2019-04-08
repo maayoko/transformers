@@ -1,4 +1,4 @@
-import { getInstance } from "core/common/auth/google/auth";
+import { getInstance } from "plugins/google/auth";
 
 const googleLogin = () => {
 	const auth = getInstance();

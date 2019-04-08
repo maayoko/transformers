@@ -27,7 +27,7 @@ import { setCurrentTransformer } from "state/currentTransformer";
 import { createSkins } from "state/skins";
 import { createGears } from "state/gears";
 import * as serviceWorker from "serviceWorker";
-import { createLoader, loaderTypes } from "../core/common/auth/google/loader";
+import { createLoader, loaderTypes } from "../plugins/google/loader";
 
 export const ready = app => {
 	/**

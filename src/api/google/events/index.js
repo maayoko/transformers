@@ -1,4 +1,4 @@
-import { getInstance } from "core/common/auth/google/events";
+import { getInstance } from "plugins/google/events";
 
 const getAll = options => {
 	const eventsApi = getInstance();
