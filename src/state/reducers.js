@@ -16,6 +16,7 @@ import { vehiclesReducer } from "./vehicles";
 import { notificationsReducer } from "./notifications";
 import { eventsReducer } from "./events";
 import { currentEventReducer } from "./event/current";
+import { newEventReducer } from "./event/new";
 import { userReducer } from "./user";
 import { authReducer } from "./auth";
 import { gearsReducer } from "./gears";
@@ -33,6 +34,7 @@ export default combineReducers({
 	notifications: notificationsReducer,
 	events: eventsReducer,
 	currentEvent: currentEventReducer,
+	newEvent: newEventReducer,
 	skins: skinsReducer,
 	auth: authReducer,
 	user: userReducer,

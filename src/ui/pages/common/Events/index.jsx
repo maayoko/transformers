@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Events from "./Events";
 import { withEvents } from "state/events";
 import { withCurrentEvent } from "state/event/current";
@@ -29,6 +29,8 @@ export default withCurrentEvent(
 				label: "Upcoming 30 days"
 			}
 		];
+
+		const [shouldCreate, updateShouldCreate] = useState(false);
 
 		// useEffect(() => {
 		// 	getEvents({
@@ -68,6 +70,7 @@ export default withCurrentEvent(
 				events={events}
 				selectOptions={selectOptions}
 				styles={styles}
+				createNewOptions={{ shouldCreate, updateShouldCreate }}
 			/>
 		);
 	})

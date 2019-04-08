@@ -1,7 +1,6 @@
-import moment from "moment";
 import { getEndDate, getStartDate, getTimes } from "./utils";
 
-const getEventDetails = event => {
+const _getEventDetails = event => {
 	const start = event.start;
 	const end = event.end;
 	const startDate = getStartDate(start);
@@ -17,9 +16,14 @@ const getEventDetails = event => {
 	};
 };
 
+const getEventDetails = response => {
+	const event = response.result;
+	return _getEventDetails(event);
+};
+
 const getEventsDetails = response => {
 	const eventsData = response.result.items;
-	return eventsData.map(event => getEventDetails(event));
+	return eventsData.map(event => _getEventDetails(event));
 };
 
 const prepareEventForUpdate = event => {

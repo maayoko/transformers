@@ -4,12 +4,10 @@ const actions = (actions, event) => {
 	};
 
 	const onDateChange = date => {
-		console.log(date);
 		actions.updateEventDate(date);
 	};
 
 	const onStartTimeChange = time => {
-		console.log(time);
 		actions.updateEventStartTime(time);
 	};
 

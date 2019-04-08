@@ -7,7 +7,7 @@ import {
 	UPDATE_NEW_EVENT_TITLE
 } from "./actionTypes";
 
-const currentEvent = (state = createEvent({}), action) => {
+const newEvent = (state = createEvent({}), action) => {
 	switch (action.type) {
 		case UPDATE_NEW_EVENT_DATE:
 			return { ...state, startDate: action.payload, endDate: action.payload };
@@ -29,4 +29,4 @@ const currentEvent = (state = createEvent({}), action) => {
 	}
 };
 
-export { currentEvent };
+export { newEvent };

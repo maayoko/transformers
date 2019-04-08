@@ -16,13 +16,16 @@ export default withNewEvent(
 			<Event
 				event={newEvent}
 				buttonLabel="Create"
-				{...actions({
-					updateEventTitle: updateNewEventTitle,
-					updateEventDate: updateNewEventDate,
-					updateEventStartTime: updateNewEventStartTime,
-					updateEventEndTime: updateNewEventEndTime,
-					onEventSubmit: createNewEvent
-				})}
+				{...actions(
+					{
+						updateEventTitle: updateNewEventTitle,
+						updateEventDate: updateNewEventDate,
+						updateEventStartTime: updateNewEventStartTime,
+						updateEventEndTime: updateNewEventEndTime,
+						submitEvent: createNewEvent
+					},
+					newEvent
+				)}
 			/>
 		);
 	}

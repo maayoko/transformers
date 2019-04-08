@@ -31,16 +31,19 @@ const Event = ({
 		<FormGroup>
 			<Label htmlFor="date">Date</Label>
 			<DatePicker
+				useCustomInput
 				id="date"
 				dateFormat="dd. MMMM, yyyy"
 				onChange={onDateChange}
 				selected={event.startDate}
 				placeholderText="Select battle date..."
+				autocomplete="off"
 			/>
 		</FormGroup>
 		<FormGroup>
 			<Label htmlFor="start_time">Start time</Label>
 			<DatePicker
+				useCustomInput
 				id="start_time"
 				onChange={onStartTimeChange}
 				selected={event.startTime}
@@ -56,6 +59,7 @@ const Event = ({
 		<FormGroup>
 			<Label htmlFor="end_time">End time</Label>
 			<DatePicker
+				useCustomInput
 				id="end_time"
 				onChange={onEndTimeChange}
 				selected={event.endTime}

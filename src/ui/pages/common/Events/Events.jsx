@@ -8,7 +8,7 @@ import NewEvent from "../Event/New";
 import Overlay from "../../../components/Overlay";
 import Button from "../../../components/Button/Button";
 
-const Events = ({ events, styles, selectOptions, onEventsLengthChange }) => (
+const Events = ({ events, styles, selectOptions, onEventsLengthChange, createNewOptions }) => (
 	<Group className={styles.root} align="between">
 		<Group vertical>
 			<Group className={styles.toolbar} align="between">
@@ -17,7 +17,13 @@ const Events = ({ events, styles, selectOptions, onEventsLengthChange }) => (
 					id="events_period"
 					options={selectOptions}
 				/>
-				<Button type="basic">Create new</Button>
+				<Button
+					onClick={() =>
+						createNewOptions.updateShouldCreate(!createNewOptions.shouldCreate)
+					}
+					type="basic">
+					Create new
+				</Button>
 			</Group>
 			<Group className={styles.events_list} vertical>
 				{events.map(event => (
@@ -28,13 +34,27 @@ const Events = ({ events, styles, selectOptions, onEventsLengthChange }) => (
 		<Group>
 			<CurrentEvent />
 		</Group>
+		{createNewOptions.shouldCreate && (
+			<Overlay closeButton={{ onClose: () => createNewOptions.updateShouldCreate(false) }}>
+				<NewEvent />
+			</Overlay>
+		)}
 	</Group>
 );
 
 Events.propTypes = {
-	selectOptions: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	selectOptions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	createNewOptions: PropTypes.shape({
+		shouldCreate: PropTypes.bool,
+		updateShouldCreate: PropTypes.func
+	})
 };
 
-Events.defaultProps = {};
+Events.defaultProps = {
+	createNewOptions: {
+		shouldCreate: false,
+		updateShouldCreate: () => {}
+	}
+};
 
 export default Events;
