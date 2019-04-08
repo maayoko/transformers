@@ -1,9 +1,10 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import reducers from "./reducers";
+import { authMiddleware } from "./auth/midlleware";
 
 export default function configureStore(preloadedState, uiSpecificMiddlewares = []) {
-	const middlewares = [thunkMiddleware, ...uiSpecificMiddlewares];
+	const middlewares = [thunkMiddleware, authMiddleware, ...uiSpecificMiddlewares];
 	const enhancers = [applyMiddleware(...middlewares)];
 
 	const composeEnhancers =

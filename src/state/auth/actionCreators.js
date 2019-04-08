@@ -1,8 +1,10 @@
 import * as authApi from "api/auth";
 import { getGoogleUserDetails, getGoogleAuthDetails } from "api/auth/selectors";
 import * as authService from "domain/services/authService";
-import { createUser, getUserLink } from "../user";
+import { createUser, getUserLink, getUser } from "../user";
 import { getCredentials } from "../global";
+import * as authPersistence from "persistence/localstorage/auth";
+import * as userPersistence from "persistence/localstorage/user";
 import { push } from "react-router-redux";
 import debug from "debug";
 import {
@@ -12,11 +14,20 @@ import {
 	GOOGLE_LOGOUT_FAILURE,
 	GOOGLE_LOGOUT_PENDING,
 	GOOGLE_LOGOUT_SUCCESS,
-	GOOGLE_LOGIN,
-	GOOGLE_LOGOUT
+	GOOGLE_LOGOUT,
+	LOGOUT,
+	LOGIN
 } from "./actionTypes";
+import { getAuth } from "./selectors";
 
 const authDebug = debug("auth:actions");
+
+const login = credentials => (dispatch, getState) => {
+	dispatch({ type: LOGIN, payload: credentials });
+	dispatch(push(`/users/${getUserLink(getState())}`));
+	authPersistence.insertCredentials(getAuth(getState()));
+	userPersistence.insertUser(getUser(getState()));
+};
 
 const googleLogin = () => async (dispatch, getState) => {
 	dispatch({ type: GOOGLE_LOGIN_PENDING, payload: "Signin in. Please wait." });
@@ -24,14 +35,9 @@ const googleLogin = () => async (dispatch, getState) => {
 		const response = await authApi.googleLogin(getCredentials(getState()));
 		dispatch({ type: GOOGLE_LOGIN_SUCCESS, payload: "You've succesfully logged in." });
 		dispatch(createUser(getGoogleUserDetails(response)));
-		dispatch({
-			type: GOOGLE_LOGIN,
-			payload: authService.createAuth(getState(), getGoogleAuthDetails(response))
-		});
-		dispatch(push(`/users/${getUserLink(getState())}`));
+		dispatch(login(authService.createAuth(getState(), getGoogleAuthDetails(response))));
 	} catch (e) {
 		authDebug(e);
-		console.log(e);
 		dispatch({ type: GOOGLE_LOGIN_FAILURE, payload: "Login faild. Please try again." });
 	}
 };
@@ -51,4 +57,10 @@ const googleLogout = () => async (dispatch, getState) => {
 	}
 };
 
-export { googleLogin, googleLogout };
+const logout = () => (dispatch, getState) => {
+	dispatch({ type: LOGOUT });
+	authPersistence.insertCredentials(getAuth(getState()));
+	userPersistence.insertUser(getUser(getState()));
+};
+
+export { googleLogin, googleLogout, logout };

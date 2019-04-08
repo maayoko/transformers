@@ -8,7 +8,7 @@ const retrieveUser = createAction(createTypes.RETRIEVE, record);
 const clearUser = createAction(createTypes.CLEAR, record);
 
 const setup = (initialValue = null) => {
-	insertUser(initialValue);
+	retrieveUser() == null && insertUser(initialValue);
 };
 
 export { setup, insertUser, retrieveUser, clearUser };

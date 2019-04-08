@@ -18,7 +18,7 @@ import Search from "ui/pages/Search";
 import Details from "ui/pages/Details";
 import Login from "ui/pages/Login";
 import User from "ui/pages/User";
-import { Provider as AuthProvider } from "ui/components/Auth";
+import { Provider as LoaderProvider } from "ui/components/Loader";
 import PrivateRoute from "ui/components/PrivateRoute";
 import configureStore from "state/store";
 import { getTransformersData } from "state/global";
@@ -55,7 +55,7 @@ export const ready = app => {
 	store.dispatch(createDefaultTransformer());
 
 	ReactDOM.render(
-		<AuthProvider auth={clientLoader}>
+		<LoaderProvider loader={clientLoader}>
 			<Provider store={store}>
 				<Router history={history}>
 					<App>
@@ -74,7 +74,7 @@ export const ready = app => {
 					</App>
 				</Router>
 			</Provider>
-		</AuthProvider>,
+		</LoaderProvider>,
 		document.getElementById("root")
 	);
 

@@ -1,21 +1,27 @@
 import React, { useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import Login from "./Login";
-import { withAuth as withAuthManager } from "../../components/Auth";
+import { withLoader } from "../../components/Loader";
 import { withAuth } from "state/auth";
-import { parse } from "query-string";
+import { withUser } from "state/user";
 
-export default withAuthManager(
-	withAuth(({ authManager, auth, googleLogin, googleLogout, location }) => {
-		console.log(auth, parse(location.hash));
-		useEffect(() => {
-			/* eslint-disable no-unused-expressions */
-			authManager.load();
+export default withUser(
+	withLoader(
+		withAuth(({ user, loader, googleLogin, auth }) => {
+			useEffect(() => {
+				/* eslint-disable no-unused-expressions */
+				loader.load();
 
-			() => {
-				authManager.unload();
-			};
-		}, [authManager]);
+				() => {
+					loader.unload();
+				};
+			}, [loader]);
 
-		return <Login login={googleLogin} />;
-	})
+			return auth.authenticated ? (
+				<Redirect to={`/users/${user.link}/home`} />
+			) : (
+				<Login login={googleLogin} />
+			);
+		})
+	)
 );

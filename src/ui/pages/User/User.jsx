@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Route, Switch, Redirect } from "react-router-dom";
 import SidebarLinks from "../../components/SidebarLinks";
 import Group from "../../components/Group/Group";
-import Typography from "../../components/Typography/Typography";
 import Events from "../common/Events";
 
 const User = ({ user, sidebarLinks, styles }) => (

@@ -1,4 +1,5 @@
 const notFoundCode = 404;
+const notAuthorizedCode = 401;
 
 const notFound = async request => {
 	const response = await request;
@@ -9,4 +10,13 @@ const notFound = async request => {
 	return response;
 };
 
-export { notFound };
+const notAuthorized = async request => {
+	const response = await request;
+	if (response.status === notAuthorizedCode) {
+		return Promise.reject("Not Authorized");
+	}
+
+	return response;
+};
+
+export { notFound, notAuthorized };

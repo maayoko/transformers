@@ -34,6 +34,8 @@ class Auth {
 		if (auth2 != null) {
 			return auth2.signOut().then(auth2.disconnect());
 		}
+
+		return Promise.reject("Couldn't logout.");
 	};
 
 	isLoggedIn = () => {

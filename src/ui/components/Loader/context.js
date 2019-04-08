@@ -1,13 +1,13 @@
 import React from "react";
 
-const enable = () => {};
+const load = () => {};
 
-const disable = () => {};
+const unload = () => {};
 
 const context = React.createContext({
-	auth: {
-		enable,
-		disable
+	loader: {
+		load,
+		unload
 	}
 });
 
