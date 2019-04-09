@@ -1,4 +1,4 @@
-import { GET_EVENTS, UPDATE_EVENT, DELETE_EVENT, ADD_EVENT } from "./actionTypes";
+import { GET_EVENTS, UPDATE_EVENT, DELETE_EVENT, ADD_EVENT, LOGOUT } from "./actionTypes";
 
 const events = (state = [], action) => {
 	switch (action.type) {
@@ -19,6 +19,9 @@ const events = (state = [], action) => {
 
 		case ADD_EVENT:
 			return [...state, action.payload];
+
+		case LOGOUT:
+			return [];
 
 		default:
 			return state;

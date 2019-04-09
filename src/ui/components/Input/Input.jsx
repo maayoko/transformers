@@ -17,7 +17,7 @@ const Input = ({
 	const classes = classNames(styles.root, styles[size], styles[bgColor], {
 		[styles.border]: border
 	});
-	console.log(autoCompleted);
+
 	return (
 		<input
 			id={id}

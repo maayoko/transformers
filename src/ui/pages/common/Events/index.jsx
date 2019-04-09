@@ -89,30 +89,34 @@ export default withCurrentEvent(
 
 			groupEventsByWeek = () => {
 				const { events } = this.props;
-				const groupedEvents = events.reduce((eventsList, event, idx) => {
-					const startOfTheWeek = moment(event.startDate).startOf("week");
-					const endOfTheWeek = moment(event.startDate).endOf("week");
-					const dateProp = `${startOfTheWeek.format(
-						this.dateFormatType
-					)} - ${endOfTheWeek.format(this.dateFormatType)}`;
-					eventsList[dateProp] = eventsList[dateProp] || [];
-					eventsList[dateProp].push(event);
+				const groupedEvents = events
+					.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf())
+					.reduce((eventsList, event, idx) => {
+						const startOfTheWeek = moment(event.startDate).startOf("week");
+						const endOfTheWeek = moment(event.startDate).endOf("week");
+						const dateProp = `${startOfTheWeek.format(
+							this.dateFormatType
+						)} - ${endOfTheWeek.format(this.dateFormatType)}`;
+						eventsList[dateProp] = eventsList[dateProp] || [];
+						eventsList[dateProp].push(event);
 
-					return eventsList;
-				}, {});
+						return eventsList;
+					}, {});
 
 				return groupedEvents;
 			};
 
 			groupEventsByDay = () => {
 				const { events } = this.props;
-				const groupedEvents = events.reduce((eventsList, event) => {
-					const formattedDate = moment(event.startDate).format("DD. MMM, YYYY");
-					eventsList[formattedDate] = eventsList[formattedDate] || [];
-					eventsList[formattedDate].push(event);
+				const groupedEvents = events
+					.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf())
+					.reduce((eventsList, event) => {
+						const formattedDate = moment(event.startDate).format("DD. MMM, YYYY");
+						eventsList[formattedDate] = eventsList[formattedDate] || [];
+						eventsList[formattedDate].push(event);
 
-					return eventsList;
-				}, {});
+						return eventsList;
+					}, {});
 
 				return groupedEvents;
 			};
@@ -120,6 +124,8 @@ export default withCurrentEvent(
 			render() {
 				const groupedEvents = this[this.state.groupBy]();
 				const { shouldCreate } = this.state;
+
+				console.log(groupedEvents);
 
 				return (
 					<Events
