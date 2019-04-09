@@ -19,6 +19,7 @@ import { currentEventReducer } from "./event/current";
 import { newEventReducer } from "./event/new";
 import { userReducer } from "./user";
 import { authReducer } from "./auth";
+import { uiReducer } from "./ui";
 import { gearsReducer } from "./gears";
 import { skinsReducer } from "./skins";
 import { globalReducer } from "./global";
@@ -39,5 +40,6 @@ export default combineReducers({
 	auth: authReducer,
 	user: userReducer,
 	routing: routerReducer,
-	global: globalReducer
+	global: globalReducer,
+	ui: uiReducer
 });
