@@ -10,7 +10,7 @@ import Button from "../../../components/Button/Button";
 import Typography from "../../../components/Typography/Typography";
 
 const Events = ({ events, styles, selectOptions, onEventsLengthChange, createNewOptions }) => (
-	<Group className={styles.root} align="between">
+	<Group className={styles.root} align="around">
 		<Group vertical>
 			<Group className={styles.toolbar} align="between">
 				<Select
@@ -43,7 +43,7 @@ const Events = ({ events, styles, selectOptions, onEventsLengthChange, createNew
 				})}
 			</Group>
 		</Group>
-		<Group>
+		<Group className={styles.current_event}>
 			<CurrentEvent />
 		</Group>
 		{createNewOptions.shouldCreate && (

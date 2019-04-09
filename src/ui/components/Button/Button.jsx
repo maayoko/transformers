@@ -24,7 +24,7 @@ const Button = ({ variant, onClick, style, type, className, children }) => {
 				y: svgHeight - textHeight
 			});
 		}
-	});
+	}, [x, y]);
 
 	return (
 		<div className={classes} style={style} onClick={onClick}>

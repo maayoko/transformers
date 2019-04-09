@@ -29,12 +29,16 @@
 	.login_icon {
 		background-image: url("../../../assets/images/svg/login_gold.svg");
 	}
+
+	.user_icon {
+		background-image: url("../../../assets/images/svg/user_icon_gold.svg");
+	}
 }
 
 .root {
 	display: flex;
 	justify-content: center;
-	background: linear-gradient(to top, rgba(36, 35, 46, 0.4), rgba(36, 36, 46, 0));
+	background: linear-gradient(to top, rgba(36, 35, 46, 1), rgba(36, 36, 46, 0));
 	position: relative;
 	z-index: 999;
 	position: fixed;
@@ -48,7 +52,8 @@
 .edit_icon,
 .done_icon,
 .delete_icon,
-.login_icon {
+.login_icon,
+.user_icon {
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 4.4rem;
@@ -107,6 +112,10 @@
 
 		& > .login_icon {
 			background-image: url("../../../assets/images/svg/login_dark.svg");
+		}
+
+		& > .user_icon {
+			background-image: url("../../../assets/images/svg/user_icon_dark.svg");
 		}
 	}
 

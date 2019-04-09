@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Event from "../common/Event";
 import { withCurrentEvent } from "state/event/current";
 import actions from "../common/actions";
@@ -11,15 +11,8 @@ export default withCurrentEvent(
 		updateCurrentEventStartTime,
 		updateCurrentEventEndTime,
 		updateCurrentEvent
-		// clearCurrentEvent
 	}) => {
-		// useEffect(() => {
-		// 	return () => {
-		// 		clearCurrentEvent();
-		// 	};
-		// }, [currentEvent]);
-		console.log(currentEvent);
-		return (
+		return currentEvent ? (
 			<Event
 				event={currentEvent}
 				buttonLabel="Update"
@@ -34,6 +27,6 @@ export default withCurrentEvent(
 					currentEvent
 				)}
 			/>
-		);
+		) : null;
 	}
 );

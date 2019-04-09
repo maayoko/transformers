@@ -60,7 +60,7 @@ const googleLogout = () => async (dispatch, getState) => {
 const logout = () => (dispatch, getState) => {
 	dispatch({ type: LOGOUT });
 	authPersistence.insertCredentials(getAuth(getState()));
-	userPersistence.insertUser(getUser(getState()));
+	userPersistence.clearUser();
 };
 
 export { googleLogin, googleLogout, logout };

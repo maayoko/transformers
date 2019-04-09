@@ -8,6 +8,7 @@ import Button from "../../../../components/Button/Button";
 import propTypes from "./types";
 import defaultProps from "./defaultProps";
 import DatePicker from "../../../../components/DatePicker";
+import styles from "./Event.module.scss";
 
 const Event = ({
 	event,
@@ -16,10 +17,11 @@ const Event = ({
 	onStartTimeChange,
 	onEndTimeChange,
 	onSubmit,
-	buttonLabel
+	buttonLabel,
+	className
 }) => (
-	<Group vertical>
-		<FormGroup>
+	<Group align="center" vertical className={`${styles.root} ${className}`}>
+		<FormGroup className={styles.form_group}>
 			<Label htmlFor="title">Title</Label>
 			<Input
 				placeholder="E.g. Destiny battle"
@@ -28,7 +30,7 @@ const Event = ({
 				value={event.title}
 			/>
 		</FormGroup>
-		<FormGroup>
+		<FormGroup className={styles.form_group}>
 			<Label htmlFor="date">Date</Label>
 			<DatePicker
 				useCustomInput
@@ -40,7 +42,7 @@ const Event = ({
 				autocomplete="off"
 			/>
 		</FormGroup>
-		<FormGroup>
+		<FormGroup className={styles.form_group}>
 			<Label htmlFor="start_time">Start time</Label>
 			<DatePicker
 				useCustomInput
@@ -56,10 +58,10 @@ const Event = ({
 				placeholderText="Select battle start time..."
 			/>
 		</FormGroup>
-		<FormGroup>
+		<FormGroup className={styles.form_group}>
 			<Label htmlFor="end_time">End time</Label>
 			<DatePicker
-				useCustomInput
+				useCustomInput={true}
 				id="end_time"
 				onChange={onEndTimeChange}
 				selected={event.endTime}
@@ -80,7 +82,8 @@ const Event = ({
 
 Event.propTypes = {
 	...propTypes,
-	buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.node])
+	buttonLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.node]),
+	className: PropTypes.string
 };
 Event.defaultProps = {
 	...defaultProps,

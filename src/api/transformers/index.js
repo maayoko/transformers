@@ -11,7 +11,7 @@ const createNewTransformer = transformer => {
 };
 
 const updateCurrentTransformer = transformer => {
-	// Server constantly response with 404 so if we check for 404, our transformer will never get updated.
+	// Server constantly respond with 404 so if we check for 404, our transformer will never get updated.
 	// return notFound(
 	// 	http.put(`${transformers.API_URL}/${transformers.tables.transformers}`, transformer)
 	// );

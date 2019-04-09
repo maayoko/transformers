@@ -1,4 +1,6 @@
 .root {
+	width: 100%;
+
 	& .toolbar {
 		width: 50rem;
 
@@ -14,6 +16,11 @@
 	}
 
 	& .events_list_group {
+		height: calc(100vh - 13.4rem);
+		overflow-y: scroll;
+		margin-top: 1rem;
+		padding-bottom: 13.4rem;
+
 		& .events_list {
 			margin-top: 3.5rem;
 
@@ -24,6 +31,15 @@
 			& > *:first-child {
 				margin-bottom: 1rem;
 			}
+		}
+	}
+
+	& .current_event {
+		width: 50rem;
+
+		& > *:first-child {
+			width: 100%;
+			align-items: center;
 		}
 	}
 }

@@ -7,7 +7,15 @@ import {
 	UPDATE_NEW_EVENT_TITLE
 } from "./actionTypes";
 
-const newEvent = (state = createEvent({}), action) => {
+const _newEvent = createEvent({
+	title: "Sample title",
+	startTime: new Date(),
+	endTime: new Date(),
+	startDate: new Date(),
+	endDate: new Date()
+});
+
+const newEvent = (state = _newEvent, action) => {
 	switch (action.type) {
 		case UPDATE_NEW_EVENT_DATE:
 			return { ...state, startDate: action.payload, endDate: action.payload };
@@ -22,7 +30,7 @@ const newEvent = (state = createEvent({}), action) => {
 			return { ...state, endTime: action.payload };
 
 		case CLEAR_NEW_EVENT:
-			return createEvent({});
+			return _newEvent;
 
 		default:
 			return state;

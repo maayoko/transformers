@@ -2,3 +2,6 @@
 @import "./variables.scss";
 @import "./mediaQuery.scss";
 @import "./base.scss";
+@import "./utilities.scss";
+
+@include scrollbar();

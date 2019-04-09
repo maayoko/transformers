@@ -23,7 +23,6 @@ const getEvents = options => async dispatch => {
 		dispatch({ type: GET_EVENTS, payload: events });
 		dispatch({ type: GET_EVENTS_SUCCESS, payload: "Events downloaded." });
 	} catch (e) {
-		console.log(e);
 		dispatch({ type: GET_EVENTS_FAILURE, payload: "Couldn't download events." });
 	}
 };

@@ -8,7 +8,8 @@ const withAuth = connect(
 	}),
 	dispatch => ({
 		googleLogin: () => dispatch(action.googleLogin()),
-		googleLogout: () => dispatch(action.googleLogout())
+		googleLogout: () => dispatch(action.googleLogout()),
+		logout: () => dispatch(action.logout())
 	})
 );
 

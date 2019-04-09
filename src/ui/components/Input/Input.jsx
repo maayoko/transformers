@@ -3,10 +3,21 @@ import PropTypes from "prop-types";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
-const Input = ({ placeholder, border, size, bgColor, onChange, value, id, ...other }) => {
+const Input = ({
+	placeholder,
+	border,
+	size,
+	bgColor,
+	onChange,
+	value,
+	id,
+	autoCompleted,
+	...other
+}) => {
 	const classes = classNames(styles.root, styles[size], styles[bgColor], {
 		[styles.border]: border
 	});
+	console.log(autoCompleted);
 	return (
 		<input
 			id={id}
@@ -15,6 +26,7 @@ const Input = ({ placeholder, border, size, bgColor, onChange, value, id, ...oth
 			type="text"
 			placeholder={placeholder}
 			value={value}
+			autoComplete={autoCompleted ? "on" : "off"}
 			{...other}
 		/>
 	);
@@ -26,6 +38,7 @@ Input.propTypes = {
 	size: PropTypes.oneOf(["normal", "large"]),
 	bgColor: PropTypes.oneOf(["transparent", "dark"]),
 	onChange: PropTypes.func,
+	autoCompleted: PropTypes.bool,
 	value: PropTypes.any,
 	id: PropTypes.any
 };
@@ -37,7 +50,8 @@ Input.defaultProps = {
 	bgColor: "transparent",
 	onChange: () => {},
 	value: "",
-	id: ""
+	id: "",
+	autoCompleted: true
 };
 
 export default Input;

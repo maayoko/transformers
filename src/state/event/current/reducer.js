@@ -1,4 +1,3 @@
-import { createEvent } from "domain/services/eventService";
 import {
 	UPDATE_CURRENT_EVENT_DATE,
 	UPDATE_CURRENT_EVENT_START_TIME,
@@ -8,7 +7,7 @@ import {
 	SET_CURRENT_EVENT
 } from "./actionTypes";
 
-const currentEvent = (state = createEvent({}), action) => {
+const currentEvent = (state = null, action) => {
 	switch (action.type) {
 		case UPDATE_CURRENT_EVENT_DATE:
 			return { ...state, startDate: action.payload, endDate: action.payload };
@@ -23,7 +22,7 @@ const currentEvent = (state = createEvent({}), action) => {
 			return { ...state, endTime: action.payload };
 
 		case CLEAR_CURRENT_EVENT:
-			return createEvent({});
+			return null;
 
 		case SET_CURRENT_EVENT:
 			return { ...action.payload };

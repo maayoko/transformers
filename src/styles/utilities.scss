@@ -3,17 +3,17 @@
 @mixin scrollbar() {
 	::-webkit-scrollbar-track {
 		border-radius: 5px;
-		background-color: $base6;
+		background-color: $background;
 	}
 
 	::-webkit-scrollbar {
 		border-radius: 5px;
-		width: 5px;
-		background-color: $base6;
+		width: 2px;
+		background-color: $base1;
 	}
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 5px;
-		background-color: $base4;
+		background-color: $primary;
 	}
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Event from "../common/Event";
 import { withNewEvent } from "state/event/new";
 import actions from "../common/actions";
+import styles from "./New.module.scss";
 
 export default withNewEvent(
 	({
@@ -26,6 +27,7 @@ export default withNewEvent(
 					},
 					newEvent
 				)}
+				className={styles.root}
 			/>
 		);
 	}

@@ -49,15 +49,20 @@ export default withCurrentEvent(
 			];
 
 			dateFormatType = "DD. MMM, YYYY";
+			hourFormatType = "kk:mm";
 
 			componentDidMount() {
 				const { events, setCurrentEvent, currentEvent } = this.props;
 				this.updateEvents(this.selectOptions[1].value);
-				!currentEvent.title && events.length && setCurrentEvent(events[0]);
+				!currentEvent && events.length && setCurrentEvent(events[0]);
 			}
 
 			shouldComponentUpdate(nextProps, nextState) {
-				return this.props.events !== nextProps.events;
+				return (
+					this.props.events !== nextProps.events ||
+					this.state.shouldCreate !== nextState.shouldCreate ||
+					this.props.currentEvent !== nextProps.currentEvent
+				);
 			}
 
 			updateShouldCreate = shouldCreate => this.setState({ shouldCreate });
@@ -84,7 +89,7 @@ export default withCurrentEvent(
 
 			groupEventsByWeek = () => {
 				const { events } = this.props;
-				const groupedEvents = events.reduce((eventsList, event) => {
+				const groupedEvents = events.reduce((eventsList, event, idx) => {
 					const startOfTheWeek = moment(event.startDate).startOf("week");
 					const endOfTheWeek = moment(event.startDate).endOf("week");
 					const dateProp = `${startOfTheWeek.format(
