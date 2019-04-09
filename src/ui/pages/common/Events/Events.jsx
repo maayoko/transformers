@@ -7,12 +7,14 @@ import CurrentEvent from "../Event/Current";
 import NewEvent from "../Event/New";
 import Overlay from "../../../components/Overlay";
 import Button from "../../../components/Button/Button";
+import Typography from "../../../components/Typography/Typography";
 
 const Events = ({ events, styles, selectOptions, onEventsLengthChange, createNewOptions }) => (
 	<Group className={styles.root} align="between">
 		<Group vertical>
 			<Group className={styles.toolbar} align="between">
 				<Select
+					selected={selectOptions[1]}
 					onChange={onEventsLengthChange}
 					id="events_period"
 					options={selectOptions}
@@ -25,10 +27,20 @@ const Events = ({ events, styles, selectOptions, onEventsLengthChange, createNew
 					Create new
 				</Button>
 			</Group>
-			<Group className={styles.events_list} vertical>
-				{events.map(event => (
-					<EventDetails key={event._id} event={event} />
-				))}
+			<Group className={styles.events_list_group} vertical>
+				{Object.keys(events).map(eventKey => {
+					const _events = events[eventKey];
+					return (
+						<div className={styles.events_list} key={eventKey}>
+							<Typography color="primary" size="body-small">
+								{eventKey}
+							</Typography>
+							{_events.map(event => (
+								<EventDetails key={event._id} event={event} />
+							))}
+						</div>
+					);
+				})}
 			</Group>
 		</Group>
 		<Group>

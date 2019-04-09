@@ -6,9 +6,11 @@ class Loader {
 		this.ready = false;
 	}
 
-	load = () => {
+	load = cb => {
 		const { _apiUrl } = this;
-		loadScript(_apiUrl, this.onScriptLoad);
+		loadScript(_apiUrl, gapi => {
+			this.onScriptLoad(gapi, cb);
+		});
 	};
 
 	unload = () => {};

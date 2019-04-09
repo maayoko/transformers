@@ -40,7 +40,7 @@ class Auth2Loader extends Loader {
 		this._services = services;
 	}
 
-	onScriptLoad = gapi => {
+	onScriptLoad = (gapi, cb) => {
 		this._gapi = gapi;
 		const params = this._googleOptions;
 
@@ -50,9 +50,13 @@ class Auth2Loader extends Loader {
 
 		gapi.load(this._services, () => {
 			if (!gapi.auth2.getAuthInstance()) {
-				gapi.auth2
-					.init(params)
-					.then(() => (this.ready = true), err => (this.ready = false));
+				gapi.auth2.init(params).then(
+					() => {
+						this.ready = true;
+						cb();
+					},
+					err => (this.ready = false)
+				);
 			}
 		});
 	};

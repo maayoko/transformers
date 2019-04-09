@@ -27,12 +27,18 @@ class ClientLoader extends Loader {
 		this._services = services;
 	}
 
-	onScriptLoad = gapi => {
+	onScriptLoad = (gapi, cb = () => {}) => {
 		this.gapi = gapi;
 		const params = this._googleOptions;
 
 		gapi.load(this._services, () => {
-			gapi.client.init(params).then(() => (this.ready = true), err => (this.ready = false));
+			gapi.client.init(params).then(
+				() => {
+					this.ready = true;
+					cb();
+				},
+				err => (this.ready = false)
+			);
 		});
 	};
 }

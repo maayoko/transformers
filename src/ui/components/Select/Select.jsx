@@ -16,15 +16,13 @@ const Select = ({ options, onChange, id, placeholder, width, selected, disabled,
 			disabled={disabled}
 			id={id}
 			name={id}
+			defaultValue={selected && selected.value}
 			className={classes}
 			onChange={onChange}
 			{...other}>
 			{options.map((option, idx) => {
 				return (
-					<option
-						value={option.value}
-						key={idx}
-						selected={selected && selected === option}>
+					<option value={option.value} key={idx}>
 						{option.label}
 					</option>
 				);

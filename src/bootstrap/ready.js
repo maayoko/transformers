@@ -54,32 +54,34 @@ export const ready = app => {
 	store.dispatch(getTransformersData());
 	store.dispatch(createDefaultTransformer());
 
-	ReactDOM.render(
-		<LoaderProvider loader={clientLoader}>
-			<Provider store={store}>
-				<Router history={history}>
-					<App>
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route exact path="/transformers/search" component={Search} />
-							<Route
-								exact
-								path="/transformers/:transformer/details"
-								component={Details}
-							/>
-							<Route exact path="/login" component={Login} />
-							<Route path="/transformers/add" component={AddNew} />
-							<PrivateRoute path="/users/:user" component={User} />
-						</Switch>
-					</App>
-				</Router>
-			</Provider>
-		</LoaderProvider>,
-		document.getElementById("root")
-	);
+	clientLoader.load(() => {
+		ReactDOM.render(
+			<LoaderProvider loader={clientLoader}>
+				<Provider store={store}>
+					<Router history={history}>
+						<App>
+							<Switch>
+								<Route exact path="/" component={Home} />
+								<Route exact path="/transformers/search" component={Search} />
+								<Route
+									exact
+									path="/transformers/:transformer/details"
+									component={Details}
+								/>
+								<Route exact path="/login" component={Login} />
+								<Route path="/transformers/add" component={AddNew} />
+								<PrivateRoute path="/users/:user" component={User} />
+							</Switch>
+						</App>
+					</Router>
+				</Provider>
+			</LoaderProvider>,
+			document.getElementById("root")
+		);
 
-	// If you want your app to work offline and load faster, you can change
-	// unregister() to register() below. Note this comes with some pitfalls.
-	// Learn more about service workers: https://bit.ly/CRA-PWA
-	serviceWorker.unregister();
+		// If you want your app to work offline and load faster, you can change
+		// unregister() to register() below. Note this comes with some pitfalls.
+		// Learn more about service workers: https://bit.ly/CRA-PWA
+		serviceWorker.unregister();
+	});
 };
