@@ -91,7 +91,7 @@ export default withCurrentEvent(
 				const { events } = this.props;
 				const groupedEvents = events
 					.sort((a, b) => a.startTime.valueOf() - b.startTime.valueOf())
-					.reduce((eventsList, event, idx) => {
+					.reduce((eventsList, event) => {
 						const startOfTheWeek = moment(event.startDate).startOf("week");
 						const endOfTheWeek = moment(event.startDate).endOf("week");
 						const dateProp = `${startOfTheWeek.format(

@@ -50,6 +50,12 @@ If you want to see docker's progress issue the following command
     docker-compose logs -f
 ```
 
+Open your favorite browser and enter:
+
+```bash
+    http://localhost:3000
+```
+
 ### Production environment
 
 You can build files by issuing
@@ -64,4 +70,10 @@ For those using docker
 
 ```bash
     docker-compose -f docker-compose.prod.yml up -d
+```
+
+Open your favorite browser and enter:
+
+```bash
+    http://localhost:8080
 ```

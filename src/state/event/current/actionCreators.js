@@ -1,6 +1,6 @@
 import debug from "debug";
 import * as googleEventsApi from "api/google/events";
-import { prepareEventForUpdate } from "api/google/events/selectors";
+import { prepareEventForUpdate, getEventDetails } from "api/google/events/selectors";
 import { updateEvent } from "../../events";
 import {
 	UPDATE_CURRENT_EVENT_DATE,
@@ -42,12 +42,12 @@ const setCurrentEvent = event => {
 const updateCurrentEvent = event => async dispatch => {
 	dispatch({ type: UPDATE_CURRENT_EVENT_PENDING, payload: "Updating current event." });
 	try {
-		await googleEventsApi.updateEvent(prepareEventForUpdate(event));
+		const response = await googleEventsApi.updateEvent(prepareEventForUpdate(event));
 		dispatch({
 			type: UPDATE_CURRENT_EVENT_SUCCESS,
 			payload: "Current event succesfully updated."
 		});
-		dispatch(updateEvent(event));
+		dispatch(updateEvent({ ...event, ...getEventDetails(response) }));
 		dispatch(clearCurrentEvent());
 	} catch (e) {
 		currentEventDebug(e);
