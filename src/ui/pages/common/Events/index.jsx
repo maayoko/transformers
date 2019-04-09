@@ -23,8 +23,8 @@ export default withCurrentEvent(
 				{
 					groupBy: "groupEventsByDay",
 					date: moment()
-						.startOf("day")
-						.toISOString(),
+						.endOf("day")
+						.format(),
 					value: 0,
 					label: "Today"
 				},
@@ -33,7 +33,7 @@ export default withCurrentEvent(
 					date: moment()
 						.add(7, "days")
 						.endOf("day")
-						.toISOString(),
+						.format(),
 					value: 1,
 					label: "Upcoming 7 days"
 				},
@@ -42,7 +42,7 @@ export default withCurrentEvent(
 					date: moment()
 						.add(30, "days")
 						.endOf("day")
-						.toISOString(),
+						.format(),
 					value: 2,
 					label: "Upcoming 30 days"
 				}
@@ -74,7 +74,7 @@ export default withCurrentEvent(
 						calendarId: "primary",
 						timeMin: moment()
 							.startOf("day")
-							.toISOString(),
+							.format(),
 						timeMax: option.date,
 						showDeleted: false,
 						singleEvents: true,
@@ -124,8 +124,6 @@ export default withCurrentEvent(
 			render() {
 				const groupedEvents = this[this.state.groupBy]();
 				const { shouldCreate } = this.state;
-
-				console.log(groupedEvents);
 
 				return (
 					<Events
